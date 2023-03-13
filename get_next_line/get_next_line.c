@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 14:51:04 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/03/07 14:14:28 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/03/13 14:57:20 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ static int	reader_buff(char *buffer, int *i, int fd, int size)
 	*i = read(fd, buffer, size);
 	if (*i <= 0)
 	{
+		if (*i == -1)
+			return (-1);
 		return (0);
 	}
 	buffer[*i] = '\0';
@@ -31,33 +33,29 @@ int	findstop(char *buffer)
 	while (buffer[i])
 	{
 		if (buffer[i] == '\n')
-			return (0);
+			return (1);
 		i++;
 	}
-	return (1);
+	return (0);
 }
 
-char	*free_swap(size_t i, char *stock)
+char	*free_swap(char *stock)
 {
-	int		j;
+	size_t	j;
 	int		t;
 	char	*stash;
 
-	t = 1;
-	i = -1;
-	while (stock[++i])
-		t++;
-	stash = malloc((t) * sizeof(char));
-	if (!stash)
+	j = 0;
+	while (stock[j] != '\n' && stock[j])
+		j++;
+	if (j == len_str(stock))
+		return (stock);
+	t = 0;
+	stash = malloc(((len_str(stock) - j) + 1) * sizeof(char));
+	if (stash == 0)
 		return (0);
-	i -= t;
-	j = -1;
-	while (stock[++i])
-	{
-		++j;
-		stash[j] = stock[i];
-	}
-	stash[++j] = '\0';
+	while (stock[j++] != '\0')
+		stash[t++] = stock[j];
 	return (stash);
 }
 
@@ -93,28 +91,25 @@ char	*get_next_line(int fd)
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (0);
 	buffer[BUFFER_SIZE] = '\0';
-	reader_buff(buffer, &i, fd, 0);
+	if (reader_buff(buffer, &i, fd, 0) == -1)
+		return (0);
 	if (!stock)
 	{
 		stock = (char *)malloc(1 * sizeof(char));
 		stock[0] = '\0';
 	}
-	reader_buff(buffer, &i, fd, BUFFER_SIZE);
-	stock = ft_strjoin(stock, buffer);
-	if (i <= 0)
-		return (0);
 	while (1)
 	{
 		reader_buff(buffer, &i, fd, BUFFER_SIZE);
-		if (i <= 0)
-			break ;
+		if (i == 0)
+			return (gnl_eof(line));
 		stock = ft_strjoin(stock, buffer);
-		if (findstop(buffer) == 0)
+		if (findstop(buffer) == 1)
 			break ;
 	}
 	line = NULL;
 	line = setline(line, stock);
-	stock = free_swap(size_count(stock), stock);
+	stock = free_swap(stock);
 	return (line);
 }
 
