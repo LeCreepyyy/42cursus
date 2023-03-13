@@ -1,0 +1,19 @@
+exit = sortir de root
+getent group sudo = verifier dans user on est
+adduser <username> sudo = creer un user
+reboot = redemarrer la vm
+sudo service ssh status = Check le status de ssh
+sudo ufw allow <rule name> = creer une regle
+sudo ufw deny <rule name> = bloque la regle
+sudo ufw delete <numero de la regle> = suprime la regle
+sudo ufw status numbered = donne la liste des regles
+dpkg -l | grep <name> = Check si l'install a marcher
+hostnamectl set-hostname <username> = changer le nom de la vm
+getent passwd <username> = verifie que un user bien ete creer
+sudo chage -l <username> = montre les infos sur le user
+ssh vpoirot@127.0.0.1 -p 4242
+passwd = changer de password pour vpoirot
+sudo crontab -e = voir cron
+sudo adduser <username> (group)
+lsblk.
+sudo crontab service stop
