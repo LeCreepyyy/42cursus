@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 14:51:04 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/03/13 14:57:20 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/03/14 13:14:50 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,21 +98,19 @@ char	*get_next_line(int fd)
 		stock = (char *)malloc(1 * sizeof(char));
 		stock[0] = '\0';
 	}
-	while (1)
+	while (findstop(buffer) != 1)
 	{
 		reader_buff(buffer, &i, fd, BUFFER_SIZE);
 		if (i == 0)
-			return (gnl_eof(line));
+			return (gnl_eof(stock));
 		stock = ft_strjoin(stock, buffer);
-		if (findstop(buffer) == 1)
-			break ;
 	}
 	line = NULL;
 	line = setline(line, stock);
 	stock = free_swap(stock);
 	return (line);
 }
-
+/*
 int	main(void)
 {
 	int		fd;
@@ -123,3 +121,4 @@ int	main(void)
 		printf("%s", line);
 	printf("%s", line);
 }
+*/

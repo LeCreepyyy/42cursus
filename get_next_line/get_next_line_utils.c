@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 13:55:05 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/03/07 15:21:19 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/03/14 10:53:04 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,18 @@ int	size_count(const char *stock)
 	while (stock[i] && stock[i] != '\n')
 		i++;
 	return (i);
+}
+
+char	*gnl_eof(char *stock)
+{
+	static int	finish;
+
+	if (!finish)
+		finish = 0;
+	if (finish == 1)
+		return (0);
+	finish = 1;
+	return (stock);
 }
 
 char	*ft_strjoin(char const *s1, char const *s2)
