@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 13:55:05 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/03/15 12:53:05 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/03/15 13:53:13 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ char	*gnl_eof(char *stock)
 	{
 		free (stock);
 		stock = 0;
-		return (stock);
+		return (0);
 	}
 	finish = 1;
 	return (stock);

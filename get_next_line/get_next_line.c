@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 14:51:04 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/03/15 11:08:58 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/03/15 14:01:15 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ char	*get_next_line(int fd)
 	while (findstop(buffer) != 1)
 	{
 		reader_buff(buffer, &i, fd, BUFFER_SIZE);
-		if (i == 0)
+		if (i == 0 || i == -1)
 			return (gnl_eof(stock));
 		stock = ft_strjoin(stock, buffer);
 	}
@@ -116,7 +116,7 @@ int	main(void)
 	int		fd;
 	char	*line;
 
-	fd = open("empty.txt", O_RDONLY);
+	fd = open("1char.txt", O_RDONLY);
 	while ((line = get_next_line(fd)))
 		printf("%s", line);
 	printf("%s", line);
