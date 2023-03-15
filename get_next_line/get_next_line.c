@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 14:51:04 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/03/14 13:14:50 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/03/15 11:08:58 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ int	main(void)
 	int		fd;
 	char	*line;
 
-	fd = open("test.txt", O_RDONLY);
+	fd = open("empty.txt", O_RDONLY);
 	while ((line = get_next_line(fd)))
 		printf("%s", line);
 	printf("%s", line);
