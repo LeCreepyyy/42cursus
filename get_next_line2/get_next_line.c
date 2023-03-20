@@ -67,7 +67,7 @@ char	*setstock(char *stock)
 	return (stash);
 }
 
-char	*read_buffer(int fd, char *stock)
+char	*read_buffer(char *stock, int fd)
 {
 	int		i;
 	char	*buffer;
@@ -95,8 +95,8 @@ char	*read_buffer(int fd, char *stock)
 char	*get_next_line(int fd)
 {
 	// init var & verif error
-	char		line;
-	static char	stock;
+	char		*line;
+	static char	*stock;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (0);
