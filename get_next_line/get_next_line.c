@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 14:51:04 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/03/15 14:01:15 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/03/20 15:33:30 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,14 @@ static int	reader_buff(char *buffer, int *i, int fd, int size)
 	return (*i);
 }
 
-int	findstop(char *buffer)
+int	findstop(char *stock)
 {
 	size_t	i;
 
 	i = 0;
-	while (buffer[i])
+	while (stock[i])
 	{
-		if (buffer[i] == '\n')
+		if (stock[i] == '\n')
 			return (1);
 		i++;
 	}
@@ -56,6 +56,7 @@ char	*free_swap(char *stock)
 		return (0);
 	while (stock[j++] != '\0')
 		stash[t++] = stock[j];
+	free(stock);
 	return (stash);
 }
 
@@ -84,6 +85,7 @@ char	*setline(char *line, char *stock)
 char	*get_next_line(int fd)
 {
 	int				i;
+	int				j;
 	char			*line;
 	char			buffer[BUFFER_SIZE + 1];
 	static char		*stock;
@@ -98,11 +100,17 @@ char	*get_next_line(int fd)
 		stock = (char *)malloc(1 * sizeof(char));
 		stock[0] = '\0';
 	}
-	while (findstop(buffer) != 1)
+	j = 0;
+	while (findstop(stock) != 1)
 	{
 		reader_buff(buffer, &i, fd, BUFFER_SIZE);
-		if (i == 0 || i == -1)
+		if (i == 0 && j <= 1)
 			return (gnl_eof(stock));
+		if (i == 0)
+		{
+			j++;
+			return (stock);
+		}
 		stock = ft_strjoin(stock, buffer);
 	}
 	line = NULL;
@@ -116,7 +124,7 @@ int	main(void)
 	int		fd;
 	char	*line;
 
-	fd = open("1char.txt", O_RDONLY);
+	fd = open("testperso.txt", O_RDONLY);
 	while ((line = get_next_line(fd)))
 		printf("%s", line);
 	printf("%s", line);

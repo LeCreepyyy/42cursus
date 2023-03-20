@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 13:55:05 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/03/15 13:53:13 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/03/20 15:25:36 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,29 +24,13 @@ size_t	len_str(const char *str)
 	return (a);
 }
 
-int	size_count(const char *stock)
-{
-	size_t	i;
-
-	i = 0;
-	while (stock[i] && stock[i] != '\n')
-		i++;
-	return (i);
-}
-
 char	*gnl_eof(char *stock)
 {
-	static int	finish;
-
-	if (!finish)
-		finish = 0;
-	if (finish == 1 || stock[0] == '\0')
+	if (!stock)
 	{
-		free (stock);
-		stock = 0;
+		free(stock);
 		return (0);
 	}
-	finish = 1;
 	return (stock);
 }
 
@@ -78,5 +62,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 			str[i + j] = s2[j];
 	}
 	str[i + j] = '\0';
+	free ((char *)s1);
 	return (str);
 }
