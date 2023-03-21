@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 14:51:04 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/03/20 15:33:30 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/03/21 14:48:34 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ char	*get_next_line(int fd)
 		return (0);
 	// read & set buffer
 	stock = read_buffer(stock, fd);
-	if (!stock)
+	if (!stock || stock[0] == '\0')
 		return (0);
 	// init & set line
 	line = 0;

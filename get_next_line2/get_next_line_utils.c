@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 13:55:05 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/03/20 15:25:36 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/03/21 10:27:17 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 			str[i + j] = s2[j];
 	}
 	str[i + j] = '\0';
-	free ((char *)s2);
+	free ((char *)s1);
 	return (str);
 }
