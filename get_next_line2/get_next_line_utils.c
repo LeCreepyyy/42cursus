@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 13:55:05 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/03/21 10:27:17 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/03/22 10:53:41 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,12 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		return (NULL);
 	if (s1[0] != '\0')
 		lenstock = len_str(s1);
-	str = calloc(lenstock + len_str(s2) + 1, sizeof(char));
+	str = ft_calloc(lenstock + len_str(s2) + 1, sizeof(char));
+	if (!str)
+	{
+		free ((char *)s1);
+		return (0);
+	}
 	if (s1)
 	{
 		while (s1[++i] != '\0')

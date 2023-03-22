@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 14:51:04 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/03/21 14:48:34 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/03/22 11:16:13 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ char	*setline(char *line, char *stock)
 	i = 0;
 	while (stock[i] && stock[i] != '\n')
 		i++;
-	line = calloc(i + 2, sizeof(char));
+	line = ft_calloc(i + 2, sizeof(char));
 	i = 0;
 	while (stock[i] && stock[i] != '\n')
 	{
@@ -55,12 +55,13 @@ char	*setstock(char *stock)
 	j = 0;
 	while (stock[j] != '\n' && stock[j])
 		j++;
-	if (j == len_str(stock))
-		return (stock);
 	t = 0;
-	stash = malloc(((len_str(stock) - j) + 1) * sizeof(char));
-	if (stash == 0)
+	stash = ft_calloc((len_str(stock) - j) + 1, sizeof(char));
+	if (!stash)
+	{
+		free(stock);
 		return (0);
+	}
 	while (stock[j++] != '\0')
 		stash[t++] = stock[j];
 	free(stock);
@@ -73,9 +74,15 @@ char	*read_buffer(char *stock, int fd)
 	char	*buffer;
 
 	if (!stock)
+	{
 		stock = ft_calloc(1, sizeof(char));
+		if (!stock)
+			return (0);
+	}
 	i = 1;
 	buffer = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
+	if (!buffer)
+		return (0);
 	while (i > 0)
 	{
 		i = read(fd, buffer, BUFFER_SIZE);
@@ -84,6 +91,7 @@ char	*read_buffer(char *stock, int fd)
 			free(buffer);
 			return (0);
 		}
+		buffer[i] = 0;
 		stock = ft_strjoin(stock, buffer);
 		if (findstop(stock) == 1)
 			break ;
@@ -98,12 +106,16 @@ char	*get_next_line(int fd)
 	char		*line;
 	static char	*stock;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) == -1)
 		return (0);
 	// read & set buffer
 	stock = read_buffer(stock, fd);
 	if (!stock || stock[0] == '\0')
+	{
+		free(stock);
+		stock = 0;
 		return (0);
+	}
 	// init & set line
 	line = 0;
 	line = setline(line, stock);
@@ -111,14 +123,15 @@ char	*get_next_line(int fd)
 	stock = setstock(stock);
 	return (line);
 }
-
+/*
 int	main(void)
 {
 	int		fd;
 	char	*line;
 
-	fd = open("test.txt", O_RDONLY);
+	fd = open("empty.txt", O_RDONLY);
 	while ((line = get_next_line(fd)))
 		printf("%s", line);
 	printf("%s", line);
 }
+*/
