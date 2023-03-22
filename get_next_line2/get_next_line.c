@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 14:51:04 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/03/22 11:16:13 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/03/22 11:34:01 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,8 @@ char	*setstock(char *stock)
 	return (stash);
 }
 
-char	*read_buffer(char *stock, int fd)
+char	*read_buffer(char *stock, int fd, int i)
 {
-	int		i;
 	char	*buffer;
 
 	if (!stock)
@@ -79,7 +78,6 @@ char	*read_buffer(char *stock, int fd)
 		if (!stock)
 			return (0);
 	}
-	i = 1;
 	buffer = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
 	if (!buffer)
 		return (0);
@@ -102,24 +100,24 @@ char	*read_buffer(char *stock, int fd)
 
 char	*get_next_line(int fd)
 {
-	// init var & verif error
 	char		*line;
 	static char	*stock;
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) == -1)
+	{
+		free(stock);
+		stock = 0;
 		return (0);
-	// read & set buffer
-	stock = read_buffer(stock, fd);
+	}
+	stock = read_buffer(stock, fd, 1);
 	if (!stock || stock[0] == '\0')
 	{
 		free(stock);
 		stock = 0;
 		return (0);
 	}
-	// init & set line
 	line = 0;
 	line = setline(line, stock);
-	// set stock & return
 	stock = setstock(stock);
 	return (line);
 }
@@ -129,7 +127,7 @@ int	main(void)
 	int		fd;
 	char	*line;
 
-	fd = open("empty.txt", O_RDONLY);
+	fd = open("read_error.txt", O_RDONLY);
 	while ((line = get_next_line(fd)))
 		printf("%s", line);
 	printf("%s", line);
