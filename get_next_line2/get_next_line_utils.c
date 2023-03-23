@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 13:55:05 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/03/22 10:53:41 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/03/23 15:06:12 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	*ft_calloc(size_t nmemb, size_t size)
 
 	if (nmemb == 0 || size == 0)
 		return (malloc(0));
-	table = malloc(nmemb * size);
+	table = (void *)malloc(nmemb * size);
 	if (!table)
 		return (0);
 	ft_bzero(table, nmemb * size);
@@ -70,6 +70,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	if (!str)
 	{
 		free ((char *)s1);
+		s1 = 0;
 		return (0);
 	}
 	if (s1)

@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 14:51:04 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/03/22 14:37:02 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/03/23 13:56:47 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,9 @@ char	*setline(char *line, char *stock)
 	i = 0;
 	while (stock[i] && stock[i] != '\n')
 		i++;
-	line = ft_calloc(i + 2, sizeof(char));
+	if (stock[i] == '\n')
+		i++;
+	line = ft_calloc(i + 1, sizeof(char));
 	i = 0;
 	while (stock[i] && stock[i] != '\n')
 	{
