@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 14:51:04 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/03/24 13:26:32 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/03/24 13:36:09 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,12 @@ char	*setstock(char *stock)
 	return (stash);
 }
 
+char	*error_read(char *buffer)
+{
+	free(buffer);
+	return (0);
+}
+
 char	*read_buffer(char *stock, int fd, int i)
 {
 	char	*buffer;
@@ -73,10 +79,7 @@ char	*read_buffer(char *stock, int fd, int i)
 	{
 		i = read(fd, buffer, BUFFER_SIZE);
 		if (i == -1)
-		{
-			free(buffer);
-			return (0);
-		}
+			return (error_read(buffer));
 		buffer[i] = 0;
 		stock = ft_strjoin(stock, buffer);
 		if (findstop(stock) == 1)
