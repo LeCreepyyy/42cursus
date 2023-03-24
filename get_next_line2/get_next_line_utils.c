@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 13:55:05 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/03/23 15:06:12 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/03/24 13:24:09 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,23 +24,9 @@ size_t	len_str(const char *str)
 	return (a);
 }
 
-void	ft_bzero(void *w, size_t n)
-{
-	char	*e;
-	size_t	i;
-
-	e = w;
-	i = 0;
-	while (i < n)
-	{
-		e[i] = 0;
-		i++;
-	}
-	w = e;
-}
-
 void	*ft_calloc(size_t nmemb, size_t size)
 {
+	size_t	i;
 	char	*table;
 
 	if (nmemb == 0 || size == 0)
@@ -48,19 +34,42 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	table = (void *)malloc(nmemb * size);
 	if (!table)
 		return (0);
-	ft_bzero(table, nmemb * size);
+	i = 0;
+	while (i < (nmemb * size))
+	{
+		table[i] = 0;
+		i++;
+	}
 	return (table);
+}
+
+char	*ft_strjoin2(char const *s1, char const *s2, char *str)
+{
+	size_t	j;
+	size_t	l;
+
+	l = -1;
+	j = -1;
+	if (s1)
+	{
+		while (s1[++l] != '\0')
+			str[l] = s1[l];
+	}
+	if (s2)
+	{
+		while (s2[++j] != '\0')
+			str[l + j] = s2[j];
+	}
+	str[l + j] = '\0';
+	free ((char *)s1);
+	return (str);
 }
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*str;
-	size_t	i;
-	size_t	j;
 	size_t	lenstock;
 
-	i = -1;
-	j = -1;
 	lenstock = 0;
 	if (s1 == NULL && s2 == NULL)
 		return (NULL);
@@ -73,17 +82,5 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		s1 = 0;
 		return (0);
 	}
-	if (s1)
-	{
-		while (s1[++i] != '\0')
-			str[i] = s1[i];
-	}
-	if (s2)
-	{
-		while (s2[++j] != '\0')
-			str[i + j] = s2[j];
-	}
-	str[i + j] = '\0';
-	free ((char *)s1);
-	return (str);
+	return (ft_strjoin2(s1, s2, str));
 }
