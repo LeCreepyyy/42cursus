@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 12:50:43 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/03/22 14:17:12 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/03/24 13:29:21 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,6 @@ char	*ft_strjoin(char const *s1, char const *s2);
 int		size_count(const char *str);
 char	*gnl_eof(char *stock);
 void	*ft_calloc(size_t nmemb, size_t size);
+int		findstop(char *stock);
 
 #endif

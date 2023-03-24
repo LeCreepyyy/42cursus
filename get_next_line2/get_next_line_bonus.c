@@ -6,25 +6,11 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 14:51:04 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/03/22 14:17:29 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/03/24 13:28:22 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
-
-int	findstop(char *stock)
-{
-	size_t	i;
-
-	i = 0;
-	while (stock[i])
-	{
-		if (stock[i] == '\n')
-			return (1);
-		i++;
-	}
-	return (0);
-}
 
 char	*setline(char *line, char *stock)
 {

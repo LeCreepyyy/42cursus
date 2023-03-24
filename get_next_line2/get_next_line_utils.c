@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 13:55:05 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/03/24 13:24:09 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/03/24 13:26:39 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,20 @@ size_t	len_str(const char *str)
 	while (str[a] != '\0')
 		a++;
 	return (a);
+}
+
+int	findstop(char *stock)
+{
+	size_t	i;
+
+	i = 0;
+	while (stock[i])
+	{
+		if (stock[i] == '\n')
+			return (1);
+		i++;
+	}
+	return (0);
 }
 
 void	*ft_calloc(size_t nmemb, size_t size)
