@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 13:55:05 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/03/20 15:25:36 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/03/27 10:17:50 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,44 +24,79 @@ size_t	len_str(const char *str)
 	return (a);
 }
 
-char	*gnl_eof(char *stock)
+int	findstop(char *stock)
 {
+	size_t	i;
+
+	i = 0;
 	if (!stock)
+		return (1);
+	while (stock[i])
 	{
-		free(stock);
-		return (0);
+		if (stock[i] == '\n')
+			return (1);
+		i++;
 	}
-	return (stock);
+	return (0);
+}
+
+void	*ft_calloc(size_t nmemb, size_t size)
+{
+	size_t	i;
+	char	*table;
+
+	if (nmemb == 0 || size == 0)
+		return (malloc(0));
+	table = (void *)malloc(nmemb * size);
+	if (!table)
+		return (0);
+	i = 0;
+	while (i < (nmemb * size))
+	{
+		table[i] = 0;
+		i++;
+	}
+	return (table);
+}
+
+char	*ft_strjoin2(char const *s1, char const *s2, char *str)
+{
+	size_t	j;
+	size_t	l;
+
+	l = -1;
+	j = -1;
+	if (s1)
+	{
+		while (s1[++l] != '\0')
+			str[l] = s1[l];
+	}
+	if (s2)
+	{
+		while (s2[++j] != '\0')
+			str[l + j] = s2[j];
+	}
+	str[l + j] = '\0';
+	free ((char *)s1);
+	return (str);
 }
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*str;
-	size_t	i;
-	size_t	j;
 	size_t	lenstock;
 
-	i = -1;
-	j = -1;
 	lenstock = 0;
 	if (s1 == NULL && s2 == NULL)
 		return (NULL);
 	if (s1[0] != '\0')
 		lenstock = len_str(s1);
-	str = malloc(sizeof(char) * (lenstock + len_str(s2) + 1));
+	str = ft_calloc(lenstock + len_str(s2) + 1, sizeof(char));
 	if (!str)
-		return (NULL);
-	if (s1)
 	{
-		while (s1[++i] != '\0')
-			str[i] = s1[i];
+		free ((char *)s1);
+		s1 = 0;
+		return (0);
 	}
-	if (s2)
-	{
-		while (s2[++j] != '\0')
-			str[i + j] = s2[j];
-	}
-	str[i + j] = '\0';
-	free ((char *)s1);
-	return (str);
+	return (ft_strjoin2(s1, s2, str));
 }

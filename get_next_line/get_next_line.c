@@ -6,58 +6,16 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 14:51:04 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/03/21 13:13:44 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/03/27 10:38:44 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static int	reader_buff(char *buffer, int *i, int fd, int size)
+char	*error_free(char *str)
 {
-	*i = read(fd, buffer, size);
-	if (*i <= 0)
-	{
-		if (*i == -1)
-			return (-1);
-		return (0);
-	}
-	buffer[*i] = '\0';
-	return (*i);
-}
-
-int	findstop(char *stock)
-{
-	size_t	i;
-
-	i = 0;
-	while (stock[i])
-	{
-		if (stock[i] == '\n')
-			return (1);
-		i++;
-	}
+	free(str);
 	return (0);
-}
-
-char	*free_swap(char *stock)
-{
-	size_t	j;
-	int		t;
-	char	*stash;
-
-	j = 0;
-	while (stock[j] != '\n' && stock[j])
-		j++;
-	if (j == len_str(stock))
-		return (stock);
-	t = 0;
-	stash = malloc(((len_str(stock) - j) + 1) * sizeof(char));
-	if (stash == 0)
-		return (0);
-	while (stock[j++] != '\0')
-		stash[t++] = stock[j];
-	free(stock);
-	return (stash);
 }
 
 char	*setline(char *line, char *stock)
@@ -67,8 +25,10 @@ char	*setline(char *line, char *stock)
 	i = 0;
 	while (stock[i] && stock[i] != '\n')
 		i++;
-	line = malloc((i + 2) * sizeof(char));
-	if (line == 0)
+	if (stock[i] == '\n')
+		i++;
+	line = ft_calloc(i + 1, sizeof(char));
+	if (!line)
 		return (0);
 	i = 0;
 	while (stock[i] && stock[i] != '\n')
@@ -82,50 +42,90 @@ char	*setline(char *line, char *stock)
 	return (line);
 }
 
-char	*get_next_line(int fd)
+char	*setstock(char *stock)
 {
-	int				i;
-	int				j;
-	char			*line;
-	char			buffer[BUFFER_SIZE + 1];
-	static char		*stock;
+	size_t	j;
+	int		t;
+	char	*stash;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
-		return (0);
-	buffer[BUFFER_SIZE] = '\0';
-	if (reader_buff(buffer, &i, fd, 0) == -1)
-		return (0);
-	if (!stock)
-	{
-		stock = (char *)malloc(1 * sizeof(char));
-		stock[0] = '\0';
-	}
 	j = 0;
-	while (findstop(stock) != 1)
+	if (!stock)
+		return (0);
+	while (stock[j] != '\n' && stock[j])
+		j++;
+	t = 0;
+	stash = ft_calloc((len_str(stock) - j) + 1, sizeof(char));
+	if (!stash)
 	{
-		reader_buff(buffer, &i, fd, BUFFER_SIZE);
-		if (i == 0 && j <= 1)
-			return (gnl_eof(stock));
-		if (i == 0)
-		{
-			j++;
-			return (stock);
-		}
-		stock = ft_strjoin(stock, buffer);
+		free (stock);
+		stock = 0;
+		return (0);
 	}
-	line = NULL;
-	line = setline(line, stock);
-	stock = free_swap(stock);
-	return (line);
+	while (stock[j++] != '\0')
+		stash[t++] = stock[j];
+	free(stock);
+	return (stash);
 }
 
+char	*read_buffer(char *stock, int fd, int i)
+{
+	char	*buffer;
+
+	if (!stock)
+	{
+		stock = ft_calloc(1, sizeof(char));
+		if (!stock)
+			return (0);
+	}
+	buffer = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
+	if (!buffer)
+		return (error_free(stock));
+	while (i > 0)
+	{
+		i = read(fd, buffer, BUFFER_SIZE);
+		if (i == -1)
+			return (error_free(buffer));
+		buffer[i] = 0;
+		stock = ft_strjoin(stock, buffer);
+		if (findstop(stock) == 1)
+			break ;
+	}
+	free (buffer);
+	return (stock);
+}
+
+char	*get_next_line(int fd)
+{
+	char		*line;
+	static char	*stock[1024];
+
+	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) == -1)
+	{
+		free(stock[fd]);
+		stock[fd] = 0;
+		return (0);
+	}
+	stock[fd] = read_buffer(stock[fd], fd, 1);
+	if (!stock[fd] || stock[fd][0] == '\0')
+	{
+		free(stock[fd]);
+		stock[fd] = 0;
+		return (0);
+	}
+	line = 0;
+	line = setline(line, stock[fd]);
+	stock[fd] = setstock(stock[fd]);
+	return (line);
+}
+/*
 int	main(void)
 {
 	int		fd;
 	char	*line;
 
-	fd = open("testperso.txt", O_RDONLY);
+	fd = open("empty.txt", O_RDONLY);
 	while ((line = get_next_line(fd)))
 		printf("%s", line);
 	printf("%s", line);
 }
+*/
