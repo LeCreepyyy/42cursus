@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 13:55:05 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/03/24 13:28:33 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/03/27 10:47:39 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ int	findstop(char *stock)
 	size_t	i;
 
 	i = 0;
+	if (!stock)
+		return (1);
 	while (stock[i])
 	{
 		if (stock[i] == '\n')

@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 14:51:04 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/03/27 10:38:44 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/03/27 11:11:37 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,12 @@ char	*get_next_line(int fd)
 	}
 	line = 0;
 	line = setline(line, stock[fd]);
+	if (!line)
+	{
+		free(stock[fd]);
+		stock[fd] = 0;
+		return (0);
+	}
 	stock[fd] = setstock(stock[fd]);
 	return (line);
 }
@@ -123,7 +129,7 @@ int	main(void)
 	int		fd;
 	char	*line;
 
-	fd = open("empty.txt", O_RDONLY);
+	fd = open("1char.txt", O_RDONLY);
 	while ((line = get_next_line(fd)))
 		printf("%s", line);
 	printf("%s", line);

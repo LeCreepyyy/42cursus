@@ -6,11 +6,17 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 14:51:04 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/03/24 13:45:25 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/03/27 10:47:08 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
+
+char	*error_free(char *str)
+{
+	free(str);
+	return (0);
+}
 
 char	*setline(char *line, char *stock)
 {
@@ -19,7 +25,11 @@ char	*setline(char *line, char *stock)
 	i = 0;
 	while (stock[i] && stock[i] != '\n')
 		i++;
-	line = ft_calloc(i + 2, sizeof(char));
+	if (stock[i] == '\n')
+		i++;
+	line = ft_calloc(i + 1, sizeof(char));
+	if (!line)
+		return (0);
 	i = 0;
 	while (stock[i] && stock[i] != '\n')
 	{
@@ -39,25 +49,22 @@ char	*setstock(char *stock)
 	char	*stash;
 
 	j = 0;
+	if (!stock)
+		return (0);
 	while (stock[j] != '\n' && stock[j])
 		j++;
 	t = 0;
 	stash = ft_calloc((len_str(stock) - j) + 1, sizeof(char));
 	if (!stash)
 	{
-		free(stock);
+		free (stock);
+		stock = 0;
 		return (0);
 	}
 	while (stock[j++] != '\0')
 		stash[t++] = stock[j];
 	free(stock);
 	return (stash);
-}
-
-char	*error_read(char *buffer)
-{
-	free(buffer);
-	return (0);
 }
 
 char	*read_buffer(char *stock, int fd, int i)
@@ -72,12 +79,12 @@ char	*read_buffer(char *stock, int fd, int i)
 	}
 	buffer = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
 	if (!buffer)
-		return (0);
+		return (error_free(stock));
 	while (i > 0)
 	{
 		i = read(fd, buffer, BUFFER_SIZE);
 		if (i == -1)
-			return (error_read(buffer));
+			return (error_free(buffer));
 		buffer[i] = 0;
 		stock = ft_strjoin(stock, buffer);
 		if (findstop(stock) == 1)
@@ -116,7 +123,7 @@ int	main(void)
 	int		fd;
 	char	*line;
 
-	fd = open("read_error.txt", O_RDONLY);
+	fd = open("empty.txt", O_RDONLY);
 	while ((line = get_next_line(fd)))
 		printf("%s", line);
 	printf("%s", line);
