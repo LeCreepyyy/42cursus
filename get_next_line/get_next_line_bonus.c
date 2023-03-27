@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 14:51:04 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/03/27 11:20:14 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/03/27 13:20:25 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,8 +112,7 @@ char	*get_next_line(int fd)
 		stock[fd] = 0;
 		return (0);
 	}
-	line = 0;
-	line = setline(line, stock[fd]);
+	line = setline(0, stock[fd]);
 	if (!line)
 	{
 		free(stock[fd]);
