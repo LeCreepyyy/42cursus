@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 14:03:47 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/03/27 14:03:52 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/03/28 15:28:39 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 int	main(void)
 {
-	ft_printf("server");
+	ft_printf("%d\n", getpid());
+	while (1)
+		;
 	return (0);
 }
