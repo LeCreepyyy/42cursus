@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 14:03:47 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/03/29 11:24:14 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/03/29 15:00:25 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 void	handle_sigusr1(int sig)
 {
-	ft_printf("Coucou les loulous.\n");
-	(void)sig;
+	ft_printf("Server clean\n");
+	if (sig != SIGUSR1)
+		exit(EXIT_FAILURE);
 }
 
 int	main(void)
