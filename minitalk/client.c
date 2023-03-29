@@ -6,22 +6,25 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 14:01:55 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/03/28 15:36:56 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/03/29 12:39:42 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf/ft_printf.h"
+#include "minitalk.h"
 
-void	handle_sigurs1(int sig)
-{
-}
+// argv[2] = str
 
 int	main(int argc, char **argv)
 {
-	struct sigaction	sa;
+	int	pid;
 
-	(void)argc;
-	(void)argv;
-	sa.sa_handler = &handle_sigurs1;
-	return (0);
+	if (argc <= 1)
+	{
+		ft_printf("give pid !");
+		return (EXIT_FAILURE);
+	}
+	pid = ft_atoi(argv[1]);
+	ft_printf("Client launch.\n");
+	kill(pid, SIGUSR1);
+	return (EXIT_SUCCESS);
 }
