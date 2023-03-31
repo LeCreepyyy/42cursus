@@ -6,36 +6,39 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 14:01:55 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/03/31 09:34:47 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/03/31 13:53:25 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-void	bitchar(int pid, char *str)
+void	bitchar(int pid, char c)
 {
-	int	i;
+	int	bit;
 
-	i = 0;
-	while (str[i])
+	bit = 8;
+	while (bit-- >= 0)
 	{
-		if ((str[i] >> 3) & 1)
+		if ((c >> 3) & 1)
 			kill(pid, SIGUSR1);
 		else
 			kill(pid, SIGUSR2);
-		i++;
+		usleep(500);
 	}
 }
 
 int	main(int argc, char **argv)
 {
+	int	i;
 	int	pid;
 
 	if (argc == 3)
 	{
+		i = 0;
 		pid = ft_atoi(argv[1]);
 		ft_printf("Client launch.\n");
-		bitchar(pid, argv[2]);
+		while (argv[2][i++])
+			bitchar(pid, argv[2][i]);
 		return (EXIT_SUCCESS);
 	}
 	else
