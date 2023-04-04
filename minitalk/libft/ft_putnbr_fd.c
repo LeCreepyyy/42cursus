@@ -1,38 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_puthexa.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/13 10:41:06 by vpoirot           #+#    #+#             */
-/*   Updated: 2022/12/20 13:46:02 by vpoirot          ###   ########.fr       */
+/*   Created: 2022/11/15 13:42:56 by vpoirot           #+#    #+#             */
+/*   Updated: 2023/04/04 15:00:59 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_puthexa(unsigned int i, int nb, char X)
+void	ft_putnbr(int nb)
 {
-	char	*str;
-	int		n;
-
-	str = "0123456789abcdef";
-	if (X == 'X')
-		str = "0123456789ABCDEF";
-	n = 0;
-	if (i < 16)
-		return (ft_putchar(str[i]));
+	if (nb == -2147483648)
+	{
+		ft_putnbr(nb / 10);
+		ft_putchar('8');
+	}
+	else if (nb < 0)
+	{
+		ft_putchar('-');
+		ft_putnbr(-nb);
+	}
 	else
 	{
-		n = ft_puthexa(i / 16, nb / 2, X);
-		if (n == -1)
-			return (-1);
-		nb += n;
-		n = ft_puthexa(i % 16, nb / 2, X);
-		if (n == -1)
-			return (-1);
-		nb += n;
+		if (nb > 9)
+			ft_putnbr(nb / 10);
+		ft_putchar(48 + nb % 10);
 	}
-	return (nb);
 }

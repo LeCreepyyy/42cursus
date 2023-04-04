@@ -6,11 +6,11 @@
 #    By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/27 13:51:56 by vpoirot           #+#    #+#              #
-#    Updated: 2023/04/04 10:37:20 by vpoirot          ###   ########.fr        #
+#    Updated: 2023/04/04 15:12:38 by vpoirot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-FT_PRINTF = ./ft_printf/libftprintf.a
+LIBFT = ./libft/libft.a
 
 NAME = minitalk.a
 
@@ -24,19 +24,19 @@ CC = cc -Wall -Wextra -Werror -fsanitize=address -g
 all: ${NAME} ${OBJ}
 
 $(NAME): ${OBJ}
-	@${MAKE} -C ./ft_printf
-	@cp ft_printf/libftprintf.a ${NAME}
+	@${MAKE} -C ./libft
+	@cp libft/libft.a ${NAME}
 	@ar rc ${NAME} ${OBJ}
-	@${CC} server.c ${FT_PRINTF} -o server
-	@${CC} client.c ${FT_PRINTF} -o client
+	@${CC} server.c ${LIBFT} -o server
+	@${CC} client.c ${LIBFT} -o client
 	@printf "\x1b[32mFinish !\n"
 	
 clean:
-	@${MAKE} clean -C ./ft_printf
+	@${MAKE} clean -C ./libft
 	@rm -f *.o
 
 fclean: clean
-	@${MAKE} fclean -C ./ft_printf
+	@${MAKE} fclean -C ./libft
 	@rm -f ${NAME}
 	@rm -f server
 	@rm -f client
