@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    makefile                                           :+:      :+:    :+:    #
+#    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/27 13:51:56 by vpoirot           #+#    #+#              #
-#    Updated: 2023/03/27 13:59:31 by vpoirot          ###   ########.fr        #
+#    Updated: 2023/04/04 10:37:20 by vpoirot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,8 @@ clean:
 fclean: clean
 	@${MAKE} fclean -C ./ft_printf
 	@rm -f ${NAME}
+	@rm -f server
+	@rm -f client
 	@printf "\x1b[31mDelete files !\n"
 
 re: fclean all

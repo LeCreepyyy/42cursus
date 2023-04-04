@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 14:01:55 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/03/31 13:53:25 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/04/04 10:43:15 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	bitchar(int pid, char c)
 	bit = 8;
 	while (bit-- >= 0)
 	{
-		if ((c >> 3) & 1)
+		if ((c >> bit) & 1)
 			kill(pid, SIGUSR1);
 		else
 			kill(pid, SIGUSR2);

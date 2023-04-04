@@ -6,17 +6,27 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 14:03:47 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/03/31 14:01:11 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/04/04 10:38:29 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-void	handle_sigusr1(int sig)
+void	handle_sigusr(int sig)
 {
-	ft_printf("Signal receive\n");
-	if (sig != SIGUSR1)
-		exit(EXIT_FAILURE);
+	static int				bit;
+	static unsigned char	c;
+
+	if (bit < 0)
+		bit = 7;
+	if (sig == SIGUSR1)
+		c |= (1 << bit);
+	bit--;
+	if (bit < 0)
+	{
+		ft_printf("%c", c);
+		c = 0;
+	}
 }
 
 int	main(void)
@@ -24,10 +34,12 @@ int	main(void)
 	struct sigaction	sa;
 
 	ft_printf("%d\n", getpid());
-	sa.sa_handler = &handle_sigusr1;
+	sa.sa_handler = &handle_sigusr;
 	sa.sa_flags = SA_RESTART;
-	sigaction(SIGUSR1, &sa, NULL);
 	while (1)
-		;
+	{
+		sigaction(SIGUSR1, &sa, NULL);
+		sigaction(SIGUSR2, &sa, NULL);
+	}
 	return (0);
 }
