@@ -28,16 +28,25 @@ void	bitchar(int pid, unsigned char c)
 	}
 }
 
+void	ft_reception(int sig)
+{
+	if (sig == SIGUSR2)
+		ft_putstr_fd("Message receive !\n", 1);
+}
+
 int	main(int argc, char **argv)
 {
-	int	i;
-	int	pid;
+	int					i;
+	int					pid;
+	struct sigaction	sa;
 
 	if (argc == 3)
 	{
 		i = 0;
 		pid = ft_atoi(argv[1]);
-		ft_putstr_fd("Client launch.\n", 1);
+		ft_putstr_fd("Message sent...\n", 1);
+		sa.sa_handler = &handle_sigusr;
+		sa.sa_flags = SA_SIGINFO | SA_RESTART;
 		while (argv[2][i])
 		{
 			bitchar(pid, argv[2][i]);
@@ -46,7 +55,8 @@ int	main(int argc, char **argv)
 	}
 	else
 	{
-		ft_putstr_fd("Arguments error\n", 1);
+		ft_putstr_fd("Arguments error !\n", 1);
+		ft_putstr_fd("Hint : ./client <pid> <message>\n", 1);
 		return (EXIT_FAILURE);
 	}
 	return (EXIT_SUCCESS);
