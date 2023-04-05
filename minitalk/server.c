@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 14:03:47 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/04/04 15:31:29 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/04/05 10:44:43 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	handle_sigusr(int sig, siginfo_t *client, void *useless)
 {
-	static int				bit;
-	static unsigned char	c;
+	static int	bit;
+	static int	c;
 
 	(void)useless;
 	(void)client;
@@ -45,6 +45,7 @@ int	main(void)
 	{
 		sigaction(SIGUSR1, &sa, NULL);
 		sigaction(SIGUSR2, &sa, NULL);
+		pause();
 	}
 	return (0);
 }
