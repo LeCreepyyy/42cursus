@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 14:03:47 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/04/05 10:56:52 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/04/05 12:42:38 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,9 @@ int	main(void)
 	sa.sa_sigaction = handle_sigusr;
 	sa.sa_flags = SA_SIGINFO | SA_RESTART;
 	sigemptyset(&(sa.sa_mask));
+	sigaction(SIGUSR1, &sa, NULL);
+	sigaction(SIGUSR2, &sa, NULL);
 	while (1)
-	{
-		sigaction(SIGUSR1, &sa, NULL);
-		sigaction(SIGUSR2, &sa, NULL);
 		pause();
-	}
-	return (0);
+	return (EXIT_SUCCESS);
 }
