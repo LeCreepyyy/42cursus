@@ -6,11 +6,18 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 14:03:47 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/04/06 12:40:52 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/04/06 16:21:56 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
+
+void	*ft_free(char *str)
+{
+	free(str);
+	str = 0;
+	return (NULL);
+}
 
 char	*strjoin_char(char	*str, unsigned char c)
 {
@@ -36,7 +43,7 @@ char	*strjoin_char(char	*str, unsigned char c)
 		i++;
 	}
 	if (str)
-		free(str);
+		ft_free(str);
 	return (new);
 }
 
@@ -55,6 +62,7 @@ void	handle_sigusr(int sig, siginfo_t *client, void *useless)
 		if (c == 0)
 		{
 			ft_putstr_fd(str, 1);
+			str = ft_free(str);
 			kill(client->si_pid, SIGUSR2);
 		}
 		str = strjoin_char(str, c);
