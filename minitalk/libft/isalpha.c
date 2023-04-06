@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 12:39:54 by vpoirot           #+#    #+#             */
-/*   Updated: 2022/10/31 15:19:21 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/04/06 12:32:36 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,3 @@ int	ft_isalpha(int w)
 	else
 		return (0);
 }
-
-/*int	main(void)
-{
-	int	a;
-
-	a = 55;
-	printf("%d\n", ft_isalpha(a));
-	return (0);
-}*/

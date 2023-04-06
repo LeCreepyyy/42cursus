@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 10:43:18 by vpoirot           #+#    #+#             */
-/*   Updated: 2022/11/09 12:20:19 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/04/06 12:30:43 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,17 +40,3 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	}
 	return (d);
 }
-/*
-int	main()
-{
-	char	data1[] = "the cake is a life !\0I'm hidden lol\r\n";
-	char	data2[] = "the cake is a life !\0I'm hidden lol\r\n";
-	int		size = 36;
-	char	*r1 = ft_memmove(data1, data2, size);
-	char	*r2 = memmove(data1, data2, size);
-
-	if (r1 != r2)
-		printf("Marche pas\n");
-	else
-		printf("Marche ! <3\n");
-}*/

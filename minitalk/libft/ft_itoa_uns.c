@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 15:39:41 by vpoirot           #+#    #+#             */
-/*   Updated: 2022/12/21 13:14:15 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/04/06 12:29:53 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,28 +57,3 @@ int	ft_itoa_uns(unsigned int n)
 	free(str);
 	return (tmp);
 }
-
-/*
-int	print_decimal_unsigned(unsigned int i, int nb)
-{
-	char	c;
-	char	*str;
-
-	str = "0123456789";
-	if (i < 10)
-	{
-		c = str[i];
-		return (write(1, &c, 1));
-	}
-	else
-	{
-		nb += print_decimal_unsigned(i / 10, nb / 2);
-		nb += print_decimal_unsigned(i % 10, nb / 2);
-	}
-	return (nb);
-}
-
-int	ft_itoa_uns(unsigned int i, int nb)
-{
-	return (print_decimal_unsigned(i, nb));
-}*/
