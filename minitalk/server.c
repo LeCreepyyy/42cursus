@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 14:03:47 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/04/06 16:21:56 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/04/11 11:48:26 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,28 @@ void	*ft_free(char *str)
 	return (NULL);
 }
 
+char	*first_calloc(char *str, char c)
+{
+	str = ft_calloc(2, sizeof(char));
+	if (!str)
+		return (0);
+	str[0] = c;
+	return (str);
+}
+
 char	*strjoin_char(char	*str, unsigned char c)
 {
 	int		i;
 	char	*new;
 
 	if (!str)
-	{
-		str = ft_calloc(2, sizeof(char));
-		str[0] = c;
-		return (str);
-	}
+		return (first_calloc(str, c));
 	new = ft_calloc((ft_strlen(str) + 2), sizeof(char));
+	if (!new)
+	{
+		free(str);
+		return (0);
+	}
 	i = 0;
 	while (str[i])
 	{
