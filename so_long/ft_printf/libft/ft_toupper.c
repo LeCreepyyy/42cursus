@@ -1,31 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/12 10:01:04 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/04/13 12:53:22 by vpoirot          ###   ########.fr       */
+/*   Created: 2022/11/04 11:52:56 by vpoirot           #+#    #+#             */
+/*   Updated: 2022/11/14 11:12:48 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#include "libft.h"
 
-# include <stdio.h>
-# include <stdlib.h>
-# include <stdbool.h>
-# include "ft_printf/ft_printf.h"
-# include "./MLX42/include/MLX42/MLX42.h"
-
-typedef struct img_mlx
+int	ft_toupper(int w)
 {
-	mlx_image_t	*img;
-	mlx_t		*mlx;
-}	t_img;
-
-# define WIDTH 2048
-# define HEIGHT 1200
-
-#endif
+	if (w >= 'a' && w <= 'z')
+		return (w - 32);
+	return (w);
+}

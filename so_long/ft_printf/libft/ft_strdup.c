@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/12 10:01:04 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/04/13 12:53:22 by vpoirot          ###   ########.fr       */
+/*   Created: 2022/11/15 15:29:50 by vpoirot           #+#    #+#             */
+/*   Updated: 2022/11/22 15:08:49 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#include "libft.h"
+#include <string.h>
 
-# include <stdio.h>
-# include <stdlib.h>
-# include <stdbool.h>
-# include "ft_printf/ft_printf.h"
-# include "./MLX42/include/MLX42/MLX42.h"
-
-typedef struct img_mlx
+char	*ft_strdup(const char *s)
 {
-	mlx_image_t	*img;
-	mlx_t		*mlx;
-}	t_img;
+	char	*dst;
 
-# define WIDTH 2048
-# define HEIGHT 1200
-
-#endif
+	dst = malloc((ft_strlen(s) + 1) * sizeof(char));
+	if (dst == 0)
+		return (0);
+	return (ft_memcpy(dst, s, ft_strlen(s) + 1));
+}

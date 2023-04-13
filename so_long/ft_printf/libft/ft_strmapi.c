@@ -1,31 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/12 10:01:04 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/04/13 12:53:22 by vpoirot          ###   ########.fr       */
+/*   Created: 2022/11/21 11:01:51 by vpoirot           #+#    #+#             */
+/*   Updated: 2022/12/05 15:05:34 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#include "libft.h"
 
-# include <stdio.h>
-# include <stdlib.h>
-# include <stdbool.h>
-# include "ft_printf/ft_printf.h"
-# include "./MLX42/include/MLX42/MLX42.h"
-
-typedef struct img_mlx
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	mlx_image_t	*img;
-	mlx_t		*mlx;
-}	t_img;
+	char	*str;
+	int		i;
+	char	*savestr;
 
-# define WIDTH 2048
-# define HEIGHT 1200
-
-#endif
+	i = -1;
+	if (s == 0)
+		return (0);
+	str = malloc(ft_strlen(s) * sizeof(char) + 1);
+	if (str == 0)
+		return (0);
+	savestr = str;
+	while (s[++i])
+	{
+		*str = f(i, s[i]);
+		str++;
+	}
+	*str = 0;
+	return (savestr);
+}

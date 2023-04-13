@@ -1,31 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/12 10:01:04 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/04/13 12:53:22 by vpoirot          ###   ########.fr       */
+/*   Created: 2022/11/02 13:52:25 by vpoirot           #+#    #+#             */
+/*   Updated: 2022/11/03 14:38:12 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#include "libft.h"
 
-# include <stdio.h>
-# include <stdlib.h>
-# include <stdbool.h>
-# include "ft_printf/ft_printf.h"
-# include "./MLX42/include/MLX42/MLX42.h"
-
-typedef struct img_mlx
+void	ft_bzero(void *w, size_t n)
 {
-	mlx_image_t	*img;
-	mlx_t		*mlx;
-}	t_img;
+	char	*e;
+	size_t	i;
 
-# define WIDTH 2048
-# define HEIGHT 1200
-
-#endif
+	e = w;
+	i = 0;
+	while (i < n)
+	{
+		e[i] = 0;
+		i++;
+	}
+	w = e;
+}

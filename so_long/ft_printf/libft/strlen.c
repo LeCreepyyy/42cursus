@@ -1,31 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   strlen.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/12 10:01:04 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/04/13 12:53:22 by vpoirot          ###   ########.fr       */
+/*   Created: 2022/11/02 10:01:52 by vpoirot           #+#    #+#             */
+/*   Updated: 2022/11/02 10:08:10 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#include <unistd.h>
 
-# include <stdio.h>
-# include <stdlib.h>
-# include <stdbool.h>
-# include "ft_printf/ft_printf.h"
-# include "./MLX42/include/MLX42/MLX42.h"
-
-typedef struct img_mlx
+int	ft_strlen(char *w)
 {
-	mlx_image_t	*img;
-	mlx_t		*mlx;
-}	t_img;
+	int	a;
 
-# define WIDTH 2048
-# define HEIGHT 1200
-
-#endif
+	a = 0;
+	while (w[a])
+		a++;
+	return (a);
+}

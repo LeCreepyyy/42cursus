@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/12 10:01:04 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/04/13 12:53:22 by vpoirot          ###   ########.fr       */
+/*   Created: 2022/12/05 14:15:45 by vpoirot           #+#    #+#             */
+/*   Updated: 2022/12/05 14:53:06 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#include "libft.h"
 
-# include <stdio.h>
-# include <stdlib.h>
-# include <stdbool.h>
-# include "ft_printf/ft_printf.h"
-# include "./MLX42/include/MLX42/MLX42.h"
-
-typedef struct img_mlx
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	mlx_image_t	*img;
-	mlx_t		*mlx;
-}	t_img;
-
-# define WIDTH 2048
-# define HEIGHT 1200
-
-#endif
+	if (!lst && !f)
+		return ;
+	while (lst != 0)
+	{
+		f(lst->content);
+		lst = lst->next;
+	}
+}

@@ -1,31 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   isalnum.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/12 10:01:04 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/04/13 12:53:22 by vpoirot          ###   ########.fr       */
+/*   Created: 2022/10/31 15:24:01 by vpoirot           #+#    #+#             */
+/*   Updated: 2022/11/03 14:38:28 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#include "libft.h"
 
-# include <stdio.h>
-# include <stdlib.h>
-# include <stdbool.h>
-# include "ft_printf/ft_printf.h"
-# include "./MLX42/include/MLX42/MLX42.h"
-
-typedef struct img_mlx
+int	ft_isalnum(int w)
 {
-	mlx_image_t	*img;
-	mlx_t		*mlx;
-}	t_img;
-
-# define WIDTH 2048
-# define HEIGHT 1200
-
-#endif
+	if ((w >= 'a' && w <= 'z')
+		|| (w >= 'A' && w <= 'Z')
+		|| (w >= '0' && w <= '9'))
+		return (1);
+	else
+		return (0);
+}

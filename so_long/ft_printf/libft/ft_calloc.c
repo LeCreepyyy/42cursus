@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/12 10:01:04 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/04/13 12:53:22 by vpoirot          ###   ########.fr       */
+/*   Created: 2022/11/15 16:03:37 by vpoirot           #+#    #+#             */
+/*   Updated: 2022/11/16 10:57:03 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#include "libft.h"
 
-# include <stdio.h>
-# include <stdlib.h>
-# include <stdbool.h>
-# include "ft_printf/ft_printf.h"
-# include "./MLX42/include/MLX42/MLX42.h"
-
-typedef struct img_mlx
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	mlx_image_t	*img;
-	mlx_t		*mlx;
-}	t_img;
+	char	*table;
 
-# define WIDTH 2048
-# define HEIGHT 1200
-
-#endif
+	if (nmemb == 0 || size == 0)
+		return (malloc(0));
+	table = malloc(nmemb * size);
+	if (!table)
+		return (0);
+	ft_bzero(table, nmemb * size);
+	return (table);
+}

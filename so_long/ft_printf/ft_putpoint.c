@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   ft_putpoint.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/12 10:01:04 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/04/13 12:53:22 by vpoirot          ###   ########.fr       */
+/*   Created: 2022/12/19 11:30:04 by vpoirot           #+#    #+#             */
+/*   Updated: 2022/12/19 15:18:09 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#include "ft_printf.h"
 
-# include <stdio.h>
-# include <stdlib.h>
-# include <stdbool.h>
-# include "ft_printf/ft_printf.h"
-# include "./MLX42/include/MLX42/MLX42.h"
-
-typedef struct img_mlx
+unsigned long	ft_putpoint(unsigned long p)
 {
-	mlx_image_t	*img;
-	mlx_t		*mlx;
-}	t_img;
+	int	nb;
 
-# define WIDTH 2048
-# define HEIGHT 1200
-
-#endif
+	nb = 0;
+	if (p >= 16)
+	{
+		nb += ft_putpoint(p / 16);
+		nb += ft_putpoint(p % 16);
+	}
+	if (p < 16)
+	{
+		if (p < 10)
+			nb += ft_putchar(p + 48);
+		else
+			nb += ft_putchar(p + 87);
+	}
+	return (nb);
+}

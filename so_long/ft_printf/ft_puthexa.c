@@ -1,31 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   ft_puthexa.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/12 10:01:04 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/04/13 12:53:22 by vpoirot          ###   ########.fr       */
+/*   Created: 2022/12/13 10:41:06 by vpoirot           #+#    #+#             */
+/*   Updated: 2022/12/20 13:46:02 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#include "ft_printf.h"
 
-# include <stdio.h>
-# include <stdlib.h>
-# include <stdbool.h>
-# include "ft_printf/ft_printf.h"
-# include "./MLX42/include/MLX42/MLX42.h"
-
-typedef struct img_mlx
+int	ft_puthexa(unsigned int i, int nb, char X)
 {
-	mlx_image_t	*img;
-	mlx_t		*mlx;
-}	t_img;
+	char	*str;
+	int		n;
 
-# define WIDTH 2048
-# define HEIGHT 1200
-
-#endif
+	str = "0123456789abcdef";
+	if (X == 'X')
+		str = "0123456789ABCDEF";
+	n = 0;
+	if (i < 16)
+		return (ft_putchar(str[i]));
+	else
+	{
+		n = ft_puthexa(i / 16, nb / 2, X);
+		if (n == -1)
+			return (-1);
+		nb += n;
+		n = ft_puthexa(i % 16, nb / 2, X);
+		if (n == -1)
+			return (-1);
+		nb += n;
+	}
+	return (nb);
+}

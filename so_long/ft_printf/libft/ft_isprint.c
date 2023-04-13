@@ -1,31 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   isprint.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/12 10:01:04 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/04/13 12:53:22 by vpoirot          ###   ########.fr       */
+/*   Created: 2022/10/31 15:35:33 by vpoirot           #+#    #+#             */
+/*   Updated: 2022/11/03 14:39:09 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+//#include <stdio.h>
+//#include <ctype.h>
+#include "libft.h"
 
-# include <stdio.h>
-# include <stdlib.h>
-# include <stdbool.h>
-# include "ft_printf/ft_printf.h"
-# include "./MLX42/include/MLX42/MLX42.h"
-
-typedef struct img_mlx
+int	ft_isprint(int w)
 {
-	mlx_image_t	*img;
-	mlx_t		*mlx;
-}	t_img;
+	return (w >= 32 && w <= 126);
+}
 
-# define WIDTH 2048
-# define HEIGHT 1200
+/*int	main()
+{
+	int	w;
 
-#endif
+	w = 25;
+	printf("%d\n", ft_isprint(w));
+	printf("%d\n", isprint(w));
+	return (0);
+}*/
