@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 10:05:38 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/04/13 13:39:59 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/04/14 15:01:11 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,49 +14,63 @@
 
 void	ft_hook(mlx_key_data_t keydata, void *param)
 {
-	static int	moov = 0;
-	t_img		*img_mlx;
+	t_ft_mlx	*ft_mlx;
 
-	img_mlx = (t_img *)param;
-	if (keydata.key == MLX_KEY_ESCAPE
-		&& ft_printf("Moov : %d\n", moov / 2))
-		mlx_close_window(img_mlx->mlx);
+	ft_mlx = (t_ft_mlx *)param;
+	if (keydata.key == MLX_KEY_ESCAPE)
+		mlx_close_window(ft_mlx->mlx);
 	if ((keydata.key == MLX_KEY_UP || keydata.key == MLX_KEY_W)
-		&& keydata.action == MLX_PRESS)
-		img_mlx->img->instances[0].y -= 128;
+		&& keydata.action == MLX_PRESS
+		&& ft_printf("Move : %d\n", ft_mlx->moov++))
+		ft_mlx->img->instances[0].y -= 128;
 	if ((keydata.key == MLX_KEY_DOWN || keydata.key == MLX_KEY_S)
-		&& keydata.action == MLX_PRESS)
-		img_mlx->img->instances[0].y += 128;
+		&& keydata.action == MLX_PRESS
+		&& ft_printf("Move : %d\n", ft_mlx->moov++))
+		ft_mlx->img->instances[0].y += 128;
 	if ((keydata.key == MLX_KEY_LEFT || keydata.key == MLX_KEY_A)
-		&& keydata.action == MLX_PRESS)
-		img_mlx->img->instances[0].x -= 128;
+		&& keydata.action == MLX_PRESS
+		&& ft_printf("Move : %d\n", ft_mlx->moov++))
+		ft_mlx->img->instances[0].x -= 128;
 	if ((keydata.key == MLX_KEY_RIGHT || keydata.key == MLX_KEY_D)
-		&& keydata.action == MLX_PRESS)
-		img_mlx->img->instances[0].x += 128;
-	moov++;
+		&& keydata.action == MLX_PRESS
+		&& ft_printf("Move : %d\n", ft_mlx->moov++))
+		ft_mlx->img->instances[0].x += 128;
 }
 
-/*
-void	ft_map()
+char	**ft_map(void)
 {
 	int		fd;
-	char	*line;
+	char	*map;
+	char	*temp;
 
 	fd = open("map.txt", O_RDONLY);
-	line = get_next_line(fd);
+	temp = get_next_line(fd);
+	if (!temp)
+		return (0);
+	map = ft_strjoin(map, temp);
+	while (!temp)
+	{
+		temp = get_next_line(fd);
+		map = ft_strjoin(map, temp);
+	}
+	return (0);
 }
-*/
 
 int	main(void)
 {
-	t_img	*im;
+	t_ft_mlx	*ft_mlx;
 
-	im = malloc(sizeof(t_img));
-	im->mlx = mlx_init(WIDTH, HEIGHT, "so_long", true);
-	im->img = mlx_texture_to_image(im->mlx, mlx_load_png("monkey2.png"));
-	mlx_image_to_window(im->mlx, im->img, 1024, 600);
-	mlx_key_hook(im->mlx, &ft_hook, im);
-	mlx_loop(im->mlx);
-	mlx_terminate(im->mlx);
+	ft_mlx = malloc(sizeof(t_ft_mlx));
+	if (!ft_mlx)
+		return (0);
+	ft_mlx->moov = 1;
+	ft_mlx->mlx = mlx_init(2048, 1200, "so_long", true);
+	ft_mlx->img = mlx_texture_to_image(ft_mlx->mlx,
+			mlx_load_png("monkey2.png"));
+	mlx_image_to_window(ft_mlx->mlx, ft_mlx->img, 1024, 600);
+	mlx_key_hook(ft_mlx->mlx, &ft_hook, ft_mlx);
+	mlx_loop(ft_mlx->mlx);
+	mlx_terminate(ft_mlx->mlx);
 	return (0);
 }
+

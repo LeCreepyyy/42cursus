@@ -6,7 +6,7 @@
 #    By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/03 14:22:20 by vpoirot           #+#    #+#              #
-#    Updated: 2023/04/13 10:09:58 by vpoirot          ###   ########.fr        #
+#    Updated: 2023/04/14 14:26:35 by vpoirot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,13 +68,14 @@ OBJ_BNS = ${SRC_BNS:.c=.o}
 
 CC = cc -Wall -Wextra -Werror -Iincludes -c
 
-$(NAME): ${SRC} ${OBJ}
-	@ar rc ${NAME} ${OBJ}
-
 all: ${NAME}
 
+$(NAME): ${SRC} ${OBJ}
+	@ar rc ${NAME} ${OBJ}
+	@${CC} ${SRC}
+
 bonus: ${NAME} ${OBJ_BNS}
-		ar rc ${NAME} ${OBJ_BNS}
+	@ar rc ${NAME} ${OBJ_BNS}
 
 clean:
 	@rm -f *.o

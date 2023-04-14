@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 12:50:43 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/03/24 13:26:52 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/04/14 14:03:18 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 char	*get_next_line(int fd);
 size_t	len_str(const char *str);
 void	*add_malloc(size_t	size, char	*str);
-char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strjoinn(char const *s1, char const *s2);
 int		size_count(const char *str);
 char	*gnl_eof(char *stock);
 void	*ft_calloc(size_t nmemb, size_t size);

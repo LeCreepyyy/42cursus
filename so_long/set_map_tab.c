@@ -1,36 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   set_map_tab.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/12 10:01:04 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/04/14 14:05:50 by vpoirot          ###   ########.fr       */
+/*   Created: 2023/04/14 09:50:31 by vpoirot           #+#    #+#             */
+/*   Updated: 2023/04/14 15:02:20 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#include "so_long.h"
 
-# include <stdio.h>
-# include <stdlib.h>
-# include <stdbool.h>
-# include <fcntl.h>
-# include "ft_printf/ft_printf.h"
-# include "./MLX42/include/MLX42/MLX42.h"
-
-typedef struct ft_mlx
+int	len_n(char *str)
 {
-	mlx_image_t	*img;
-	mlx_t		*mlx;
-	mlx_t		*width;
-	mlx_t		*height;
-	int			moov;
-}	t_ft_mlx;
+	int	i;
+	int	n;
 
-// function utils param
+	i = 0;
+	n = 0;
+	while (str[i])
+	{
+		if (str[i] == '\n')
+			n++;
+		i++;
+	}
+	n++;
+	return (i);
+}
 
-char	**set_map_tab(char *map);
+char	**set_map_tab(char *map)
+{
+	char	**tab;
+	int		i;
 
-#endif
+	i = 0;
+	tab = malloc((len_n(map) + 1) * sizeof(char *));
+	if (!tab)
+		return (0);
+	while (map[i])
+	{
+		i++;
+	}
+	return (tab);
+}

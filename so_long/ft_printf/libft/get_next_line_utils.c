@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 13:55:05 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/03/27 11:08:03 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/04/14 14:03:30 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ char	*ft_strjoin2(char const *s1, char const *s2, char *str)
 	return (str);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoinn(char const *s1, char const *s2)
 {
 	char	*str;
 	size_t	lenstock;

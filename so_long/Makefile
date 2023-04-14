@@ -6,7 +6,7 @@
 #    By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/12 10:11:10 by vpoirot           #+#    #+#              #
-#    Updated: 2023/04/13 10:02:36 by vpoirot          ###   ########.fr        #
+#    Updated: 2023/04/14 14:11:32 by vpoirot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,8 @@ FT_PRINTF = ./ft_printf/libftprintf.a
 
 NAME = so_long.a
 
-SRC = so_long.c
+SRC = so_long.c\
+		set_map_tab.c
 
 OBJ = ${SRC:.c=.o}
 

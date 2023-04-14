@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 14:22:20 by vpoirot           #+#    #+#             */
-/*   Updated: 2022/12/20 13:46:11 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/04/14 14:01:50 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <unistd.h>
 # include <stdarg.h>
 # include "./libft/libft.h"
+# include "./libft/get_next_line.h"
 
 int				ft_printf(const char *str, ...);
 int				ft_puthexa(unsigned int i, int nb, char X);
