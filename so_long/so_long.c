@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 10:05:38 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/04/14 15:01:11 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/04/17 14:03:30 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,32 +37,34 @@ void	ft_hook(mlx_key_data_t keydata, void *param)
 		ft_mlx->img->instances[0].x += 128;
 }
 
-char	**ft_map(void)
+char	**ft_map(char **tab)
 {
 	int		fd;
 	char	*map;
 	char	*temp;
 
 	fd = open("map.txt", O_RDONLY);
-	temp = get_next_line(fd);
-	if (!temp)
-		return (0);
-	map = ft_strjoin(map, temp);
-	while (!temp)
+	temp = 0;
+	while (!temp || temp[ft_strlen(temp) - 1] == '\n')
 	{
 		temp = get_next_line(fd);
-		map = ft_strjoin(map, temp);
+		map = ft_strjoin_n(map, temp);
 	}
-	return (0);
+	tab = set_map_tab(map);
+	return (tab);
 }
 
 int	main(void)
 {
+	char		**map;
 	t_ft_mlx	*ft_mlx;
 
 	ft_mlx = malloc(sizeof(t_ft_mlx));
 	if (!ft_mlx)
 		return (0);
+	map = 0;
+	map = ft_map(map);
+	print_map(map);
 	ft_mlx->moov = 1;
 	ft_mlx->mlx = mlx_init(2048, 1200, "so_long", true);
 	ft_mlx->img = mlx_texture_to_image(ft_mlx->mlx,

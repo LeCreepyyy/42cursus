@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 10:01:04 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/04/14 14:05:50 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/04/17 13:27:04 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,15 @@ typedef struct ft_mlx
 	int			moov;
 }	t_ft_mlx;
 
-// function utils param
+// function for map
 
 char	**set_map_tab(char *map);
+char	*ft_strjoin_n(char *dst, char *src);
+void	print_map(char	**tab);
+
+
+// function utils
+
+void	free_tab(char **tab);
 
 #endif

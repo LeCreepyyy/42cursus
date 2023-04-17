@@ -6,7 +6,7 @@
 #    By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/12 10:11:10 by vpoirot           #+#    #+#              #
-#    Updated: 2023/04/14 14:11:32 by vpoirot          ###   ########.fr        #
+#    Updated: 2023/04/17 11:04:07 by vpoirot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,8 @@ FT_PRINTF = ./ft_printf/libftprintf.a
 NAME = so_long.a
 
 SRC = so_long.c\
-		set_map_tab.c
+		set_map_tab.c\
+		so_long_utils.c
 
 OBJ = ${SRC:.c=.o}
 
@@ -30,7 +31,7 @@ $(NAME): ${OBJ}
 	@${MAKE} -C ./ft_printf
 	@cp ft_printf/libftprintf.a ${NAME}
 	@ar rc ${NAME} ${OBJ}
-	@${CC} so_long.c ${FT_PRINTF} MLX42/build/libmlx42.a -Iinclude -lglfw -L "/Users/$$USER/.brew/opt/glfw/lib/" -o so_long
+	@${CC} ${SRC} ${FT_PRINTF} MLX42/build/libmlx42.a -Iinclude -lglfw -L "/Users/$$USER/.brew/opt/glfw/lib/" -o so_long
 	@printf "\x1b[32mFinish !\n"
 
 clean:
