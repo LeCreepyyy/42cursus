@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 10:01:04 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/04/17 13:27:04 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/04/18 11:50:27 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ typedef struct ft_mlx
 char	**set_map_tab(char *map);
 char	*ft_strjoin_n(char *dst, char *src);
 void	print_map(char	**tab);
-
+int		check_map(char **map);
 
 // function utils
 
