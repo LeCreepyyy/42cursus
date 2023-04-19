@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 10:05:38 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/04/18 09:50:16 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/04/19 14:02:16 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ int	main(void)
 		return (0);
 	map = 0;
 	map = ft_map(map);
+	if (check_map(map, ft_mlx) == 0)
+		return (0);
 	ft_mlx->moov = 1;
 	ft_mlx->mlx = mlx_init(2048, 1200, "so_long", true);
 	ft_mlx->img = mlx_texture_to_image(ft_mlx->mlx,
