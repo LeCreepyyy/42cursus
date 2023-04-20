@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 13:21:09 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/04/19 15:12:56 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/04/20 13:53:33 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,19 @@ int	verif_valid(char **map)
 	int	x;
 	int	y;
 
-	y = 0;
-	while (map[y])
+	x = 0;
+	while (map[x])
 	{
-		x = 0;
-		while (map[y][x])
+		y = 0;
+		while (map[x][y])
 		{
-			if (map[y][x] != '1' || map[y][x] != '0'
-				|| map[y][x] != 'C' || map[y][x] != 'P'
-				|| map[y][x] != 'E')
+			if (map[x][y] != '1' && map[x][y] != '0'
+				&& map[x][y] != 'C' && map[x][y] != 'P'
+				&& map[x][y] != 'E' && map[x][y] != '\n')
 				return (1);
-			x++;
+			y++;
 		}
-		y++;
+		x++;
 	}
 	return (0);
 }
@@ -47,7 +47,7 @@ int	count_item(char **map)
 		x = 0;
 		while (map[y][x])
 		{
-			if (map[y][x] == 'C')
+			if (map[y][x] == 'C' || map[y][x] == 'E')
 				c++;
 			x++;
 		}
@@ -103,17 +103,26 @@ char	**res_map(char **map)
 	}
 	return (map);
 }
-/*
+
 int	check_border(char **map)
 {
 	int	x;
 	int	y;
 
-	x = 0;
+	x = 1;
 	y = 0;
-	while (map[x])
+	while (map[0][y])
 	{
+		if (map[0][y] != '1' || map[len_tab(map) - 1][y] != '1')
+			return (1);
+		y++;
+	}
+	y = 0;
+	while (map[x] != map[len_tab(map) - 1])
+	{
+		if (map[x][0] != '1' || map[x][ft_strlen(map[0]) - 1] != '1')
+			return (1);
+		x++;
 	}
 	return (0);
 }
-*/

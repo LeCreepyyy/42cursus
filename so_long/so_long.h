@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 10:01:04 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/04/19 13:25:57 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/04/20 10:38:58 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,11 @@ int		verif_valid(char **map);
 int		count_item(char **map);
 int		*position_p(char **map);
 char	**res_map(char **map);
+int		check_border(char **map);
 
 // function utils
 
 void	free_tab(char **tab);
+int		len_tab(char **map);
 
 #endif

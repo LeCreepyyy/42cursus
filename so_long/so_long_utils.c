@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 10:08:22 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/04/17 14:34:34 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/04/20 10:38:37 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,18 @@ char	*ft_strjoin_n(char *dst, char *src)
 	str[i] = 0;
 	return (str);
 }
+
+int	len_tab(char **map)
+{
+	int	i;
+
+	i = 0;
+	while (map[i])
+		i++;
+	return (i);
+}
+
+// function for test:
 
 void	print_map(char	**tab)
 {

@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 10:05:38 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/04/19 14:02:16 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/04/20 14:53:09 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,19 +21,19 @@ void	ft_hook(mlx_key_data_t keydata, void *param)
 		mlx_close_window(ft_mlx->mlx);
 	if ((keydata.key == MLX_KEY_UP || keydata.key == MLX_KEY_W)
 		&& keydata.action == MLX_PRESS
-		&& ft_printf("Move : %d\n", ft_mlx->moov++))
+		&& ft_printf("Move : %d\r", ft_mlx->moov++))
 		ft_mlx->img->instances[0].y -= 128;
 	if ((keydata.key == MLX_KEY_DOWN || keydata.key == MLX_KEY_S)
 		&& keydata.action == MLX_PRESS
-		&& ft_printf("Move : %d\n", ft_mlx->moov++))
+		&& ft_printf("Move : %d\r", ft_mlx->moov++))
 		ft_mlx->img->instances[0].y += 128;
 	if ((keydata.key == MLX_KEY_LEFT || keydata.key == MLX_KEY_A)
 		&& keydata.action == MLX_PRESS
-		&& ft_printf("Move : %d\n", ft_mlx->moov++))
+		&& ft_printf("Move : %d\r", ft_mlx->moov++))
 		ft_mlx->img->instances[0].x -= 128;
 	if ((keydata.key == MLX_KEY_RIGHT || keydata.key == MLX_KEY_D)
 		&& keydata.action == MLX_PRESS
-		&& ft_printf("Move : %d\n", ft_mlx->moov++))
+		&& ft_printf("Move : %d\r", ft_mlx->moov++))
 		ft_mlx->img->instances[0].x += 128;
 }
 
