@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 10:05:38 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/04/20 14:53:09 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/04/21 12:37:46 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ void	ft_hook(mlx_key_data_t keydata, void *param)
 	t_ft_mlx	*ft_mlx;
 
 	ft_mlx = (t_ft_mlx *)param;
-	if (keydata.key == MLX_KEY_ESCAPE)
+	if (keydata.key == MLX_KEY_ESCAPE
+		&& ft_printf("C'est rater mon grand !\n"))
 		mlx_close_window(ft_mlx->mlx);
 	if ((keydata.key == MLX_KEY_UP || keydata.key == MLX_KEY_W)
 		&& keydata.action == MLX_PRESS
