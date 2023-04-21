@@ -6,7 +6,7 @@
 #    By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/03 14:22:20 by vpoirot           #+#    #+#              #
-#    Updated: 2022/12/20 10:24:26 by vpoirot          ###   ########.fr        #
+#    Updated: 2023/04/21 14:51:47 by vpoirot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,8 @@ SRC = ft_isalpha.c\
 		ft_split.c\
 		ft_putchar.c\
 		ft_putstr.c\
-		ft_itoa_uns.c
+		ft_itoa_uns.c\
+		free_tab.c
 
 SRC_BNS = ft_lstnew.c\
 			ft_lstadd_front.c\
@@ -64,20 +65,20 @@ OBJ = ${SRC:.c=.o}
 
 OBJ_BNS = ${SRC_BNS:.c=.o}
 
-CC = cc -Wall -Wextra -Werror -Iincludes -c
+CC = @cc -Wall -Wextra -Werror -Iincludes -c
 
 $(NAME): ${SRC} ${OBJ}
-	ar rc ${NAME} ${OBJ}
+	@ar rc ${NAME} ${OBJ}
 
 all: ${NAME}
 
 bonus: ${NAME} ${OBJ_BNS}
-		ar rc ${NAME} ${OBJ_BNS}
+	@ar rc ${NAME} ${OBJ_BNS}
 
 clean:
-	rm -f *.o
+	@rm -f *.o
 
 fclean: clean
-	rm -f ${NAME}
+	@rm -f ${NAME}
 
 re: fclean all
