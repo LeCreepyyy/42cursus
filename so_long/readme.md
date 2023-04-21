@@ -66,3 +66,10 @@ With table of string we can check if map containt only 1, 0, C, E, P and check i
 For check if is possible to succeed we use the algorithm **D**eep **F**irst **S**earch (DFS)
 
 It consists of creating a path beginning from the starting point and which will travel in the map to check all the possible paths. They are going to pass everywhere from the starting point and once he has covered everything, check if he got all the items and can go to the exit. If he can't take all item or go to exit, he return an error "Map is not possible".
+
+To create this function we use the recursion. If he can go to the right, the left, up or down then he move. If he as blocked, so we check if he take all item and he as passing of the exit.
+If it has not explored everything we go back to check if other paths exist and if no other path is possible then it is that everything has been explored.
+
+```
+(Coming soon !)
+```
