@@ -6,7 +6,7 @@
 #    By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/12 10:11:10 by vpoirot           #+#    #+#              #
-#    Updated: 2023/04/19 13:20:46 by vpoirot          ###   ########.fr        #
+#    Updated: 2023/04/21 14:25:02 by vpoirot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ OBJ = ${SRC:.c=.o}
 
 CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g
 
-CC = cc ${CFLAGS}
+CC = @cc ${CFLAGS}
 
 all: ${NAME} ${OBJ}
 

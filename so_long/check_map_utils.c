@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 13:21:09 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/04/20 13:53:33 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/04/21 14:36:49 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,27 +81,6 @@ int	*position_p(char **map)
 		x++;
 	}
 	return (0);
-}
-
-char	**res_map(char **map)
-{
-	int	x;
-	int	y;
-
-	x = 0;
-	y = 0;
-	while (map[x])
-	{
-		y = 0;
-		while (map[x][y])
-		{
-			if (map[x][y] == '6')
-				map[x][y] = '0';
-			y++;
-		}
-		x++;
-	}
-	return (map);
 }
 
 int	check_border(char **map)

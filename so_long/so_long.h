@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 10:01:04 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/04/20 10:38:58 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/04/21 14:46:44 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,17 +34,14 @@ typedef struct ft_mlx
 
 char	**set_map_tab(char *map);
 char	*ft_strjoin_n(char *dst, char *src);
-void	print_map(char	**tab);
 int		check_map(char **map, t_ft_mlx	*ft_mlx);
 int		verif_valid(char **map);
 int		count_item(char **map);
 int		*position_p(char **map);
-char	**res_map(char **map);
 int		check_border(char **map);
 
 // function utils
 
-void	free_tab(char **tab);
 int		len_tab(char **map);
 
 #endif

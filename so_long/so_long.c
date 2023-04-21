@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 10:05:38 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/04/21 12:37:46 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/04/21 14:48:24 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,10 @@ char	**ft_map(char **tab)
 	}
 	tab = set_map_tab(map);
 	return (tab);
+}
+
+void	ft_window(char **map, t_ft_mlx *ft_mlx)
+{
 }
 
 int	main(void)

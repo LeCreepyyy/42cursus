@@ -6,7 +6,7 @@
 #    By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/03 14:22:20 by vpoirot           #+#    #+#              #
-#    Updated: 2023/04/14 14:26:35 by vpoirot          ###   ########.fr        #
+#    Updated: 2023/04/21 14:47:43 by vpoirot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,6 +51,7 @@ SRC = ft_isalpha.c\
 		ft_itoa_uns.c\
 		get_next_line.c\
 		get_next_line_utils.c\
+		free_tab.c
 
 SRC_BNS = ft_lstnew.c\
 			ft_lstadd_front.c\
@@ -66,7 +67,7 @@ OBJ = ${SRC:.c=.o}
 
 OBJ_BNS = ${SRC_BNS:.c=.o}
 
-CC = cc -Wall -Wextra -Werror -Iincludes -c
+CC = @cc -Wall -Wextra -Werror -Iincludes -c
 
 all: ${NAME}
 

@@ -6,7 +6,7 @@
 #    By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/03 14:22:20 by vpoirot           #+#    #+#              #
-#    Updated: 2023/04/13 10:06:16 by vpoirot          ###   ########.fr        #
+#    Updated: 2023/04/21 14:24:55 by vpoirot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ SRC = ft_printf.c\
 
 OBJ = ${SRC:.c=.o}
 
-CC = cc -Wall -Wextra -Werror -Iincludes -c
+CC = @cc -Wall -Wextra -Werror -Iincludes -c
 
 all: ${NAME} ${OBJ}
 
