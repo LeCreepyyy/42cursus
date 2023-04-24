@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 10:05:38 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/04/21 14:48:24 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/04/24 10:28:32 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_hook(mlx_key_data_t keydata, void *param)
 
 	ft_mlx = (t_ft_mlx *)param;
 	if (keydata.key == MLX_KEY_ESCAPE
-		&& ft_printf("C'est rater mon grand !\n"))
+		&& ft_printf("C'est raté mon grand !\n"))
 		mlx_close_window(ft_mlx->mlx);
 	if ((keydata.key == MLX_KEY_UP || keydata.key == MLX_KEY_W)
 		&& keydata.action == MLX_PRESS
@@ -55,24 +55,28 @@ char	**ft_map(char **tab)
 	return (tab);
 }
 
-void	ft_window(char **map, t_ft_mlx *ft_mlx)
+void	ft_window(t_ft_mlx *ft_mlx)
 {
+	ft_mlx->height = (len_tab(ft_mlx->map) * 48);
+	ft_mlx->width = (ft_strlen(ft_mlx->map[0]) * 48);
+	ft_mlx->mlx = mlx_init(ft_mlx->width, ft_mlx->height, "so_long", true);
 }
 
 int	main(void)
 {
-	char		**map;
+	char		**tab;
 	t_ft_mlx	*ft_mlx;
 
 	ft_mlx = malloc(sizeof(t_ft_mlx));
 	if (!ft_mlx)
 		return (0);
-	map = 0;
-	map = ft_map(map);
-	if (check_map(map, ft_mlx) == 0)
+	tab = 0;
+	tab = ft_map(tab);
+	if (check_map(tab, ft_mlx) == 0)
 		return (0);
 	ft_mlx->moov = 1;
-	ft_mlx->mlx = mlx_init(2048, 1200, "so_long", true);
+	ft_mlx->map = tab;
+	ft_window(ft_mlx);
 	ft_mlx->img = mlx_texture_to_image(ft_mlx->mlx,
 			mlx_load_png("monkey2.png"));
 	mlx_image_to_window(ft_mlx->mlx, ft_mlx->img, 1024, 600);

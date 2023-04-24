@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 10:01:04 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/04/21 14:46:44 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/04/24 10:22:09 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,11 @@ typedef struct ft_mlx
 {
 	mlx_image_t	*img;
 	mlx_t		*mlx;
-	mlx_t		*width;
-	mlx_t		*height;
 	int			*player_p;
 	int			moov;
+	char		**map;
+	int			width;
+	int			height;
 }	t_ft_mlx;
 
 // function for map

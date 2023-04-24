@@ -6,11 +6,31 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 09:49:42 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/04/21 10:44:48 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/04/24 12:54:25 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	print_map(char **map)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (map[j])
+	{
+		i = 0;
+		while (map[j][i])
+		{
+			ft_printf("%c", map[j][i]);
+			i++;
+		}
+		ft_printf("\n");
+		j++;
+	}
+}
 
 int	check_case(char **map)
 {
@@ -93,5 +113,6 @@ int	check_map(char **map, t_ft_mlx	*ft_mlx)
 		ft_printf("Error\nMap is not possible  !\n");
 		return (0);
 	}
+	print_map(map);
 	return (1);
 }

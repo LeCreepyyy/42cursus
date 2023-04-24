@@ -6,7 +6,7 @@
 #    By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/12 10:11:10 by vpoirot           #+#    #+#              #
-#    Updated: 2023/04/21 14:25:02 by vpoirot          ###   ########.fr        #
+#    Updated: 2023/04/24 10:16:04 by vpoirot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ CC = @cc ${CFLAGS}
 all: ${NAME} ${OBJ}
 
 $(NAME): ${OBJ}
+	@printf "\x1b[33mLoading\r"
 	@${MAKE} -C ./ft_printf
 	@cp ft_printf/libftprintf.a ${NAME}
 	@ar rc ${NAME} ${OBJ}
