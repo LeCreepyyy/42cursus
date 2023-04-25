@@ -6,13 +6,13 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 13:21:09 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/04/21 14:36:49 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/04/25 13:48:06 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	verif_valid(char **map)
+int	verif_valid(char **map, int e, int p)
 {
 	int	x;
 	int	y;
@@ -27,18 +27,24 @@ int	verif_valid(char **map)
 				&& map[x][y] != 'C' && map[x][y] != 'P'
 				&& map[x][y] != 'E' && map[x][y] != '\n')
 				return (1);
+			if (map[x][y] == 'E')
+				e++;
+			if (map[x][y] == 'P')
+				p++;
 			y++;
 		}
 		x++;
 	}
+	if (e != 1 || p != 1)
+		return (1);
 	return (0);
 }
 
 int	count_item(char **map)
 {
-	int	c;
-	int	x;
-	int	y;
+	int			c;
+	int			x;
+	int			y;
 
 	c = 0;
 	y = 0;
@@ -65,20 +71,20 @@ int	*position_p(char **map)
 	y = 0;
 	x = 0;
 	player = malloc(2 * sizeof(int));
-	while (map[x])
+	while (map[y])
 	{
-		y = 0;
-		while (map[x][y])
+		x = 0;
+		while (map[y][x])
 		{
-			if (map[x][y] == 'P')
+			if (map[y][x] == 'P')
 			{
-				player[0] = x;
-				player[1] = y;
+				player[0] = y;
+				player[1] = x;
 				return (player);
 			}
-			y++;
+			x++;
 		}
-		x++;
+		y++;
 	}
 	return (0);
 }
