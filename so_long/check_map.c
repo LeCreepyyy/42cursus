@@ -6,37 +6,15 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 09:49:42 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/04/25 13:50:25 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/04/25 14:35:26 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	print_map(char **map)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 0;
-	while (map[j])
-	{
-		i = 0;
-		while (map[j][i])
-		{
-			ft_printf("%c", map[j][i]);
-			i++;
-		}
-		ft_printf("\n");
-		j++;
-	}
-	ft_printf("\n");
-}
-
 void	is_possible(char **map, int y, int x)
 {
 	map[y][x] = '6';
-	print_map(map);
 	if (map[y + 1][x] == '0' || map[y + 1][x] == 'C'
 		|| map[y + 1][x] == 'E')
 		is_possible(map, y + 1, x);

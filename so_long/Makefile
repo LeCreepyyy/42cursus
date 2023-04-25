@@ -6,7 +6,7 @@
 #    By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/12 10:11:10 by vpoirot           #+#    #+#              #
-#    Updated: 2023/04/24 10:16:04 by vpoirot          ###   ########.fr        #
+#    Updated: 2023/04/25 14:36:23 by vpoirot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,8 @@ SRC = so_long.c\
 		set_map_tab.c\
 		so_long_utils.c\
 		check_map.c\
-		check_map_utils.c
+		check_map_utils.c\
+		create_map.c
 
 OBJ = ${SRC:.c=.o}
 
