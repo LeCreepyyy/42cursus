@@ -71,5 +71,5 @@ To create this function we use the recursion. If he can go to the right, the lef
 If it has not explored everything we go back to check if other paths exist and if no other path is possible then it is that everything has been explored.
 
 ```
-(Current !)
+(Current...)
 ```

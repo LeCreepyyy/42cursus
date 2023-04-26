@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 10:05:38 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/04/25 15:25:50 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/04/26 15:27:07 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,25 +17,35 @@ void	ft_hook(mlx_key_data_t keydata, void *param)
 	t_ft_mlx	*ft_mlx;
 
 	ft_mlx = (t_ft_mlx *)param;
+	if (keydata.action != MLX_PRESS)
+		return ;
 	if (keydata.key == MLX_KEY_ESCAPE
-		&& ft_printf("C'est raté mon grand !\n"))
+		&& ft_printf("Move : %d\nC'est perdu !\n", ft_mlx->moov - 1))
 		mlx_close_window(ft_mlx->mlx);
 	if ((keydata.key == MLX_KEY_UP || keydata.key == MLX_KEY_W)
-		&& keydata.action == MLX_PRESS
-		&& ft_printf("Move : %d\r", ft_mlx->moov++))
+		&& ft_action(ft_mlx, (ft_mlx->player_p[0] - 1), ft_mlx->player_p[1]))
+	{
 		ft_mlx->img->instances[0].y -= 48;
+		ft_mlx->player_p[0]--;
+	}
 	if ((keydata.key == MLX_KEY_DOWN || keydata.key == MLX_KEY_S)
-		&& keydata.action == MLX_PRESS
-		&& ft_printf("Move : %d\r", ft_mlx->moov++))
+		&& ft_action(ft_mlx, (ft_mlx->player_p[0] + 1), ft_mlx->player_p[1]))
+	{
 		ft_mlx->img->instances[0].y += 48;
+		ft_mlx->player_p[0]++;
+	}
 	if ((keydata.key == MLX_KEY_LEFT || keydata.key == MLX_KEY_A)
-		&& keydata.action == MLX_PRESS
-		&& ft_printf("Move : %d\r", ft_mlx->moov++))
+		&& ft_action(ft_mlx, ft_mlx->player_p[0], (ft_mlx->player_p[1] - 1)))
+	{
 		ft_mlx->img->instances[0].x -= 48;
+		ft_mlx->player_p[1]--;
+	}
 	if ((keydata.key == MLX_KEY_RIGHT || keydata.key == MLX_KEY_D)
-		&& keydata.action == MLX_PRESS
-		&& ft_printf("Move : %d\r", ft_mlx->moov++))
+		&& ft_action(ft_mlx, ft_mlx->player_p[0], (ft_mlx->player_p[1] + 1)))
+	{
 		ft_mlx->img->instances[0].x += 48;
+		ft_mlx->player_p[1]++;
+	}
 }
 
 char	**ft_map(char **tab)
@@ -72,11 +82,11 @@ int	main(void)
 	if (!ft_mlx)
 		return (0);
 	tab = 0;
-	tab = ft_map(tab);
+	ft_mlx->map = ft_map(ft_mlx->map);
+	tab = dup_map(ft_mlx->map);
 	if (check_map(tab, ft_mlx) == 0)
 		return (0);
 	ft_mlx->moov = 1;
-	ft_mlx->map = tab;
 	ft_window(ft_mlx);
 	ft_mlx->img = mlx_texture_to_image(ft_mlx->mlx,
 			mlx_load_png("assets/monkey.png"));

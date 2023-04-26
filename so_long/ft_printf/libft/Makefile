@@ -6,7 +6,7 @@
 #    By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/03 14:22:20 by vpoirot           #+#    #+#              #
-#    Updated: 2023/04/21 14:47:43 by vpoirot          ###   ########.fr        #
+#    Updated: 2023/04/26 11:03:11 by vpoirot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,7 +51,8 @@ SRC = ft_isalpha.c\
 		ft_itoa_uns.c\
 		get_next_line.c\
 		get_next_line_utils.c\
-		free_tab.c
+		free_tab.c\
+		ft_strcpy.c
 
 SRC_BNS = ft_lstnew.c\
 			ft_lstadd_front.c\

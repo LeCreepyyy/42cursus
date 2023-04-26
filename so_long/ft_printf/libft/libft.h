@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 11:00:56 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/04/21 14:47:04 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/04/26 11:02:36 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,6 @@ void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 int		ft_itoa_uns(unsigned int i);
 void	free_tab(char **tab);
+char	*ft_strcpy(char *dest, char *src);
 
 #endif

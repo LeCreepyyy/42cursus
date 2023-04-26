@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 10:01:04 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/04/25 15:25:02 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/04/26 14:56:02 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,11 @@ int		check_border(char **map);
 // create map
 
 void	display_map(t_ft_mlx *ft_mlx, int x, int y);
+char	**dup_map(char **map);
 
 // function utils
 
 int		len_tab(char **map);
+int		ft_action(t_ft_mlx *ft_mlx, int y, int x);
 
 #endif
