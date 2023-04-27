@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 10:05:38 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/04/26 15:27:07 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/04/27 10:06:19 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,29 +23,21 @@ void	ft_hook(mlx_key_data_t keydata, void *param)
 		&& ft_printf("Move : %d\nC'est perdu !\n", ft_mlx->moov - 1))
 		mlx_close_window(ft_mlx->mlx);
 	if ((keydata.key == MLX_KEY_UP || keydata.key == MLX_KEY_W)
-		&& ft_action(ft_mlx, (ft_mlx->player_p[0] - 1), ft_mlx->player_p[1]))
-	{
+		&& ft_action(ft_mlx, (ft_mlx->player_p[0] - 1), ft_mlx->player_p[1])
+		&& ft_mlx->player_p[0]--)
 		ft_mlx->img->instances[0].y -= 48;
-		ft_mlx->player_p[0]--;
-	}
 	if ((keydata.key == MLX_KEY_DOWN || keydata.key == MLX_KEY_S)
-		&& ft_action(ft_mlx, (ft_mlx->player_p[0] + 1), ft_mlx->player_p[1]))
-	{
+		&& ft_action(ft_mlx, (ft_mlx->player_p[0] + 1), ft_mlx->player_p[1])
+		&& ft_mlx->player_p[0]++)
 		ft_mlx->img->instances[0].y += 48;
-		ft_mlx->player_p[0]++;
-	}
 	if ((keydata.key == MLX_KEY_LEFT || keydata.key == MLX_KEY_A)
-		&& ft_action(ft_mlx, ft_mlx->player_p[0], (ft_mlx->player_p[1] - 1)))
-	{
+		&& ft_action(ft_mlx, ft_mlx->player_p[0], (ft_mlx->player_p[1] - 1))
+		&& ft_mlx->player_p[1]--)
 		ft_mlx->img->instances[0].x -= 48;
-		ft_mlx->player_p[1]--;
-	}
 	if ((keydata.key == MLX_KEY_RIGHT || keydata.key == MLX_KEY_D)
-		&& ft_action(ft_mlx, ft_mlx->player_p[0], (ft_mlx->player_p[1] + 1)))
-	{
+		&& ft_action(ft_mlx, ft_mlx->player_p[0], (ft_mlx->player_p[1] + 1))
+		&& ft_mlx->player_p[1]++)
 		ft_mlx->img->instances[0].x += 48;
-		ft_mlx->player_p[1]++;
-	}
 }
 
 char	**ft_map(char **tab)

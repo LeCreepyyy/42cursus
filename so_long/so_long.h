@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 10:01:04 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/04/26 14:56:02 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/04/27 09:54:39 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <stdio.h>
 # include <stdlib.h>
-# include <stdbool.h>
 # include <fcntl.h>
 # include "ft_printf/ft_printf.h"
 # include "./MLX42/include/MLX42/MLX42.h"
