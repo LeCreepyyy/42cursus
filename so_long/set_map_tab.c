@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 09:50:31 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/04/26 13:56:58 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/04/28 12:30:45 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ char	**set_map_tab(char *map)
 		return (0);
 	tab[len_n(map)] = 0;
 	len_x = ft_strlen_n(map);
-	while (tab[i] != 0)
+	while (i < len_n(map))
 	{
 		tab[i] = malloc((len_x + 1) * sizeof(char));
 		if (!tab[i])
@@ -83,5 +83,6 @@ char	**set_map_tab(char *map)
 		strdup_n(tab[i], map);
 		i++;
 	}
+	free (map);
 	return (tab);
 }

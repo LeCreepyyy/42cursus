@@ -1,17 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   itoa.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/21 14:58:12 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/04/28 10:22:24 by vpoirot          ###   ########.fr       */
+/*   Created: 2023/04/28 10:25:56 by vpoirot           #+#    #+#             */
+/*   Updated: 2023/04/28 10:44:17 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 static int	ft_nbr_count(int n, int sig)
 {
@@ -48,11 +47,10 @@ static char	*ft_return_nbr(char *str, int nb, int size, int sig)
 	return (str);
 }
 
-int	ft_itoas(int n)
+char	*ft_itoa(int n)
 {
 	char	*str;
 	int		sig;
-	int		tmp;
 
 	sig = 1;
 	if (n < 0)
@@ -61,13 +59,11 @@ int	ft_itoas(int n)
 		n *= -1;
 	}
 	if (n == -2147483648)
-		return (write(1, "-2147483648", 11));
+		return (ft_strdup("-2147483648"));
 	str = malloc(sizeof(char) * (ft_nbr_count(n, sig) + 1));
 	if (str == 0)
-		return (-1);
+		return (0);
 	else
 		str = ft_return_nbr(str, n, ft_nbr_count(n, sig), sig);
-	tmp = write(1, str, ft_strlen(str));
-	free(str);
-	return (tmp);
+	return (str);
 }

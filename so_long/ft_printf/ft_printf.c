@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 14:22:20 by vpoirot           #+#    #+#             */
-/*   Updated: 2022/12/21 13:25:20 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/04/28 10:22:20 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	ft_prset(va_list arglst, int index, const char *str, ...)
 	else if (str[index] == 's')
 		return (ft_putstr(va_arg(arglst, char *), 0));
 	else if (str[index] == 'i' || str[index] == 'd')
-		return (ft_itoa(va_arg(arglst, int)));
+		return (ft_itoas(va_arg(arglst, int)));
 	else if (str[index] == 'u')
 		return (ft_itoa_uns(va_arg(arglst, unsigned int)));
 	else if (str[index] == 'x')

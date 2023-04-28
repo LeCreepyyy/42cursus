@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 10:08:22 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/04/27 13:58:23 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/04/28 14:33:13 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,11 @@ char	*ft_strjoin_n(char *dst, char *src)
 
 	i = 0;
 	j = 0;
-	if (dst)
-		str = malloc(((ft_strlen(dst) + ft_strlen(src)) + 1) * sizeof(char));
-	else
-		str = malloc((ft_strlen(src) + 1) * sizeof(char));
+	if (!dst)
+		return (src);
+	str = malloc(((ft_strlen(dst) + ft_strlen(src)) + 1) * sizeof(char));
+	if (!str)
+		return (0);
 	if (dst)
 	{
 		while (dst[i])
@@ -66,36 +67,48 @@ char	**dup_map(char **map)
 	return (new);
 }
 
-void	print_map(char	**map)
+void	ft_collect(t_ft_mlx *ft_mlx)
 {
-	int	x;
-	int	y;
+	int	i;
+	int	j;
 
-	y = 0;
-	while (map[y])
+	i = 0;
+	mlx_delete_image(ft_mlx->mlx, ft_mlx->img[3]);
+	ft_mlx->img[3] = mlx_texture_to_image(ft_mlx->mlx,
+			mlx_load_png("assets/banana.png"));
+	while (ft_mlx->map[i])
 	{
-		x = 0;
-		while (map[y][x])
+		j = 0;
+		while (ft_mlx->map[i][j])
 		{
-			ft_printf("%c", map[y][x]);
-			x++;
+			if (ft_mlx->map[i][j] == 'C')
+				mlx_image_to_window(ft_mlx->mlx, ft_mlx->img[3],
+					j * 48, i * 48);
+			j++;
 		}
-		ft_printf("\n");
-		y++;
+		i++;
 	}
 }
 
 int	ft_action(t_ft_mlx *ft_mlx, int y, int x)
 {
+	static mlx_image_t	*str_img = 0;
+
 	if (ft_mlx->map[y][x] == '1')
 		return (0);
 	if (ft_mlx->map[y][x] == 'C')
+	{
 		ft_mlx->map[y][x] = '0';
+		ft_collect(ft_mlx);
+	}
 	if (ft_mlx->map[y][x] == 'E')
 	{
 		if ((count_item(ft_mlx->map) - 1) == 0)
 			mlx_close_window(ft_mlx->mlx);
 	}
+	mlx_delete_image(ft_mlx->mlx, str_img);
+	str_img = mlx_put_string(ft_mlx->mlx, ft_strjoin("Move :",
+				ft_itoa(ft_mlx->moov)), 24, 10);
 	ft_printf("Move : %d\r", ft_mlx->moov++);
 	return (1);
 }

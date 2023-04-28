@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 14:36:01 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/04/27 11:00:55 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/04/28 14:32:22 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,31 +14,13 @@
 
 void	display_case(char c, t_ft_mlx *ft_mlx, int x, int y)
 {
-	ft_mlx->img = mlx_texture_to_image(ft_mlx->mlx,
-			mlx_load_png("assets/floor.png"));
-	mlx_image_to_window(ft_mlx->mlx, ft_mlx->img,
-		x * 48, y * 48);
+	mlx_image_to_window(ft_mlx->mlx, ft_mlx->img[0], x * 48, y * 48);
 	if (c == '1')
-	{
-		ft_mlx->img = mlx_texture_to_image(ft_mlx->mlx,
-				mlx_load_png("assets/wall.png"));
-		mlx_image_to_window(ft_mlx->mlx, ft_mlx->img,
-			x * 48, y * 48);
-	}
+		mlx_image_to_window(ft_mlx->mlx, ft_mlx->img[2], x * 48, y * 48);
 	if (c == 'C')
-	{
-		ft_mlx->img = mlx_texture_to_image(ft_mlx->mlx,
-				mlx_load_png("assets/banana.png"));
-		mlx_image_to_window(ft_mlx->mlx, ft_mlx->img,
-			x * 48, y * 48);
-	}
+		mlx_image_to_window(ft_mlx->mlx, ft_mlx->img[3], x * 48, y * 48);
 	if (c == 'E')
-	{
-		ft_mlx->img = mlx_texture_to_image(ft_mlx->mlx,
-				mlx_load_png("assets/baril.png"));
-		mlx_image_to_window(ft_mlx->mlx, ft_mlx->img,
-			x * 48, y * 48);
-	}
+		mlx_image_to_window(ft_mlx->mlx, ft_mlx->img[4], x * 48, y * 48);
 }
 
 void	display_map(t_ft_mlx *ft_mlx, int x, int y)
@@ -53,4 +35,6 @@ void	display_map(t_ft_mlx *ft_mlx, int x, int y)
 		}
 		y++;
 	}
+	mlx_image_to_window(ft_mlx->mlx, ft_mlx->img[1],
+		ft_mlx->player_p[1] * 48, ft_mlx->player_p[0] * 48);
 }

@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 11:00:56 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/04/26 11:02:36 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/04/28 10:27:12 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ char	*ft_strchr(const char *s, int c);
 char	*ft_strrchr(const char *s, int c);
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
-int		ft_itoa(int n);
+int		ft_itoas(int n);
 char	**ft_split(char const *s, char c);
 t_list	*ft_lstnew(void *content);
 int		ft_lstsize(t_list *lst);
@@ -70,5 +70,6 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 int		ft_itoa_uns(unsigned int i);
 void	free_tab(char **tab);
 char	*ft_strcpy(char *dest, char *src);
+char	*ft_itoa(int n);
 
 #endif
