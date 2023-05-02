@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 10:05:38 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/05/02 14:38:34 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/05/02 16:06:39 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ char	**ft_map(char **tab, char *arg)
 	char	*map;
 	char	*temp;
 
+	if (ft_strncmp(&arg[ft_strlen(arg) - 4], ".ber", 4) != 0)
+		return (0);
 	fd = open(arg, O_RDONLY);
 	temp = 0;
 	map = malloc(sizeof(char));

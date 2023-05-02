@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 09:49:42 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/05/02 10:26:39 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/05/02 16:14:18 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,10 @@ int	check_map(char **m, t_ft_mlx	*ft_mlx)
 	int		*temp;
 
 	add_enemy(m);
-	if (verif_valid(m, 0, 0) == 1 || check_border(m) == 1)
+	if (verif_valid(m, 0, 0) == 1 || check_border(m) == 1
+		|| count_item(m) <= 1)
 	{
-		if (verif_valid(m, 0, 0) == 1)
+		if (verif_valid(m, 0, 0) == 1 || count_item(m) <= 1)
 			ft_printf("Error\nMap contain other that (1 0 C E P)\n");
 		else
 			ft_printf("Error\nMap border is not good ! (The border is 1)\n");
