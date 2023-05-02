@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 10:05:38 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/05/02 10:58:52 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/05/02 14:25:40 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ char	**ft_map(char **tab, char *arg)
 	{
 		temp = get_next_line(fd);
 		map = ft_strjoin_n(map, temp);
+		if (!map)
+			return (0);
 	}
 	tab = set_map_tab(map);
 	return (tab);
@@ -62,6 +64,7 @@ char	**ft_map(char **tab, char *arg)
 
 void	ft_window(t_ft_mlx *ft_mlx)
 {
+	ft_mlx->moov = 1;
 	ft_mlx->height = (len_tab(ft_mlx->map) * 48);
 	ft_mlx->width = (ft_strlen(ft_mlx->map[0]) * 48);
 	ft_mlx->mlx = mlx_init(ft_mlx->width, ft_mlx->height, "so_long", true);
@@ -95,16 +98,16 @@ int	main(int argc, char **argv)
 		return (0);
 	tab = 0;
 	ft_mlx->map = ft_map(ft_mlx->map, argv[1]);
+	if (!ft_mlx->map)
+		return (free_return_error(ft_mlx), 0);
 	tab = dup_map(ft_mlx->map);
 	if (check_map(tab, ft_mlx) == 0)
 		return (0);
-	ft_mlx->moov = 1;
 	ft_window(ft_mlx);
 	mlx_key_hook(ft_mlx->mlx, &ft_hook, ft_mlx);
 	mlx_loop(ft_mlx->mlx);
 	mlx_terminate(ft_mlx->mlx);
 	free_tab(ft_mlx->map);
-	free_tab(tab);
-	ft_printf("Total move : %d\n", ft_mlx->moov);
-	return (free(ft_mlx->player_p), free(ft_mlx), 0);
+	ft_printf("Total move : %d\n%d sec\n", (ft_mlx->moov - 1), mlx_get_time());
+	return (free_tab(tab), free(ft_mlx->player_p), free(ft_mlx), 0);
 }

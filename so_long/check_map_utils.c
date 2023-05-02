@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 13:21:09 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/04/25 13:48:06 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/05/02 13:45:07 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,4 +110,10 @@ int	check_border(char **map)
 		x++;
 	}
 	return (0);
+}
+
+void	free_return_error(t_ft_mlx *ft_mlx)
+{
+	ft_printf("Error\nEmpty map or arg not valid !\n");
+	free(ft_mlx);
 }
