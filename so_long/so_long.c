@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 10:05:38 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/05/02 14:25:40 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/05/02 14:38:34 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ void	ft_hook(mlx_key_data_t keydata, void *param)
 	ft_mlx = (t_ft_mlx *)param;
 	if (keydata.action != MLX_PRESS)
 		return ;
-	if (keydata.key == MLX_KEY_ESCAPE)
+	if (keydata.key == MLX_KEY_ESCAPE
+		&& ft_printf("Your time : %ds\n", (int)mlx_get_time()))
 		mlx_close_window(ft_mlx->mlx);
 	if ((keydata.key == MLX_KEY_UP || keydata.key == MLX_KEY_W)
 		&& ft_action(ft_mlx, (ft_mlx->player_p[0] - 1), ft_mlx->player_p[1])
@@ -108,6 +109,6 @@ int	main(int argc, char **argv)
 	mlx_loop(ft_mlx->mlx);
 	mlx_terminate(ft_mlx->mlx);
 	free_tab(ft_mlx->map);
-	ft_printf("Total move : %d\n%d sec\n", (ft_mlx->moov - 1), mlx_get_time());
+	ft_printf("Total move : %d\n", (ft_mlx->moov - 1));
 	return (free_tab(tab), free(ft_mlx->player_p), free(ft_mlx), 0);
 }
