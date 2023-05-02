@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 10:05:38 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/04/28 14:51:22 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/05/02 10:58:52 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,7 @@ void	ft_hook(mlx_key_data_t keydata, void *param)
 	ft_mlx = (t_ft_mlx *)param;
 	if (keydata.action != MLX_PRESS)
 		return ;
-	if (keydata.key == MLX_KEY_ESCAPE
-		&& ft_printf("Move : %d\n", ft_mlx->moov - 1))
+	if (keydata.key == MLX_KEY_ESCAPE)
 		mlx_close_window(ft_mlx->mlx);
 	if ((keydata.key == MLX_KEY_UP || keydata.key == MLX_KEY_W)
 		&& ft_action(ft_mlx, (ft_mlx->player_p[0] - 1), ft_mlx->player_p[1])
@@ -76,6 +75,8 @@ void	ft_window(t_ft_mlx *ft_mlx)
 			mlx_load_png("assets/banana.png"));
 	ft_mlx->img[4] = mlx_texture_to_image(ft_mlx->mlx,
 			mlx_load_png("assets/baril.png"));
+	ft_mlx->img[5] = mlx_texture_to_image(ft_mlx->mlx,
+			mlx_load_png("assets/enemy.png"));
 	display_map(ft_mlx, 0, 0);
 }
 
@@ -104,5 +105,6 @@ int	main(int argc, char **argv)
 	mlx_terminate(ft_mlx->mlx);
 	free_tab(ft_mlx->map);
 	free_tab(tab);
+	ft_printf("Total move : %d\n", ft_mlx->moov);
 	return (free(ft_mlx->player_p), free(ft_mlx), 0);
 }

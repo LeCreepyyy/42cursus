@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 10:08:22 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/04/28 14:33:13 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/05/02 10:46:08 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,8 @@ int	ft_action(t_ft_mlx *ft_mlx, int y, int x)
 		ft_mlx->map[y][x] = '0';
 		ft_collect(ft_mlx);
 	}
+	if (ft_mlx->map[y][x] == '2')
+		mlx_close_window(ft_mlx->mlx);
 	if (ft_mlx->map[y][x] == 'E')
 	{
 		if ((count_item(ft_mlx->map) - 1) == 0)

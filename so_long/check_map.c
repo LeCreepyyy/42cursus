@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 09:49:42 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/04/28 11:10:35 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/05/02 10:26:39 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,30 @@ void	is_possible(char **map, int y, int x)
 	return ;
 }
 
+void	add_enemy(char **map)
+{
+	int	x;
+	int	y;
+
+	y = 0;
+	while (map[y])
+	{
+		x = 0;
+		while (map[y][x])
+		{
+			if (map[y][x] == '2')
+				map[y][x] = '1';
+			x++;
+		}
+		y++;
+	}
+}
+
 int	check_map(char **m, t_ft_mlx	*ft_mlx)
 {
 	int		*temp;
 
+	add_enemy(m);
 	if (verif_valid(m, 0, 0) == 1 || check_border(m) == 1)
 	{
 		if (verif_valid(m, 0, 0) == 1)
