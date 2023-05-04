@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 09:50:31 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/04/28 12:30:45 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/05/04 09:58:57 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,5 @@ char	**set_map_tab(char *map)
 		strdup_n(tab[i], map);
 		i++;
 	}
-	free (map);
 	return (tab);
 }

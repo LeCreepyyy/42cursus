@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 10:05:38 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/05/03 09:48:42 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/05/04 09:58:52 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,10 @@ char	**ft_map(char **tab, char *arg)
 		if (!map)
 			return (0);
 	}
+	close(fd);
+	free(temp);
 	tab = set_map_tab(map);
+	free(map);
 	return (tab);
 }
 
@@ -104,7 +107,7 @@ int	main(int argc, char **argv)
 		return (free_return_error(ft_mlx), 0);
 	tab = dup_map(ft_mlx->map);
 	if (check_map(tab, ft_mlx) == 0)
-		return (0);
+		return (free_tab(tab), free(ft_mlx->player_p), free(ft_mlx), 0);
 	ft_window(ft_mlx);
 	mlx_key_hook(ft_mlx->mlx, &ft_hook, ft_mlx);
 	mlx_loop(ft_mlx->mlx);
