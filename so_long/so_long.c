@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 10:05:38 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/05/04 09:58:52 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/05/04 14:28:04 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,13 +76,13 @@ void	ft_window(t_ft_mlx *ft_mlx)
 	ft_mlx->img[0] = mlx_texture_to_image(ft_mlx->mlx,
 			mlx_load_png("assets/grass.png"));
 	ft_mlx->img[1] = mlx_texture_to_image(ft_mlx->mlx,
-			mlx_load_png("assets/monkey.png"));
+			mlx_load_png("assets/knight.png"));
 	ft_mlx->img[2] = mlx_texture_to_image(ft_mlx->mlx,
 			mlx_load_png("assets/tree.png"));
 	ft_mlx->img[3] = mlx_texture_to_image(ft_mlx->mlx,
-			mlx_load_png("assets/banana.png"));
+			mlx_load_png("assets/flower.png"));
 	ft_mlx->img[4] = mlx_texture_to_image(ft_mlx->mlx,
-			mlx_load_png("assets/baril.png"));
+			mlx_load_png("assets/princess.png"));
 	ft_mlx->img[5] = mlx_texture_to_image(ft_mlx->mlx,
 			mlx_load_png("assets/enemy.png"));
 	display_map(ft_mlx, 0, 0);

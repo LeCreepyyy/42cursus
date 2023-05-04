@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 10:08:22 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/05/03 09:48:25 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/05/04 13:59:22 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void	ft_collect(t_ft_mlx *ft_mlx)
 	i = 0;
 	mlx_delete_image(ft_mlx->mlx, ft_mlx->img[3]);
 	ft_mlx->img[3] = mlx_texture_to_image(ft_mlx->mlx,
-			mlx_load_png("assets/banana.png"));
+			mlx_load_png("assets/flower.png"));
 	while (ft_mlx->map[i])
 	{
 		j = 0;
