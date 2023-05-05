@@ -6,7 +6,7 @@
 #    By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/12 10:11:10 by vpoirot           #+#    #+#              #
-#    Updated: 2023/05/04 13:24:14 by vpoirot          ###   ########.fr        #
+#    Updated: 2023/05/05 14:35:18 by vpoirot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ NAME = push_swap.a
 SRC = push_swap.c\
 		checking_arg.c\
 		push_swap_utils.c\
+		create_stack.c\
 		move.c
 
 OBJ = ${SRC:.c=.o}
