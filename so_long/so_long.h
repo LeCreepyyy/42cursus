@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 10:01:04 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/05/05 10:24:19 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/05/09 14:20:08 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ int		verif_valid(char **map, int e, int p);
 int		count_item(char **map);
 int		*position_p(char **map);
 int		check_border(char **map);
+void	delete_n(char *map);
+void	print_map(char **tab);
 
 // create map
 

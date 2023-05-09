@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 10:05:38 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/05/05 10:24:22 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/05/09 14:25:21 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,26 @@ void	ft_hook(mlx_key_data_t keydata, void *param)
 		ft_mlx->img[1]->instances[0].x += 48;
 }
 
+void	print_map(char **tab)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (tab[i])
+	{
+		j = 0;
+		while (tab[i][j])
+		{
+			ft_printf("%c", tab[i][j]);
+			j++;
+		}
+		ft_printf("\n");
+		i++;
+	}
+}
+
 char	**ft_map(char **tab, char *arg)
 {
 	int		fd;
@@ -56,15 +76,16 @@ char	**ft_map(char **tab, char *arg)
 	while (!temp || temp[ft_strlen(temp) - 1] == '\n')
 	{
 		temp = get_next_line(fd);
+		if (!temp)
+			break ;
 		map = ft_strjoin_n(map, temp);
+		free(temp);
 		if (!map)
 			return (0);
 	}
-	close(fd);
-	free(temp);
+	delete_n(map);
 	tab = set_map_tab(map);
-	free(map);
-	return (tab);
+	return (close(fd), free(map), tab);
 }
 
 void	ft_window(t_ft_mlx *ft_mlx)

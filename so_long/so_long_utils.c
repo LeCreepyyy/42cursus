@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 10:08:22 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/05/05 10:23:59 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/05/09 12:32:52 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ char	*ft_strjoin_n(char *dst, char *src)
 	i = 0;
 	j = 0;
 	if (!src)
-		return (0);
+		return (free(dst), NULL);
 	if (!dst)
-		return (src);
+		return (free(src), src);
 	str = malloc(((ft_strlen(dst) + ft_strlen(src)) + 1) * sizeof(char));
 	if (!str)
-		return (0);
+		return (free(dst), free(src), NULL);
 	if (dst)
 	{
 		while (dst[i])
@@ -38,7 +38,7 @@ char	*ft_strjoin_n(char *dst, char *src)
 	while (src[j])
 		str[i++] = src[j++];
 	str[i] = 0;
-	return (str);
+	return (free(dst), str);
 }
 
 int	len_tab(char **map)
