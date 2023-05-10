@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 10:02:33 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/05/10 11:08:38 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/05/10 15:09:11 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,5 @@ int	main(int argc, char **argv)
 	a = create_a(argc, argv);
 	b = create_b(argc);
 	print_stack(a, b);
-	printf("\n\n");
-	print_stack(a, b);
-	return (0);
+	return (free(a), free(b), 0);
 }

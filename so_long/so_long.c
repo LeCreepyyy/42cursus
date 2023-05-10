@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 10:05:38 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/05/09 14:25:21 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/05/10 14:24:06 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,22 +90,30 @@ char	**ft_map(char **tab, char *arg)
 
 void	ft_window(t_ft_mlx *ft_mlx)
 {
+	mlx_texture_t	*texture;
+
 	ft_mlx->moov = 1;
 	ft_mlx->height = (len_tab(ft_mlx->map) * 48);
 	ft_mlx->width = (ft_strlen(ft_mlx->map[0]) * 48);
 	ft_mlx->mlx = mlx_init(ft_mlx->width, ft_mlx->height, "so_long", true);
-	ft_mlx->img[0] = mlx_texture_to_image(ft_mlx->mlx,
-			mlx_load_png("assets/grass.png"));
-	ft_mlx->img[1] = mlx_texture_to_image(ft_mlx->mlx,
-			mlx_load_png("assets/knight.png"));
-	ft_mlx->img[2] = mlx_texture_to_image(ft_mlx->mlx,
-			mlx_load_png("assets/tree.png"));
-	ft_mlx->img[3] = mlx_texture_to_image(ft_mlx->mlx,
-			mlx_load_png("assets/flower.png"));
-	ft_mlx->img[4] = mlx_texture_to_image(ft_mlx->mlx,
-			mlx_load_png("assets/princess.png"));
-	ft_mlx->img[5] = mlx_texture_to_image(ft_mlx->mlx,
-			mlx_load_png("assets/enemy.png"));
+	texture = mlx_load_png("assets/grass.png");
+	ft_mlx->img[0] = mlx_texture_to_image(ft_mlx->mlx, texture);
+	free(texture);
+	texture = mlx_load_png("assets/knight.png");
+	ft_mlx->img[1] = mlx_texture_to_image(ft_mlx->mlx, texture);
+	free(texture);
+	texture = mlx_load_png("assets/tree.png");
+	ft_mlx->img[2] = mlx_texture_to_image(ft_mlx->mlx, texture);
+	free(texture);
+	texture = mlx_load_png("assets/flower.png");
+	ft_mlx->img[3] = mlx_texture_to_image(ft_mlx->mlx, texture);
+	free(texture);
+	texture = mlx_load_png("assets/princess.png");
+	ft_mlx->img[4] = mlx_texture_to_image(ft_mlx->mlx, texture);
+	free(texture);
+	texture = mlx_load_png("assets/enemy.png");
+	ft_mlx->img[5] = mlx_texture_to_image(ft_mlx->mlx, texture);
+	free(texture);
 	display_map(ft_mlx, 0, 0);
 }
 

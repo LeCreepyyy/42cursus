@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 13:24:20 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/05/10 10:58:39 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/05/10 15:11:17 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,40 @@ void	swap(int *stack)
 	stack[1] = temp;
 }
 
-// ↑ up reverse
-void	reverse(int *tab)
+void	s_swap(int a, int *b)
+{
+	swap(a);
+	swap(b);
+	write(1, "ss", 2);
+}
+
+// ↑ up rotate
+void	rotate(int *tab)
 {
 	int	temp;
 	int	i;
 
-	i = -1;
+	i = 0;
 	while (tab[++i] != 0)
 	{
-		temp = tab[i + 1];
-		tab[i + 1] = tab[i];
-		tab[i] = temp;
+		temp = tab[i];
+		tab[i] = tab[i - 1];
+		tab[i - 1] = temp;
+	}
+}
+
+void	r_rotate(int *tab)
+{
+	int	temp;
+	int	i;
+
+	i = lenstack(tab) - 1;
+	while (i > 0)
+	{
+		temp = tab[i];
+		tab[i] = tab[i - 1];
+		tab[i - 1] = temp;
+		i--;
 	}
 }
 

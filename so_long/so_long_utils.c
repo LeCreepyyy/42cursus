@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 10:08:22 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/05/09 12:32:52 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/05/10 14:22:26 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ int	ft_action(t_ft_mlx *ft_mlx, int y, int x)
 	ft_printf("Move : %d\r", ft_mlx->moov++);
 	if (ft_mlx->map[y][x] == '2' && ft_printf("You loose !\n"))
 		mlx_close_window(ft_mlx->mlx);
-	if (ft_mlx->map[y][x] == 'E')
+	else if (ft_mlx->map[y][x] == 'E')
 	{
 		if ((count_item(ft_mlx->map) - 1) == 0)
 		{

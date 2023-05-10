@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 10:03:06 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/05/10 10:48:08 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/05/10 14:34:39 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@
 
 // ~Instructions~
 void	swap(int *stack);
-void	reverse(int *tab);
+void	rotate(int *tab);
+void	r_rotate(int *tab);
 void	push(int *dest, int *stack);
 
 // ~For arguments~
