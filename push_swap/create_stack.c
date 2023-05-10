@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_pile.c                                      :+:      :+:    :+:   */
+/*   create_stack.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 10:28:11 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/05/05 14:34:21 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/05/10 11:08:27 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,10 @@ int	*create_b(int argc)
 {
 	int	*b;
 
-	b = malloc(sizeof(int) * argc);
+	b = malloc(sizeof(int) * argc--);
 	if (!b)
 		return (0);
-	while (argc != 0)
+	while (argc >= 0)
 	{
 		b[argc] = 0;
 		argc--;

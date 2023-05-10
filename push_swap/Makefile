@@ -6,7 +6,7 @@
 #    By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/12 10:11:10 by vpoirot           #+#    #+#              #
-#    Updated: 2023/05/05 14:35:18 by vpoirot          ###   ########.fr        #
+#    Updated: 2023/05/10 11:01:21 by vpoirot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ all: ${NAME} ${OBJ}
 $(NAME): ${OBJ}
 	@printf "\x1b[33mLoading\r"
 	@ar rc ${NAME} ${OBJ}
-	@${CC} ${SRC} -o push_swap
+	@${CC} ${SRC} -fsanitize=address -g -o push_swap
 	@printf "\x1b[32mFinish !\n"
 
 clean:

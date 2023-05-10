@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 13:24:20 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/05/10 09:59:36 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/05/10 10:58:39 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,21 @@ void	swap(int *stack)
 	temp = stack[0];
 	stack[0] = stack[1];
 	stack[1] = temp;
+}
+
+// ↑ up reverse
+void	reverse(int *tab)
+{
+	int	temp;
+	int	i;
+
+	i = -1;
+	while (tab[++i] != 0)
+	{
+		temp = tab[i + 1];
+		tab[i + 1] = tab[i];
+		tab[i] = temp;
+	}
 }
 
 void	push(int *dest, int *stack)
