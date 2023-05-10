@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 10:02:33 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/05/09 10:44:53 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/05/10 10:05:01 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ void	print_stack(int *stack, int *b)
 	int	i;
 
 	i = 0;
-	while (stack[i] != 0 || b != 0)
+	while (stack[i] != 0 || b[i] != 0)
 	{
-		printf("%d\n", stack[i]);
+		printf("%d\t", stack[i]);
 		printf("%d\n", b[i]);
 		i++;
 	}
@@ -35,8 +35,7 @@ int	main(int argc, char **argv)
 	a = create_a(argc, argv);
 	b = create_b(argc);
 	print_stack(a, b);
-	swap(a);
-	printf("\n---\n");
+	printf("\n\n");
 	print_stack(a, b);
 	return (0);
 }

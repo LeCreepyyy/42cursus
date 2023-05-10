@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 10:03:06 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/05/05 14:33:39 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/05/10 10:02:34 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 
 // ~Instructions~
 void	swap(int *stack);
+void	push(int *dest, int *stack);
 
 // ~For arguments~
 int		check_arg(char **arg, int count);
@@ -29,5 +30,6 @@ int		*create_b(int argc);
 void	ft_putstr_fd(char *str, int fd);
 int		ft_strlen(char *str);
 long	ft_atoi(char *nb);
+int		lenstack(int *tab);
 
 #endif
