@@ -6,30 +6,29 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 13:24:20 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/05/10 15:11:17 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/05/11 10:26:31 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	swap(int *stack)
+void	swap(int *stack, char c)
 {
 	int	temp;
 
 	temp = stack[0];
 	stack[0] = stack[1];
 	stack[1] = temp;
-}
-
-void	s_swap(int a, int *b)
-{
-	swap(a);
-	swap(b);
-	write(1, "ss", 2);
+	if (c)
+	{
+		write(1, "s", 1);
+		write(1, &c, 1);
+		write(1, "\n", 1);
+	}
 }
 
 // ↑ up rotate
-void	rotate(int *tab)
+void	rotate(int *tab, char c)
 {
 	int	temp;
 	int	i;
@@ -41,9 +40,15 @@ void	rotate(int *tab)
 		tab[i] = tab[i - 1];
 		tab[i - 1] = temp;
 	}
+	if (c)
+	{
+		write(1, "r", 1);
+		write(1, &c, 1);
+		write(1, "\n", 1);
+	}
 }
 
-void	r_rotate(int *tab)
+void	r_rotate(int *tab, char c)
 {
 	int	temp;
 	int	i;
@@ -56,9 +61,15 @@ void	r_rotate(int *tab)
 		tab[i - 1] = temp;
 		i--;
 	}
+	if (c)
+	{
+		write(1, "rr", 2);
+		write(1, &c, 1);
+		write(1, "\n", 1);
+	}
 }
 
-void	push(int *dest, int *stack)
+void	push(int *dest, int *stack, char c)
 {
 	int	i;
 	int	temp;
@@ -82,4 +93,7 @@ void	push(int *dest, int *stack)
 		stack[i + 1] = temp;
 		i++;
 	}
+	write(1, "p", 1);
+	write(1, &c, 1);
+	write(1, "\n", 1);
 }

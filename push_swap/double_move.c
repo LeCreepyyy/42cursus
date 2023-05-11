@@ -1,43 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   double_move.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/03 10:02:33 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/05/11 13:01:42 by vpoirot          ###   ########.fr       */
+/*   Created: 2023/05/11 10:26:33 by vpoirot           #+#    #+#             */
+/*   Updated: 2023/05/11 10:30:48 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	print_stack(int *stack, int *b)
+void	s_swap(int *a, int *b)
 {
-	int	i;
-
-	i = 0;
-	while (stack[i] != 0 || b[i] != 0)
-	{
-		printf("%d\t", stack[i]);
-		printf("%d\n", b[i]);
-		i++;
-	}
+	swap(a, 0);
+	swap(b, 0);
+	write(1, "ss\n", 3);
 }
 
-int	main(int argc, char **argv)
+void	rr(int *a, int *b)
 {
-	int	*a;
-	int	*b;
+	rotate(a, 0);
+	rotate(b, 0);
+	write(1, "rr\n", 3);
+}
 
-	if (argc < 2 || check_arg(argv, argc) == 0)
-		return (0);
-	a = create_a(argc, argv);
-	b = create_b(argc);
-	print_stack(a, b);
-	sort_three(a);
-	print_stack(a, b);
-	free(a);
-	free(b);
-	return (0);
+void	rrr(int *a, int *b)
+{
+	r_rotate(a, 0);
+	r_rotate(b, 0);
+	write(1, "rrr\n", 4);
 }

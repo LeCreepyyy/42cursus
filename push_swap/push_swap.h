@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 10:03:06 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/05/10 14:34:39 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/05/11 13:01:19 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,16 @@
 # include <stdlib.h>
 
 // ~Instructions~
-void	swap(int *stack);
-void	rotate(int *tab);
-void	r_rotate(int *tab);
-void	push(int *dest, int *stack);
+void	swap(int *stack, char c);
+void	s_swap(int *a, int *b);
+void	rotate(int *tab, char c);
+void	r_rotate(int *tab, char c);
+void	push(int *dest, int *stack, char c);
+void	rr(int *a, int *b);
+void	rrr(int *a, int *b);
+
+// ~For sort~
+void	sort_three(int *a);
 
 // ~For arguments~
 int		check_arg(char **arg, int count);

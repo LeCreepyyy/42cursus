@@ -6,7 +6,7 @@
 #    By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/12 10:11:10 by vpoirot           #+#    #+#              #
-#    Updated: 2023/05/10 11:01:21 by vpoirot          ###   ########.fr        #
+#    Updated: 2023/05/11 13:02:26 by vpoirot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,9 @@ SRC = push_swap.c\
 		checking_arg.c\
 		push_swap_utils.c\
 		create_stack.c\
-		move.c
+		move.c\
+		double_move.c\
+		sorted.c
 
 OBJ = ${SRC:.c=.o}
 
@@ -29,7 +31,7 @@ all: ${NAME} ${OBJ}
 $(NAME): ${OBJ}
 	@printf "\x1b[33mLoading\r"
 	@ar rc ${NAME} ${OBJ}
-	@${CC} ${SRC} -fsanitize=address -g -o push_swap
+	@${CC} ${SRC} -o push_swap
 	@printf "\x1b[32mFinish !\n"
 
 clean:
