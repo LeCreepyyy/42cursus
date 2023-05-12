@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 12:59:26 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/05/12 13:17:26 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/05/12 14:27:49 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,16 @@ void	little_algo(int *a, int *b)
 	int	size;
 
 	size = lenstack(a);
+	if (size > 5)
+	{
+		mid_algo(a, b);
+		return ;
+	}
+	if (size == 3)
+	{
+		sort_three(a);
+		return ;
+	}
 	if (size - 3 == 2)
 		get_push(a, b);
 	get_push(a, b);

@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 10:08:22 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/05/10 14:22:26 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/05/12 14:37:20 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ void	ft_collect(t_ft_mlx *ft_mlx)
 
 int	ft_action(t_ft_mlx *ft_mlx, int y, int x)
 {
+	char				*str;
 	static mlx_image_t	*str_img = 0;
 
 	if (ft_mlx->map[y][x] == '1')
@@ -103,9 +104,9 @@ int	ft_action(t_ft_mlx *ft_mlx, int y, int x)
 		ft_mlx->map[y][x] = '0';
 		ft_collect(ft_mlx);
 	}
+	str = ft_strjoin("Move :", ft_itoa(ft_mlx->moov));
 	mlx_delete_image(ft_mlx->mlx, str_img);
-	str_img = mlx_put_string(ft_mlx->mlx, ft_strjoin("Move :",
-				ft_itoa(ft_mlx->moov)), 24, 10);
+	str_img = mlx_put_string(ft_mlx->mlx, str, 24, 10);
 	ft_printf("Move : %d\r", ft_mlx->moov++);
 	if (ft_mlx->map[y][x] == '2' && ft_printf("You loose !\n"))
 		mlx_close_window(ft_mlx->mlx);
@@ -117,5 +118,5 @@ int	ft_action(t_ft_mlx *ft_mlx, int y, int x)
 			ft_printf("Victory !\nYour time : %ds\n", (int)mlx_get_time());
 		}
 	}
-	return (1);
+	return (free(str), 1);
 }

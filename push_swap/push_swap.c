@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 10:02:33 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/05/12 12:25:42 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/05/12 14:24:11 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ int	main(int argc, char **argv)
 		return (0);
 	a = create_a(argc, argv);
 	b = create_b(argc);
-	// print_stack(a, b);
+	print_stack(a, b);
 	little_algo(a, b);
-	// print_stack(a, b);
+	print_stack(a, b);
 	free(a);
 	free(b);
 	return (0);

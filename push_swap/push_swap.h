@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 10:03:06 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/05/12 11:20:32 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/05/12 13:58:19 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	little_algo(int *a, int *b);
 void	get_push(int *a, int *b);
 int		get_min(int *stack);
 int		get_max(int *stack);
+void	mid_algo(int *a, int *b);
 
 // ~For arguments~
 int		check_arg(char **arg, int count);

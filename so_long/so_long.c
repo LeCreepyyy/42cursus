@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 10:05:38 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/05/10 14:24:06 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/05/12 14:30:10 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,5 +143,9 @@ int	main(int argc, char **argv)
 	mlx_terminate(ft_mlx->mlx);
 	free_tab(ft_mlx->map);
 	ft_printf("Total move : %d\n", (ft_mlx->moov - 1));
-	return (free_tab(tab), free(ft_mlx->player_p), free(ft_mlx), 0);
+	free_tab(tab);
+	free(ft_mlx->player_p);
+	free(ft_mlx);
+	system("leaks so_long");
+	return (0);
 }

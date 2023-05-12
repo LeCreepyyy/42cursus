@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 11:00:56 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/04/28 10:27:12 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/05/12 14:32:01 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	ft_putnbr(int nb);
 void	ft_putendl_fd(char *s, int fd);
 void	*ft_calloc(size_t nmemb, size_t size);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
-char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strjoin(char const *s1, char *s2);
 char	*ft_strtrim(char const *s, char const *set);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strrchr(const char *s, int c);
