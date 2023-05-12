@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 11:18:46 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/05/12 13:57:12 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/05/12 15:26:44 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,21 @@ void	get_push(int *a, int *b)
 void	mid_algo(int *a, int *b)
 {
 	int	i;
+	int	save;
 
-	i = 0;
-	while (lenstack(a) > 3)
+	save = 0;
+	while (lenstack(a) >= 3)
 	{
 		i = 3;
 		while (--i >= 0)
 			get_push(a, b);
+		if (b[(lenstack(b) - save) + 1] != 0)
+		{
+			i = 0;
+			while (--i >= 0)
+				get_push(b, a);
+		}
+		save += 3;
 		sort_three(b);
 	}
 	if (a[0] != 0 && a[0] > a[1])
