@@ -6,7 +6,7 @@
 #    By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/12 10:11:10 by vpoirot           #+#    #+#              #
-#    Updated: 2023/05/11 13:02:26 by vpoirot          ###   ########.fr        #
+#    Updated: 2023/05/12 11:18:42 by vpoirot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,8 @@ SRC = push_swap.c\
 		create_stack.c\
 		move.c\
 		double_move.c\
-		sorted.c
+		sorted.c\
+		sorted_utils.c
 
 OBJ = ${SRC:.c=.o}
 

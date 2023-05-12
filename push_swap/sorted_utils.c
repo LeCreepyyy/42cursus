@@ -1,43 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   sorted_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/03 10:02:33 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/05/12 12:25:42 by vpoirot          ###   ########.fr       */
+/*   Created: 2023/05/12 11:18:46 by vpoirot           #+#    #+#             */
+/*   Updated: 2023/05/12 11:25:32 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	print_stack(int *stack, int *b)
+void	get_push(int *a, int *b)
 {
 	int	i;
 
 	i = 0;
-	while (stack[i] != 0 || b[i] != 0)
+	while (a[i] != 0 && i != (lenstack(a) / 2))
 	{
-		printf("%d\t", stack[i]);
-		printf("%d\n", b[i]);
+		if (a[lenstack(a) - i] == get_min(a))
+			break ;
 		i++;
 	}
-}
-
-int	main(int argc, char **argv)
-{
-	int	*a;
-	int	*b;
-
-	if (argc < 3 || check_arg(argv, argc) == 0)
-		return (0);
-	a = create_a(argc, argv);
-	b = create_b(argc);
-	// print_stack(a, b);
-	little_algo(a, b);
-	// print_stack(a, b);
-	free(a);
-	free(b);
-	return (0);
+	while (i < (lenstack(a) / 2) && a[0] != get_min(a))
+		r_rotate(a, 'a');
+	while (i == (lenstack(a) / 2) && a[0] != get_min(a))
+		rotate(a, 'a');
+	push(b, a, 'b');
 }
