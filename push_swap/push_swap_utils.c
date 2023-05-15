@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 11:10:04 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/05/10 09:49:01 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/05/15 11:18:27 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,16 @@ long	ft_atoi(char *nb)
 	}
 	n *= mult;
 	return (n);
+}
+
+int	len_tab(char **tab)
+{
+	int	i;
+
+	i = 0;
+	while (tab[i])
+		i++;
+	return (i);
 }
 
 int	lenstack(int *tab)

@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 10:03:06 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/05/12 13:58:19 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/05/15 15:05:56 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,9 @@ void	little_algo(int *a, int *b);
 void	get_push(int *a, int *b);
 int		get_min(int *stack);
 int		get_max(int *stack);
-void	mid_algo(int *a, int *b);
+void	big_sort(int *a, int *b);
+void	is_two_arg(int *a);
+void	r_sort_three(int *a);
 
 // ~For arguments~
 int		check_arg(char **arg, int count);
@@ -44,5 +46,6 @@ void	ft_putstr_fd(char *str, int fd);
 int		ft_strlen(char *str);
 long	ft_atoi(char *nb);
 int		lenstack(int *tab);
+int		len_tab(char **tab);
 
 #endif

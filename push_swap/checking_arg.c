@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 10:08:14 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/05/03 15:23:40 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/05/15 14:10:58 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,11 +90,11 @@ int	check_arg(char **arg, int count)
 	int	*tab;
 
 	if (number_valid(arg) == 0)
-		return (ft_putstr_fd("Error\n", 2), 0);
+		return (0);
 	if (int_cmp(arg) == 0)
-		return (ft_putstr_fd("Error\n", 2), 0);
+		return (0);
 	tab = set_arg_number(arg, count);
 	if (find_double(tab, count) == 0)
-		return (ft_putstr_fd("Error\n", 2), 0);
+		return (0);
 	return (free(tab), 1);
 }

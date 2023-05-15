@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 12:59:26 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/05/12 14:27:49 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/05/15 15:06:27 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,6 @@ int	get_min(int *stack)
 
 void	sort_three(int *a)
 {
-	if (is_sort(a) == 1)
-		return ;
 	if (a[0] - a[1] == 1 && a[1] > a[2])
 	{
 		swap(a, 'a');
@@ -84,10 +82,12 @@ void	little_algo(int *a, int *b)
 {
 	int	size;
 
+	if (is_sort(a) == 1 || lenstack(a) == 2)
+		return (is_two_arg(a));
 	size = lenstack(a);
 	if (size > 5)
 	{
-		mid_algo(a, b);
+		big_sort(a, b);
 		return ;
 	}
 	if (size == 3)

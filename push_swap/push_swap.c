@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 10:02:33 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/05/15 09:53:37 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/05/15 14:50:53 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,19 +25,23 @@ void	print_stack(int *stack, int *b)
 	}
 }
 
+void	exit_failure(void)
+{
+	write(2, "Error\n", 6);
+	exit(EXIT_FAILURE);
+}
+
 int	main(int argc, char **argv)
 {
-	int	*a;
-	int	*b;
+	int		*a;
+	int		*b;
 
 	if (argc < 3 || check_arg(argv, argc) == 0)
-		return (0);
+		exit_failure();
 	a = create_a(argc, argv);
 	b = create_b(argc);
 	print_stack(a, b);
 	little_algo(a, b);
 	print_stack(a, b);
-	free(a);
-	free(b);
-	return (0);
+	exit(EXIT_SUCCESS);
 }
