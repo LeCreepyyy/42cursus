@@ -14,4 +14,15 @@
 
 void	big_sort(int *a, int *b)
 {
+	int	i;
+	int	size;
+
+	i = 1;
+	size = lenstack(a);
+	while ((size / 8) * i <= 500)
+	{
+		if ((size / 8) * i)
+			;
+		i++;
+	}
 }
