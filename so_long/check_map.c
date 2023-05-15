@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 09:49:42 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/05/09 10:02:07 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/05/15 10:31:52 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,11 +68,11 @@ int	check_map(char **m, t_ft_mlx	*ft_mlx)
 	if (!ft_mlx->player_p)
 	{
 		ft_printf("Error\nNo spawn point in map !\n");
-		return (0);
+		return (free(temp), 0);
 	}
 	is_possible(m, ft_mlx->player_p[0], ft_mlx->player_p[1]);
 	if (count_item(m) == 0)
-		return (1);
+		return (free(temp), 1);
 	ft_printf("Error\nMap is not possible !\n");
-	return (0);
+	return (free(temp), 0);
 }

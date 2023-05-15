@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 10:05:38 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/05/12 14:30:10 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/05/15 10:36:51 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,24 +39,10 @@ void	ft_hook(mlx_key_data_t keydata, void *param)
 		ft_mlx->img[1]->instances[0].x += 48;
 }
 
-void	print_map(char **tab)
+void	free_png_pixel(mlx_texture_t *mlx_texture)
 {
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 0;
-	while (tab[i])
-	{
-		j = 0;
-		while (tab[i][j])
-		{
-			ft_printf("%c", tab[i][j]);
-			j++;
-		}
-		ft_printf("\n");
-		i++;
-	}
+	free(mlx_texture->pixels);
+	free(mlx_texture);
 }
 
 char	**ft_map(char **tab, char *arg)
@@ -98,22 +84,22 @@ void	ft_window(t_ft_mlx *ft_mlx)
 	ft_mlx->mlx = mlx_init(ft_mlx->width, ft_mlx->height, "so_long", true);
 	texture = mlx_load_png("assets/grass.png");
 	ft_mlx->img[0] = mlx_texture_to_image(ft_mlx->mlx, texture);
-	free(texture);
+	free_png_pixel(texture);
 	texture = mlx_load_png("assets/knight.png");
 	ft_mlx->img[1] = mlx_texture_to_image(ft_mlx->mlx, texture);
-	free(texture);
+	free_png_pixel(texture);
 	texture = mlx_load_png("assets/tree.png");
 	ft_mlx->img[2] = mlx_texture_to_image(ft_mlx->mlx, texture);
-	free(texture);
+	free_png_pixel(texture);
 	texture = mlx_load_png("assets/flower.png");
 	ft_mlx->img[3] = mlx_texture_to_image(ft_mlx->mlx, texture);
-	free(texture);
+	free_png_pixel(texture);
 	texture = mlx_load_png("assets/princess.png");
 	ft_mlx->img[4] = mlx_texture_to_image(ft_mlx->mlx, texture);
-	free(texture);
+	free_png_pixel(texture);
 	texture = mlx_load_png("assets/enemy.png");
 	ft_mlx->img[5] = mlx_texture_to_image(ft_mlx->mlx, texture);
-	free(texture);
+	free_png_pixel(texture);
 	display_map(ft_mlx, 0, 0);
 }
 
@@ -143,9 +129,5 @@ int	main(int argc, char **argv)
 	mlx_terminate(ft_mlx->mlx);
 	free_tab(ft_mlx->map);
 	ft_printf("Total move : %d\n", (ft_mlx->moov - 1));
-	free_tab(tab);
-	free(ft_mlx->player_p);
-	free(ft_mlx);
-	system("leaks so_long");
-	return (0);
+	return (free_tab(tab), free(ft_mlx->player_p), free(ft_mlx), 0);
 }

@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 10:08:22 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/05/12 14:37:20 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/05/15 10:34:52 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,13 +71,15 @@ char	**dup_map(char **map)
 
 void	ft_collect(t_ft_mlx *ft_mlx)
 {
-	int	i;
-	int	j;
+	int				i;
+	int				j;
+	mlx_texture_t	*texture;
 
 	i = 0;
+	texture = mlx_load_png("assets/flower.png");
 	mlx_delete_image(ft_mlx->mlx, ft_mlx->img[3]);
-	ft_mlx->img[3] = mlx_texture_to_image(ft_mlx->mlx,
-			mlx_load_png("assets/flower.png"));
+	ft_mlx->img[3] = mlx_texture_to_image(ft_mlx->mlx, texture);
+	free_png_pixel(texture);
 	while (ft_mlx->map[i])
 	{
 		j = 0;

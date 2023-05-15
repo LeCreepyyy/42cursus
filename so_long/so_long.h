@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 10:01:04 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/05/09 14:20:08 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/05/15 10:17:42 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ int		count_item(char **map);
 int		*position_p(char **map);
 int		check_border(char **map);
 void	delete_n(char *map);
-void	print_map(char **tab);
 
 // create map
 
@@ -52,5 +51,6 @@ char	**dup_map(char **map);
 int		len_tab(char **map);
 int		ft_action(t_ft_mlx *ft_mlx, int y, int x);
 void	free_return_error(t_ft_mlx *ft_mlx);
+void	free_png_pixel(mlx_texture_t *mlx_texture);
 
 #endif
