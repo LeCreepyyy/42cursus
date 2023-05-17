@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 15:19:38 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/05/15 15:20:37 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/05/17 15:25:38 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,6 @@
 
 void	big_sort(int *a, int *b)
 {
-	int	i;
-	int	size;
-
-	i = 1;
-	size = lenstack(a);
-	while ((size / 8) * i <= 500)
-	{
-		if ((size / 8) * i)
-			;
-		i++;
-	}
+	while (a[0] != 0)
+		get_push(a, b);
 }
