@@ -16,4 +16,6 @@ void	big_sort(int *a, int *b)
 {
 	while (a[0] != 0)
 		get_push(a, b);
+	while (b[0] != 0)
+		push(a, b, 'a');
 }
