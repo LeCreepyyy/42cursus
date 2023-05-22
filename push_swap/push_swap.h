@@ -36,6 +36,7 @@ void	check_size(int *a, int *b);
 void	is_two_arg(int *a);
 void	r_sort_three(int *a);
 void	get_push_b(int *b, int *a);
+int		is_sort(int	*stack);
 
 // ~For arguments~
 int		check_arg(char **arg, int count);
