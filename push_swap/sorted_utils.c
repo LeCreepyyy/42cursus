@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 11:18:46 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/05/15 15:20:00 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/05/22 10:07:00 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,24 @@ void	get_push(int *a, int *b)
 	while (i == (lenstack(a) / 2) && a[0] != get_min(a))
 		rotate(a, 'a');
 	push(b, a, 'b');
+}
+
+void	get_push_b(int *b, int *a)
+{
+	int	i;
+
+	i = 0;
+	while (b[i] != 0 && i != (lenstack(b) / 2))
+	{
+		if (b[lenstack(b) - i] == get_min(b))
+			break ;
+		i++;
+	}
+	while (i < (lenstack(b) / 2) && b[0] != get_min(b))
+		r_rotate(b, 'b');
+	while (i == (lenstack(b) / 2) && b[0] != get_min(b))
+		rotate(b, 'b');
+	push(a, b, 'a');
 }
 
 void	get_push_max(int *a, int *b)

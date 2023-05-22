@@ -6,16 +6,45 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 15:19:38 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/05/17 15:25:38 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/05/22 13:39:23 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	big_sort(int *a, int *b)
+int	visual_tab(int *stack, int nbr)
 {
-	while (a[0] != 0)
-		get_push(a, b);
-	while (b[0] != 0)
-		push(a, b, 'a');
+	int	i;
+
+	i = 0;
+	while (stack[i])
+	{
+		if (stack[i] < nbr)
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+void	big_sort(int *a, int *b, int x)
+{
+	int	size;
+	int	i;
+
+	i = 1;
+	size = lenstack(a);
+	while (i <= x)
+	{
+		if (a[0] <= size / i)
+			push(b, a, 'b');
+		else
+			rotate(a, 'a');
+		if (visual_tab(a, size / i) == 0)
+			i++;
+	}
+}
+
+void	check_size(int *a, int *b)
+{
+	big_sort(a, b, 4);
 }

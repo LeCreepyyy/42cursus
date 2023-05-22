@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 10:03:06 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/05/17 15:25:46 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/05/22 10:21:53 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,10 @@ void	little_algo(int *a, int *b);
 void	get_push(int *a, int *b);
 int		get_min(int *stack);
 int		get_max(int *stack);
-void	big_sort(int *a, int *b);
+void	check_size(int *a, int *b);
 void	is_two_arg(int *a);
 void	r_sort_three(int *a);
+void	get_push_b(int *b, int *a);
 
 // ~For arguments~
 int		check_arg(char **arg, int count);
