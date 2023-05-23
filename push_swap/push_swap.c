@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 10:02:33 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/05/22 10:22:06 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/05/23 11:14:54 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,11 @@ int	main(int argc, char **argv)
 		exit_failure();
 	a = create_a(argc, argv);
 	b = create_b(argc);
-	print_stack(a, b);
-	if (argc < 6)
+	// print_stack(a, b);
+	if (argc <= 6)
 		little_algo(a, b);
 	else
 		check_size(a, b);
-	print_stack(a, b);
+	// print_stack(a, b);
 	exit(EXIT_SUCCESS);
 }
