@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 10:03:06 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/05/23 10:05:42 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/05/25 13:18:57 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ int		*create_a(int argc, char **argv);
 int		*create_b(int argc);
 
 // ~Function utils~
-void	ft_putstr_fd(char *str, int fd);
 int		ft_strlen(char *str);
 long	ft_atoi(char *nb);
 int		lenstack(int *tab);

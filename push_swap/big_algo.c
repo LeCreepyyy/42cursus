@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 15:19:38 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/05/24 15:52:52 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/05/25 13:40:58 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,20 +20,6 @@ int	find_nbr(int *stack, int limit)
 	while (stack[i])
 	{
 		if (stack[i] < limit)
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
-int	nbr_is_up(int *a, int split)
-{
-	int	i;
-
-	i = 0;
-	while (a[i] < (lenstack(a) / 2))
-	{
-		if (a[i] < split)
 			return (1);
 		i++;
 	}
@@ -65,10 +51,8 @@ void	big_sort(int *a, int *b, int package)
 			push(b, a, 'b');
 			spliter(b, add, split);
 		}
-		else if (!nbr_is_up(a, split))
-			rotate(a, 'a');
 		else
-			r_rotate(a, 'a');
+			rotate(a, 'a');
 		if (!find_nbr(a, split))
 			split += add;
 	}
@@ -80,5 +64,10 @@ void	big_sort(int *a, int *b, int package)
 
 void	check_size(int *a, int *b)
 {
-	big_sort(a, b, 8);
+	if (lenstack(a) <= 100)
+		big_sort(a, b, 4);
+	else if (lenstack(a) <= 500)
+		big_sort(a, b, 8);
+	else if (lenstack(a) > 500)
+		big_sort(a, b, 12);
 }
