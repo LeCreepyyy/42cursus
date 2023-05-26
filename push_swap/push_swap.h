@@ -48,5 +48,9 @@ int		ft_strlen(char *str);
 long	ft_atoi(char *nb);
 int		lenstack(int *tab);
 int		len_tab(char **tab);
+char	**ft_split(char *str, char car);
+char	*ft_strjoin(char *dst, char *src);
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
+
 
 #endif

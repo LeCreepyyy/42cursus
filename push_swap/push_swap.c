@@ -31,11 +31,37 @@ void	exit_failure(void)
 	exit(EXIT_FAILURE);
 }
 
+void	print_tab(char **tab)
+{
+	int i = 0;
+	while (tab[i])
+	{
+		printf("%s\n", tab[i]);
+		i++;
+	}
+}
+
+char	**transform_arg(char **argv)
+{
+	argv[1] = ft_strjoin("none ", argv[1]);
+	if (!argv[1])
+		exit_failure();
+	argv = ft_split(argv[1], ' ');
+	if (!argv)
+		exit_failure();
+	return (argv);
+}
+
 int	main(int argc, char **argv)
 {
 	int		*a;
 	int		*b;
 
+	if (argc == 2)
+	{
+		argv = transform_arg(argv);
+		argc = len_tab(argv);
+	}
 	if (argc < 3 || check_arg(argv, argc) == 0)
 		exit_failure();
 	a = create_a(argc, argv);

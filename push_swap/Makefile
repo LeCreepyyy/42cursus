@@ -20,7 +20,9 @@ SRC = push_swap.c\
 		double_move.c\
 		sorted.c\
 		sorted_utils.c\
-		big_algo.c
+		big_algo.c\
+		ft_split.c\
+		ft_strjoin.c
 
 OBJ = ${SRC:.c=.o}
 

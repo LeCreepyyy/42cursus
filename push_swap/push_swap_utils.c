@@ -35,6 +35,26 @@ long	ft_atoi(char *nb)
 	return (n);
 }
 
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+{
+	size_t	i;
+	size_t	sz;
+
+	sz = 0;
+	while (src[sz])
+		sz++;
+	if (dstsize == 0)
+		return (sz);
+	i = 0;
+	while (i < dstsize - 1 && src[i])
+	{
+		dst[i] = src[i];
+		i++;
+	}
+	dst[i] = '\0';
+	return (sz);
+}
+
 int	len_tab(char **tab)
 {
 	int	i;
