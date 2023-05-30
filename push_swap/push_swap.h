@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 10:03:06 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/05/25 13:18:57 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/05/30 13:46:06 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,5 @@ int		len_tab(char **tab);
 char	**ft_split(char *str, char car);
 char	*ft_strjoin(char *dst, char *src);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
-
 
 #endif

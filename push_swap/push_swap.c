@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 10:02:33 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/05/25 13:19:10 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/05/30 12:47:52 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,20 +25,17 @@ void	print_stack(int *stack, int *b)
 	}
 }
 
+void	is_two_arg(int *a)
+{
+	if (a[0] > a[1])
+		swap(a, 'a');
+	return ;
+}
+
 void	exit_failure(void)
 {
 	write(2, "Error\n", 6);
 	exit(EXIT_FAILURE);
-}
-
-void	print_tab(char **tab)
-{
-	int i = 0;
-	while (tab[i])
-	{
-		printf("%s\n", tab[i]);
-		i++;
-	}
 }
 
 char	**transform_arg(char **argv)

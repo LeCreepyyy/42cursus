@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 11:18:46 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/05/26 14:33:24 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/05/30 15:11:52 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,45 +42,10 @@ void	get_push_b(int *b, int *a)
 		i++;
 	}
 	while (i < (lenstack(b) / 2) && b[0] != get_max(b))
-	{
-		if (b[0] == (get_max(b) - 1))
-			push(a, b, 'a');
 		r_rotate(b, 'b');
-	}
 	while (i == (lenstack(b) / 2) && b[0] != get_max(b))
-	{
-		if (b[0] == (get_max(b) - 1))
-			push(a, b, 'a');
 		rotate(b, 'b');
-	}
 	push(a, b, 'a');
-	if (a[0] > a[1])
-		swap(a, 'a');
-}
-
-void	get_push_max(int *a, int *b)
-{
-	int	i;
-
-	i = 0;
-	while (a[i] != 0 && i != (lenstack(a) / 2))
-	{
-		if (a[lenstack(a) - i] == get_max(a))
-			break ;
-		i++;
-	}
-	while (i < (lenstack(a) / 2) && a[0] != get_max(a))
-		r_rotate(a, 'a');
-	while (i == (lenstack(a) / 2) && a[0] != get_max(a))
-		rotate(a, 'a');
-	push(b, a, 'b');
-}
-
-void	is_two_arg(int *a)
-{
-	if (a[0] > a[1])
-		swap(a, 'a');
-	return ;
 }
 
 void	r_sort_three(int *a)
