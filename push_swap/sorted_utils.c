@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 11:18:46 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/05/30 15:11:52 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/05/31 15:23:10 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,22 @@ void	get_push_b(int *b, int *a)
 		i++;
 	}
 	while (i < (lenstack(b) / 2) && b[0] != get_max(b))
-		r_rotate(b, 'b');
+	{
+		if (b[0] == get_max(b) - 1)
+			push(a, b, 'a');
+		else
+			r_rotate(b, 'b');
+	}
 	while (i == (lenstack(b) / 2) && b[0] != get_max(b))
-		rotate(b, 'b');
+	{
+		if (b[0] == get_max(b) - 1)
+			push(a, b, 'a');
+		else
+			rotate(b, 'b');
+	}
 	push(a, b, 'a');
+	if (a[1] && a[0] > a[1])
+		swap(a, 'a');
 }
 
 void	r_sort_three(int *a)

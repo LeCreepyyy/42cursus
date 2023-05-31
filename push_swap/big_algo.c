@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 15:19:38 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/05/26 14:44:22 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/05/31 15:11:43 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,9 @@ void	big_sort(int *a, int *b, int package)
 	while (a[0])
 		push(b, a, 'b');
 	while (b[0])
+	{
 		get_push_b(b, a);
+	}
 }
 
 void	check_size(int *a, int *b)
