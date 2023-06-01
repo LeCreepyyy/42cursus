@@ -57,7 +57,7 @@ int	main(int argc, char **argv)
 	b = create_b(argc);
 	while (is_sort(a) == 1 && b[0] == 0)
 	{
-		if (ft_strncmp("sa\n", get_next_line(STDIN_FILENO), 3) != 0)
+		if (ft_strncmp("sa\n", get_next_line(STDIN_FILENO), 3) == 0)
 			s(a);
 	}
 	exit(EXIT_SUCCESS);
