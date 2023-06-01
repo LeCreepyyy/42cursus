@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 12:59:26 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/05/23 10:25:31 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/06/01 10:16:25 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	get_max(int *stack)
 	int	max;
 
 	i = 0;
-	max = 0;
+	max = stack[0];
 	while (stack[i] != 0)
 	{
 		if (stack[i] > max)

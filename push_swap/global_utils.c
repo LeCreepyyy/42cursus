@@ -1,42 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   global_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/26 20:23:35 by marvin            #+#    #+#             */
-/*   Updated: 2023/06/01 14:16:14 by vpoirot          ###   ########.fr       */
+/*   Created: 2023/06/01 13:34:59 by vpoirot           #+#    #+#             */
+/*   Updated: 2023/06/01 13:35:45 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-char	*ft_strjoin_n(char *dst, char *src)
+void	is_two_arg(int *a)
 {
-	int		i;
-	int		j;
-	char	*str;
+	if (a[0] > a[1])
+		swap(a, 'a');
+	return ;
+}
 
-	i = 0;
-	j = 0;
-	if (!src)
-		return (NULL);
-	if (!dst)
-		return (src);
-	str = malloc(((ft_strlen(dst) + ft_strlen(src)) + 1) * sizeof(char));
-	if (!str)
-		return (NULL);
-	if (dst)
-	{
-		while (dst[i])
-		{
-			str[i] = dst[i];
-			i++;
-		}
-	}
-	while (src[j])
-		str[i++] = src[j++];
-	str[i] = 0;
-	return (str);
+void	exit_failure(void)
+{
+	write(2, "Error\n", 6);
+	exit(EXIT_FAILURE);
+}
+
+char	**transform_arg(char **argv)
+{
+	argv[1] = ft_strjoin("none ", argv[1]);
+	if (!argv[1])
+		exit_failure();
+	argv = ft_split(argv[1], ' ');
+	if (!argv)
+		exit_failure();
+	return (argv);
 }

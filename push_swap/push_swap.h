@@ -6,13 +6,14 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 10:03:06 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/05/30 13:46:06 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/06/01 14:24:50 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
+# include "get_next_line.h"
 # include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
@@ -25,6 +26,11 @@ void	r_rotate(int *tab, char c);
 void	push(int *dest, int *stack, char c);
 void	rr(int *a, int *b);
 void	rrr(int *a, int *b);
+// (for checker)
+void	s(int *stack);
+void	r(int *tab);
+void	r_r(int *tab);
+void	p(int *dest, int *stack);
 
 // ~For sort~
 void	sort_three(int *a);
@@ -49,7 +55,9 @@ long	ft_atoi(char *nb);
 int		lenstack(int *tab);
 int		len_tab(char **tab);
 char	**ft_split(char *str, char car);
-char	*ft_strjoin(char *dst, char *src);
+char	*ft_strjoin_n(char *dst, char *src);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
+void	exit_failure(void);
+char	**transform_arg(char **argv);
 
 #endif

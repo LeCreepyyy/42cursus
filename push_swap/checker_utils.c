@@ -1,34 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   move.c                                             :+:      :+:    :+:   */
+/*   checker_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/04 13:24:20 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/06/01 10:20:45 by vpoirot          ###   ########.fr       */
+/*   Created: 2023/06/01 14:14:48 by vpoirot           #+#    #+#             */
+/*   Updated: 2023/06/01 14:24:42 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	swap(int *stack, char c)
+void	s(int *stack)
 {
 	int	temp;
 
 	temp = stack[0];
 	stack[0] = stack[1];
 	stack[1] = temp;
-	if (c)
-	{
-		write(1, "s", 1);
-		write(1, &c, 1);
-		write(1, "\n", 1);
-	}
 }
 
-// ↑ up rotate
-void	rotate(int *tab, char c)
+void	r(int *tab)
 {
 	int	temp;
 	int	i;
@@ -40,15 +33,9 @@ void	rotate(int *tab, char c)
 		tab[i] = tab[i - 1];
 		tab[i - 1] = temp;
 	}
-	if (c)
-	{
-		write(1, "r", 1);
-		write(1, &c, 1);
-		write(1, "\n", 1);
-	}
 }
 
-void	r_rotate(int *tab, char c)
+void	r_r(int *tab)
 {
 	int	temp;
 	int	i;
@@ -61,15 +48,9 @@ void	r_rotate(int *tab, char c)
 		tab[i - 1] = temp;
 		i--;
 	}
-	if (c)
-	{
-		write(1, "rr", 2);
-		write(1, &c, 1);
-		write(1, "\n", 1);
-	}
 }
 
-void	push(int *dest, int *stack, char c)
+void	p(int *dest, int *stack)
 {
 	int	i;
 	int	temp;
@@ -93,7 +74,4 @@ void	push(int *dest, int *stack, char c)
 		stack[i + 1] = temp;
 		i++;
 	}
-	write(1, "p", 1);
-	write(1, &c, 1);
-	write(1, "\n", 1);
 }
