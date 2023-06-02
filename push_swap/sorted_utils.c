@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 11:18:46 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/06/01 10:53:24 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/06/02 14:56:28 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,10 @@ void	get_push_b(int *b, int *a)
 	int	i;
 	int	size;
 
-	i = 0;
-	while (b[i] != 0 && i != (lenstack(b) / 2))
-	{
+	i = -1;
+	while (b[++i] != 0 && i != (lenstack(b) / 2))
 		if (b[lenstack(b) - i] == get_max(b))
 			break ;
-		i++;
-	}
 	size = lenstack(b) / 2;
 	while (i < size && b[0] != get_max(b))
 	{

@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 13:34:59 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/06/01 13:35:45 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/06/02 13:42:29 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	exit_failure(void)
 
 char	**transform_arg(char **argv)
 {
-	argv[1] = ft_strjoin("none ", argv[1]);
+	argv[1] = ft_strjoin_n("none ", argv[1]);
 	if (!argv[1])
 		exit_failure();
 	argv = ft_split(argv[1], ' ');

@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 11:01:42 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/06/01 14:41:22 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/06/02 14:53:50 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,45 +41,49 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	return (0);
 }
 
-void	grep_move(int *a, int *b)
+void	grep_move(char *line, int *a, int *b)
 {
-	if (ft_strncmp("sa\n", get_next_line(STDIN_FILENO), 3) == 0)
+	(void)b;
+	if (line && ft_strncmp("sa\n", line, 3) == 0)
 		s(a);
-	else if (ft_strncmp("sb\n", get_next_line(STDIN_FILENO), 3) == 0)
+	else if (line && ft_strncmp("sb\n", line, 3) == 0)
 		s(b);
-	else if (ft_strncmp("pa\n", get_next_line(STDIN_FILENO), 3) == 0)
+	else if (line && ft_strncmp("pa\n", line, 3) == 0)
 		p(a, b);
-	else if (ft_strncmp("pb\n", get_next_line(STDIN_FILENO), 3) == 0)
+	else if (line && ft_strncmp("pb\n", line, 3) == 0)
 		p(b, a);
-	else if (ft_strncmp("ra\n", get_next_line(STDIN_FILENO), 3) == 0)
+	else if (line && ft_strncmp("ra\n", line, 3) == 0)
 		r(a);
-	else if (ft_strncmp("rb\n", get_next_line(STDIN_FILENO), 3) == 0)
+	else if (line && ft_strncmp("rb\n", line, 3) == 0)
 		r(b);
-	else if (ft_strncmp("ss\n", get_next_line(STDIN_FILENO), 3) == 0)
+	else if (line && ft_strncmp("rra\n", line, 4) == 0)
+		r_r(a);
+	else if (line && ft_strncmp("rrb\n", line, 4) == 0)
+		r_r(b);
+	else if (line && ft_strncmp("ss\n", line, 3) == 0)
 	{
 		s(a);
 		s(b);
 	}
-	else if (ft_strncmp("rr\n", get_next_line(STDIN_FILENO), 3) == 0)
+	else if (line && ft_strncmp("rr\n", line, 3) == 0)
 	{
 		r(a);
 		r(b);
 	}
-	else if (ft_strncmp("rra\n", get_next_line(STDIN_FILENO), 3) == 0)
-		r_r(a);
-	else if (ft_strncmp("rrb\n", get_next_line(STDIN_FILENO), 3) == 0)
-		r_r(b);
-	else if (ft_strncmp("rrr\n", get_next_line(STDIN_FILENO), 3) == 0)
+	else if (line && ft_strncmp("rrr\n", line, 4) == 0)
 	{
 		r_r(a);
 		r_r(b);
 	}
+	else if (line && ft_strncmp("\n", line, 1))
+		;
 }
 
 int	main(int argc, char **argv)
 {
 	int		*a;
 	int		*b;
+	char	*line;
 
 	if (argc == 2)
 	{
@@ -90,7 +94,17 @@ int	main(int argc, char **argv)
 		exit_failure();
 	a = create_a(argc, argv);
 	b = create_b(argc);
-	while (is_sort(a) == 1 && b[0] == 0)
-		grep_move(a, b);
+	line = "none";
+	while (line)
+	{
+		line = get_next_line(0);
+		if (line[0] == '\n')
+			break ;
+		grep_move(line, a, b);
+	}
+	if (is_sort(a) == 0)
+		write(1, "OK\n", 3);
+	else
+		write(1, "KO\n", 3);
 	exit(EXIT_SUCCESS);
 }
