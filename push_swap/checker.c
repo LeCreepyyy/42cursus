@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 11:01:42 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/06/02 14:53:50 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/06/02 15:15:42 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,22 +61,19 @@ void	grep_move(char *line, int *a, int *b)
 	else if (line && ft_strncmp("rrb\n", line, 4) == 0)
 		r_r(b);
 	else if (line && ft_strncmp("ss\n", line, 3) == 0)
-	{
-		s(a);
-		s(b);
-	}
+		ss(a, b);
 	else if (line && ft_strncmp("rr\n", line, 3) == 0)
-	{
-		r(a);
-		r(b);
-	}
+		double_r(a, b);
 	else if (line && ft_strncmp("rrr\n", line, 4) == 0)
-	{
-		r_r(a);
-		r_r(b);
-	}
-	else if (line && ft_strncmp("\n", line, 1))
-		;
+		double_rr(a, b);
+}
+
+void	ko_or_ok(int *a, int *b)
+{
+	if (is_sort(a) == 0 && b[0] == 0)
+		write(1, "OK\n", 3);
+	else
+		write(1, "KO\n", 3);
 }
 
 int	main(int argc, char **argv)
@@ -98,13 +95,10 @@ int	main(int argc, char **argv)
 	while (line)
 	{
 		line = get_next_line(0);
-		if (line[0] == '\n')
+		if (line && line[0] == '\n')
 			break ;
 		grep_move(line, a, b);
 	}
-	if (is_sort(a) == 0)
-		write(1, "OK\n", 3);
-	else
-		write(1, "KO\n", 3);
+	ko_or_ok(a, b);
 	exit(EXIT_SUCCESS);
 }

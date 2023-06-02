@@ -6,11 +6,12 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 14:14:48 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/06/01 14:24:42 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/06/02 14:59:07 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
 
 void	s(int *stack)
 {
@@ -19,6 +20,12 @@ void	s(int *stack)
 	temp = stack[0];
 	stack[0] = stack[1];
 	stack[1] = temp;
+}
+
+void	ss(int *a, int *b)
+{
+	s(a);
+	s(b);
 }
 
 void	r(int *tab)

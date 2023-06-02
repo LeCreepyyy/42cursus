@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 10:03:06 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/06/01 14:24:50 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/06/02 15:18:32 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,9 @@ void	s(int *stack);
 void	r(int *tab);
 void	r_r(int *tab);
 void	p(int *dest, int *stack);
+void	ss(int *a, int *b);
+void	rotate_checker(int *a, int *b);
+void	rrotate_checker(int *a, int *b);
 
 // ~For sort~
 void	sort_three(int *a);
