@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 11:01:42 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/06/05 10:31:04 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/06/05 15:32:01 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,8 @@ void	ko_or_ok(int *a, int *b)
 		write(1, "OK\n", 3);
 	else
 		write(1, "KO\n", 3);
+	free(a);
+	free(b);
 }
 
 int	main(int argc, char **argv)
@@ -83,6 +85,8 @@ int	main(int argc, char **argv)
 	int		*b;
 	char	*line;
 
+	if (argc == 1)
+		return (0);
 	if (argc == 2)
 	{
 		argv = transform_arg(argv);
@@ -101,7 +105,5 @@ int	main(int argc, char **argv)
 		grep_move(line, a, b);
 	}
 	ko_or_ok(a, b);
-	free(a);
-	free(b);
 	exit(EXIT_SUCCESS);
 }

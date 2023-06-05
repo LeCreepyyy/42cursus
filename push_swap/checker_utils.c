@@ -6,12 +6,11 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 14:14:48 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/06/02 14:59:07 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/06/05 13:33:53 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
 
 void	s(int *stack)
 {
