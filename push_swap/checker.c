@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 11:01:42 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/06/02 15:15:42 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/06/05 10:31:04 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 
 void	grep_move(char *line, int *a, int *b)
 {
-	(void)b;
 	if (line && ft_strncmp("sa\n", line, 3) == 0)
 		s(a);
 	else if (line && ft_strncmp("sb\n", line, 3) == 0)
@@ -63,9 +62,11 @@ void	grep_move(char *line, int *a, int *b)
 	else if (line && ft_strncmp("ss\n", line, 3) == 0)
 		ss(a, b);
 	else if (line && ft_strncmp("rr\n", line, 3) == 0)
-		double_r(a, b);
+		rotate_checker(a, b);
 	else if (line && ft_strncmp("rrr\n", line, 4) == 0)
-		double_rr(a, b);
+		rrotate_checker(a, b);
+	else if (line)
+		exit_failure();
 }
 
 void	ko_or_ok(int *a, int *b)
@@ -100,5 +101,7 @@ int	main(int argc, char **argv)
 		grep_move(line, a, b);
 	}
 	ko_or_ok(a, b);
+	free(a);
+	free(b);
 	exit(EXIT_SUCCESS);
 }

@@ -6,7 +6,7 @@
 #    By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/12 10:11:10 by vpoirot           #+#    #+#              #
-#    Updated: 2023/06/02 15:06:57 by vpoirot          ###   ########.fr        #
+#    Updated: 2023/06/05 10:15:17 by vpoirot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,8 @@ SRC = push_swap.c\
 		ft_strjoin.c\
 		global_utils.c\
 		get_next_line.c\
-		get_next_line_utils.c
+		get_next_line_utils.c\
+		checker_utils.c
 
 SRC_BNS = checker.c\
 		checking_arg.c\
