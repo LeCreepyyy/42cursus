@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 11:09:43 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/06/06 13:46:47 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/06/06 14:55:54 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,5 @@ int	main(int argc, char **argv)
 		return (0);
 	grep_info(s_philo, argv);
 	start_routine(s_philo);
-	return (0);
+	return (free(s_philo), 0);
 }

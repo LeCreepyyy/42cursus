@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 11:09:06 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/06/06 13:52:22 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/06/06 14:44:12 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,5 @@ void	start_routine(t_philo *s_philo);
 //utils
 int		ft_strlen(char *str);
 int		ft_atoi(const char *nptr);
-char	*ft_strjoin(char *dst, char *src, int i);
 
 #endif
