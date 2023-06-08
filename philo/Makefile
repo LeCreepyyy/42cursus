@@ -1,41 +1,60 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/06/06 11:15:44 by vpoirot           #+#    #+#              #
-#    Updated: 2023/06/06 13:36:22 by vpoirot          ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+#  |  |  ___ \    \  |         |
+#  |  |     ) |  |\/ |   _  |  |  /   _
+# ___ __|  __/   |   |  (   |    <    __/
+#    _|  _____| _|  _| \__,_| _|\_\ \___|
+#                              by jcluzet
+################################################################################
+#                                     CONFIG                                   #
+################################################################################
 
-NAME = philo.a
+NAME        := philo
+CC        := gcc
+FLAGS    := -Wall -Wextra -Werror
+################################################################################
+#                                 PROGRAM'S SRCS                               #
+################################################################################
 
-SRC = main.c\
-		utils.c\
-		routine.c
+SRCS        :=      main.c \
+                          routine.c \
+                          utils.c \
 
-OBJ = ${SRC:.c=.o}
+OBJS        := $(SRCS:.c=.o)
 
-CFLAGS = -Wall -Wextra -Werror -pthread
+.c.o:
+	@${CC} ${FLAGS} -c $< -o ${<:.c=.o}
 
-CC = @cc ${CFLAGS}
+################################################################################
+#                                  Makefile  objs                              #
+################################################################################
 
-$(NAME): ${OBJ}
-	@printf "\x1b[33mLoading\r"
-	@ar rc ${NAME} ${OBJ}
-	@${CC} ${SRC} -o philo
-	@printf "\x1b[32mFinish !\n"
 
-all: ${NAME} ${OBJ}
+CLR_RMV		:= \033[0m
+RED		    := \033[1;31m
+GREEN		:= \033[1;32m
+YELLOW		:= \033[1;33m
+BLUE		:= \033[1;34m
+CYAN 		:= \033[1;36m
+RM		    := rm -f
+
+${NAME}:	${OBJS}
+			@echo "$(GREEN)Compilation ${CLR_RMV}of ${YELLOW}$(NAME) ${CLR_RMV}..."
+			@${CC} ${FLAGS} -o ${NAME} ${OBJS}
+			@echo "$(GREEN)$(NAME) created[0m ✔️"
+
+all:		${NAME}
+
+bonus:		all
 
 clean:
-	@rm -f *.o
+			@ ${RM} *.o */*.o */*/*.o
+			@ echo "$(RED)Deleting $(CYAN)$(NAME) $(CLR_RMV)objs ✔️"
 
-fclean: clean
-	@rm -f ${NAME}
-	@rm -f philo
-	@printf "\x1b[31mDelete files !\n"
+fclean:		clean
+			@ ${RM} ${NAME}
+			@ echo "$(RED)Deleting $(CYAN)$(NAME) $(CLR_RMV)binary ✔️"
 
-re: fclean all
+re:			fclean all
+
+.PHONY:		all clean fclean re
+
+
