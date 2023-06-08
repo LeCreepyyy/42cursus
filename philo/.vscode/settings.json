@@ -1,0 +1,10 @@
+{
+	"files.associations": {
+		"__threading_support": "c",
+		"philo.h": "c",
+		"unistd.h": "c",
+		"stdio.h": "c",
+		"stdlib.h": "c",
+		"pthread.h": "c"
+	}
+}

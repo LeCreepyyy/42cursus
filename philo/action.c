@@ -1,39 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.h                                            :+:      :+:    :+:   */
+/*   action.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/06 11:09:06 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/06/08 14:59:25 by vpoirot          ###   ########.fr       */
+/*   Created: 2023/06/08 15:20:27 by vpoirot           #+#    #+#             */
+/*   Updated: 2023/06/08 15:30:12 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHILO_H
-# define PHILO_H
+#include "philo.h"
 
-# include <stdio.h>
-# include <unistd.h>
-# include <stdlib.h>
-# include <pthread.h>
-
-typedef struct s_philo {
-	int	*philo;
-	int	number;
-	int	death_time;
-	int	eat;
-	int	sleep;
-	int	limit;
-	int	fork;
-	int	died;
-}	t_philo;
-
-//fonction
-void	start_routine(t_philo *s_philo);
-
-//utils
-int		ft_strlen(char *str);
-int		ft_atoi(const char *nptr);
-
-#endif
+void	take_fork(t_philo *s_philo, int philo)
+{
+	s_philo->fork--;
+	write(1, 0, 0);
+}
