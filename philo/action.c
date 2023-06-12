@@ -6,13 +6,13 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 15:20:27 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/06/08 15:30:12 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/06/12 11:13:55 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	take_fork(t_philo *s_philo, int philo)
+void	take_fork(t_philo *s_philo)
 {
 	s_philo->fork--;
 	write(1, 0, 0);
