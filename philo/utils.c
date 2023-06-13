@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 11:34:01 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/06/06 14:38:09 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/06/13 11:06:22 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,30 @@ int	ft_atoi(const char *nptr)
 		nb = (nb * 10) + (nptr[i++] - '0');
 	nb *= mult;
 	return (nb);
+}
+
+char	*ft_itoa(int nb)
+{
+	int		len;
+	int		div;
+	char	*res;
+
+	div = 1;
+	len = 0;
+	while (nb / div != 0)
+	{
+		div *= 10;
+		len++;
+	}
+	res = malloc(sizeof(char) * (len + 1));
+	if (!res)
+		return (0);
+	div /= 10;
+	res[len] = 0;
+	while (--len >= 0)
+	{
+		res[len] = (nb % 10) + 48;
+		nb /= 10;
+	}
+	return (res);
 }

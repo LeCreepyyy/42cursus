@@ -6,17 +6,11 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 11:09:43 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/06/12 11:20:37 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/06/13 14:29:41 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
-void	free_philo_stc(t_philo *stc)
-{
-	free(stc->philo);
-	free(stc);
-}
 
 void	grep_info(t_philo *s_philo, char **argv)
 {
@@ -28,7 +22,7 @@ void	grep_info(t_philo *s_philo, char **argv)
 	if (argv[5])
 		s_philo->limit = ft_atoi(argv[5]);
 	s_philo->fork = s_philo->number;
-	s_philo->philo = malloc(sizeof(int) * (s_philo->number + 1));
+	s_philo->philo = 1;
 }
 
 int	verif_info(t_philo *s_philo)
@@ -43,7 +37,7 @@ int	exit_error(char *str, t_philo *stc)
 	write(1, "[ERROR] ", 8);
 	write(1, str, ft_strlen(str));
 	if (stc)
-		free_philo_stc(stc);
+		free(stc);
 	return (0);
 }
 
@@ -57,11 +51,8 @@ int	main(int argc, char **argv)
 	if (!s_philo)
 		return (0);
 	grep_info(s_philo, argv);
-	if (!s_philo->philo)
-		return (free(s_philo), 0);
 	if (verif_info(s_philo) == 1)
 		return (exit_error("Wrong parameter !\n", s_philo));
 	start_routine(s_philo);
-	system("leaks philo");
 	return (free(s_philo), 0);
 }

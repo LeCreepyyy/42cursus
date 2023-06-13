@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 15:20:27 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/06/12 11:13:55 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/06/13 14:30:06 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,15 @@
 
 void	take_fork(t_philo *s_philo)
 {
-	s_philo->fork--;
-	write(1, 0, 0);
+	if (s_philo->fork < 2)
+		return ;
+	if (s_philo->philo == (s_philo->number + 1))
+		s_philo->philo = 1;
+	s_philo->fork -= 2;
+	write(1, ft_itoa(s_philo->philo), 1);
+	write(1, " has taken a fork\n", 18);
+	write(1, ft_itoa(s_philo->philo), 1);
+	write(1, " is eating\n", 10);
+	usleep(s_philo->eat);
+	s_philo->philo++;
 }

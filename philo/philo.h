@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 11:09:06 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/06/12 11:20:27 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/06/13 14:19:34 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <pthread.h>
 
 typedef struct s_philo {
-	int	*philo;
+	int	philo;
 	int	number;
 	int	death_time;
 	int	eat;
@@ -31,9 +31,11 @@ typedef struct s_philo {
 
 //fonction
 void	start_routine(t_philo *s_philo);
+void	take_fork(t_philo *s_philo);
 
 //utils
 int		ft_strlen(char *str);
 int		ft_atoi(const char *nptr);
+char	*ft_itoa(int nb);
 
 #endif
