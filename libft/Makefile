@@ -6,7 +6,7 @@
 #    By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/03 14:22:20 by vpoirot           #+#    #+#              #
-#    Updated: 2022/12/05 15:37:06 by vpoirot          ###   ########.fr        #
+#    Updated: 2023/06/15 14:06:20 by vpoirot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,20 +61,22 @@ OBJ = ${SRC:.c=.o}
 
 OBJ_BNS = ${SRC_BNS:.c=.o}
 
-CC = cc -Wall -Wextra -Werror
+CC = @cc -Wall -Wextra -Werror
 
 $(NAME): ${SRC} ${OBJ}
-	ar rc ${NAME} ${OBJ}
+	@ar rc ${NAME} ${OBJ}
+	@printf "\x1b[32mLibrary Compiled !\n"
 
 all: ${NAME}
 
 bonus: ${NAME} ${OBJ_BNS}
-		ar rc ${NAME} ${OBJ_BNS}
+	@ar rc ${NAME} ${OBJ_BNS}
 
 clean:
-	rm -f *.o
+	@rm -f *.o
 
 fclean: clean
-	rm -f ${NAME}
+	@rm -f ${NAME}
+	@printf "\x1b[31mFile delete !\n"
 
 re: fclean all

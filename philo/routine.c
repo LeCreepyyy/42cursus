@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 13:36:12 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/06/14 14:04:59 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/06/15 12:34:27 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	erase_thread(pthread_t *philo)
 	while (philo[i])
 	{
 		pthread_join(philo[i], NULL);
+		printf("%d\n", i);
 		i++;
 	}
 }
