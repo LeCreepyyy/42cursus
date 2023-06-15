@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 11:00:56 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/06/15 14:00:24 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/06/15 14:08:39 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,10 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+
+# define YELLOW	"\e[33m"
+# define RED	"\e[31m"
+# define GREEN	"\e[32m"
 
 typedef struct s_list
 {

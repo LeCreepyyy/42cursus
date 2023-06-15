@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 11:09:06 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/06/15 12:38:12 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/06/15 14:44:14 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,13 @@ typedef struct s_philo {
 	int	died;
 }	t_philo;
 
+typedef struct s_mutex {
+	pthread_mutex_t	*m_fork;
+}	t_mutex;
+
 //fonction
 void	start_routine(t_philo *s_philo);
-void	take_fork(t_philo *s_philo);
+void	take_fork(t_philo *s_philo, pthread_mutex_t *mutex);
 
 //utils
 int		ft_strlen(char *str);
