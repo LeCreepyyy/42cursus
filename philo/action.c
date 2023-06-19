@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 15:20:27 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/06/15 15:09:16 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/06/19 11:02:21 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,3 +21,4 @@ void	take_fork(t_philo *s_philo, pthread_mutex_t *mutex)
 	write(1, " has taken a fork\n", 18);
 	s_philo->philo++;
 }
+lol
