@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 13:01:35 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/06/20 14:21:57 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/06/20 14:37:35 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,25 @@ void	check_arg(int i)
 		printf("%s<Time to sleep> %s%dth arg !\n", RED, YELLOW, i);
 }
 
+int	argv_len(char **argv)
+{
+	int	i;
+
+	i = 0;
+	while (argv[i])
+		i++;
+	return (i);
+}
+
 int	exit_error(t_philo *stc, char **argv, char *err)
 {
 	int	i;
 
+	if (argv_len(argv) > 6)
+	{
+		printf("%s[ERROR]%s Too many arg !\n", RED, YELLOW);
+		return (0);
+	}
 	printf("%s[ERROR]%s %s", RED, YELLOW, err);
 	i = -1;
 	while (++i < 5)

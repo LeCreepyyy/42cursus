@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 13:36:12 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/06/20 11:06:20 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/06/20 15:08:55 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,11 @@ void	*ft_routine(void *arg)
 	mutex = malloc(sizeof(pthread_mutex_t));
 	while (s_philo->died == 0)
 	{
-		pthread_mutex_lock(mutex);
+		pthread_mutex_lock(&s_philo->philo);
 		take_fork(s_philo);
-		pthread_mutex_unlock(mutex);
+		pthread_mutex_unlock(&s_philo->philo);
+		sleep(1);
+		s_philo->died = 1;
 	}
 	return (NULL);
 }
