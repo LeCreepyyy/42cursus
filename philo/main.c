@@ -21,8 +21,6 @@ void	grep_info(t_philo *s_philo, char **argv)
 	s_philo->limit = -1;
 	if (argv[5])
 		s_philo->limit = ft_atoi(argv[5]);
-	s_philo->fork = s_philo->number;
-	s_philo->philo = 1;
 }
 
 int	main(int argc, char **argv)

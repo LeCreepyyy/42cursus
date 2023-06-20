@@ -22,21 +22,27 @@
 # define RED	"\e[31m"
 # define GREEN	"\e[32m"
 
+typedef struct s_info {
+	int			rank;
+	pthread_t	thread;
+}	t_info;
+
 typedef struct s_philo {
-	int				philo;
 	int				number;
 	int				death_time;
 	int				eat;
 	int				sleep;
 	int				limit;
-	int				fork;
 	int				died;
+	int				*fork;
+	t_info			*s_info;
 	pthread_mutex_t	*m_fork;
 }	t_philo;
 
 //fonction
 void	start_routine(t_philo *s_philo);
 void	take_fork(t_philo *s_philo);
+void	*ft_routine(void *arg);
 
 //utils
 int		ft_strlen(char *str);
