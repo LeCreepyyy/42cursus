@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 11:09:06 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/06/20 14:20:06 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/06/20 15:26:52 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,15 @@
 # define GREEN	"\e[32m"
 
 typedef struct s_philo {
-	int	philo;
-	int	number;
-	int	death_time;
-	int	eat;
-	int	sleep;
-	int	limit;
-	int	fork;
-	int	died;
+	int				philo;
+	int				number;
+	int				death_time;
+	int				eat;
+	int				sleep;
+	int				limit;
+	int				fork;
+	int				died;
+	pthread_mutex_t	*m_fork;
 }	t_philo;
 
 //fonction
