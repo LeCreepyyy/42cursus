@@ -6,41 +6,25 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 13:36:12 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/06/19 10:28:15 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/06/20 11:06:20 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	erase_mutex(t_mutex *s_mutex)
-{
-	pthread_mutex_destroy(s_mutex->m_fork);
-	free(s_mutex);
-}
-
-void	init_mutex(t_mutex *s_mutex)
-{
-	s_mutex->m_fork = malloc(sizeof(pthread_mutex_t));
-	if (!s_mutex->m_fork)
-		return ;
-	pthread_mutex_init(s_mutex->m_fork, NULL);
-}
-
 void	*ft_routine(void *arg)
 {
-	t_philo	*s_philo;
-	t_mutex	*s_mutex;
+	t_philo			*s_philo;
+	pthread_mutex_t	*mutex;
 
-	s_mutex = malloc(sizeof(t_mutex));
-	init_mutex(s_mutex);
 	s_philo = (t_philo *)arg;
+	mutex = malloc(sizeof(pthread_mutex_t));
 	while (s_philo->died == 0)
 	{
-		if (s_philo->fork >= 2)
-			take_fork(s_philo, s_mutex->m_fork);
-		s_philo->died = 1;
+		pthread_mutex_lock(mutex);
+		take_fork(s_philo);
+		pthread_mutex_unlock(mutex);
 	}
-	erase_mutex(s_mutex);
 	return (NULL);
 }
 

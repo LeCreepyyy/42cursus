@@ -13,7 +13,8 @@ FLAGS	:= -Wall -Wextra -Werror -g -fsanitize=address
 SRCS := main.c\
 			routine.c\
 			utils.c\
-			action.c
+			action.c\
+			error_handle.c
 
 OBJS := $(SRCS:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 11:09:43 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/06/13 14:29:41 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/06/20 14:21:18 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,34 +25,18 @@ void	grep_info(t_philo *s_philo, char **argv)
 	s_philo->philo = 1;
 }
 
-int	verif_info(t_philo *s_philo)
-{
-	if (s_philo->number < 1)
-		return (1);
-	return (0);
-}
-
-int	exit_error(char *str, t_philo *stc)
-{
-	write(1, "[ERROR] ", 8);
-	write(1, str, ft_strlen(str));
-	if (stc)
-		free(stc);
-	return (0);
-}
-
 int	main(int argc, char **argv)
 {
 	t_philo	*s_philo;
 
 	if (argc < 5 || argc > 6)
-		return (exit_error("Missing or too many parameters !\n", NULL));
+		return (exit_error(NULL, argv, "Missing arg :"));
 	s_philo = malloc(sizeof(t_philo));
 	if (!s_philo)
 		return (0);
 	grep_info(s_philo, argv);
-	if (verif_info(s_philo) == 1)
-		return (exit_error("Wrong parameter !\n", s_philo));
+	if (s_philo->number < 1)
+		return (exit_error(s_philo, argv, "Count of philo is to lower\n"));
 	start_routine(s_philo);
 	return (free(s_philo), 0);
 }
