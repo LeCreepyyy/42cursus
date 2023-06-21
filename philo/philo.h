@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 11:09:06 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/06/20 15:26:52 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/06/21 13:05:08 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,6 @@ int		ft_strlen(char *str);
 int		ft_atoi(const char *nptr);
 char	*ft_itoa(int nb);
 int		exit_error(t_philo *stc, char **argv, char *err);
+void	ft_free(t_philo *s_philo);
 
 #endif
