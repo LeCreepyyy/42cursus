@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 11:09:06 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/06/21 13:05:08 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/06/22 12:58:25 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@
 # define YELLOW	"\e[33m"
 # define RED	"\e[31m"
 # define GREEN	"\e[32m"
+# define WHITE	"\e[37m"
+# define LOCK	1
+# define UNLOCK	0
 
 typedef struct s_info {
 	int			rank;
@@ -41,7 +44,7 @@ typedef struct s_philo {
 
 //fonction
 void	start_routine(t_philo *s_philo);
-void	take_fork(t_philo *s_philo);
+void	take_fork(t_philo *s_philo, int i);
 void	*ft_routine(void *arg);
 
 //utils

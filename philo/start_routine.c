@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 13:36:12 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/06/21 15:41:42 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/06/22 12:40:42 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	init_mutex(t_philo *s_philo)
 	int	i;
 
 	i = -1;
-	s_philo->m_fork = malloc(sizeof(pthread_mutex_t) * s_philo->number);
+	s_philo->m_fork = malloc(sizeof(pthread_mutex_t) * s_philo->number + 1);
 	if (!s_philo->m_fork)
 		return ;
 	while (++i < s_philo->number)
@@ -32,8 +32,14 @@ int	init_thread(t_philo *s_philo)
 	s_philo->s_info = malloc(sizeof(t_info) * s_philo->number);
 	if (!s_philo->s_info)
 		return (EXIT_FAILURE);
-	while (++i < s_philo->number)
+	while (++i <= s_philo->number)
 		s_philo->s_info[i - 1].rank = i;
+	i = -1;
+	s_philo->fork = malloc(sizeof(int) * s_philo->number + 1);
+	if (!s_philo->fork)
+		return (EXIT_FAILURE);
+	while (++i < s_philo->number)
+		s_philo->fork[i] = UNLOCK;
 	return (EXIT_SUCCESS);
 }
 
