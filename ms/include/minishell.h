@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_routine.c                                       :+:      :+:    :+:   */
+/*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/20 20:45:09 by marvin            #+#    #+#             */
-/*   Updated: 2023/06/23 11:19:48 by vpoirot          ###   ########.fr       */
+/*   Created: 2023/06/23 17:10:16 by vpoirot           #+#    #+#             */
+/*   Updated: 2023/06/23 17:13:57 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#ifndef MINISHELL_H
+# define MINISHELL_H
 
-void	*ft_routine(void *arg)
-{
-	static int		i = 0;
-	t_philo			*s_philo;
+# include <stdio.h>
+# include <stdlib.h>
+# include <signal.h>
+# include <unistd.h>
 
-	s_philo = (t_philo *)arg;
-	take_fork(s_philo, i);
-	i++;
-	printf("%s%d has finish !%s\n", GREEN, i, WHITE);
-	return (NULL);
-}
+#endif
