@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 20:45:09 by marvin            #+#    #+#             */
-/*   Updated: 2023/06/26 12:48:21 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/07/04 14:36:24 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,11 @@
 
 void	*ft_routine(void *arg)
 {
-	static int		i = -1;
-	t_philo			*s_philo;
+	t_info	*s_info;
 
-	s_philo = (t_philo *)arg;
-	i++;
-	take_fork(s_philo, i);
-	printf("%s%d has finish !%s\n", GREEN, i, WHITE);
+	s_info = (t_info *)arg;
+	if (s_info->rank % 2 == 0)
+		usleep(100);
+	take_fork(s_info);
 	return (NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 11:09:43 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/06/21 12:28:04 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/07/04 13:44:44 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	grep_info(t_philo *s_philo, char **argv)
 	s_philo->limit = -1;
 	if (argv[5])
 		s_philo->limit = ft_atoi(argv[5]);
+	s_philo->beginning = timestamp();
 }
 
 int	main(int argc, char **argv)
