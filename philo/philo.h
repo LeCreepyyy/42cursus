@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 11:09:06 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/07/04 14:48:44 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/07/05 11:16:55 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ typedef struct s_philo {
 void	start_routine(t_philo *s_philo);
 void	take_fork(t_info *s_info);
 void	*ft_routine(void *arg);
+void	sleeping(t_info *s_info);
 
 //utils
 int		ft_strlen(char *str);
@@ -59,6 +60,7 @@ int		ft_atoi(const char *nptr);
 int		exit_error(t_philo *stc, char **argv, char *err);
 void	ft_free(t_philo *s_philo);
 int		timestamp(void);
-void	mutex_print(char *message, int n_philo, t_philo *s_philo);
+void	mutex_print(char *message, int n_philo, t_philo *s_philo, char *color);
+void	ft_usleep(int time);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 11:34:01 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/07/04 14:50:58 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/07/05 11:19:08 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,14 +67,12 @@ int	timestamp(void)
 	return (tv.tv_sec * 1000 + tv.tv_usec / 1000);
 }
 
-void	mutex_print(char *message, int n_philo, t_philo *s_philo)
+void	mutex_print(char *message, int n_philo, t_philo *s_philo, char *color)
 {
 	pthread_mutex_lock(&s_philo->m_print);
-	if (ft_strcmp("is eating", message) == 0)
-		printf("\e[36m%d %d %s\n",
-			(timestamp() - s_philo->beginning), n_philo, message);
-	else
-		printf("\e[37m%d %d %s\n",
-			(timestamp() - s_philo->beginning), n_philo, message);
+	if (color == NULL)
+		color = "\e[0m";
+	printf("%s%d %d %s\n", color, (timestamp() - s_philo->beginning),
+		n_philo, message);
 	pthread_mutex_unlock(&s_philo->m_print);
 }
