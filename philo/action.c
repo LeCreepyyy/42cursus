@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 15:20:27 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/07/05 11:19:45 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/07/05 13:56:01 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	take_fork(t_info *s_info)
 	ft_usleep(s_info->s_data->eat);
 	pthread_mutex_unlock(&s_info->s_data->m_fork[s_info->rank - 1]);
 	pthread_mutex_unlock(&s_info->s_data->m_fork[i]);
+	s_info->l_eat++;
 }
 
 void	sleeping(t_info *s_info)
