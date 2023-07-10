@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 13:36:12 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/07/04 14:31:44 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/07/10 14:56:52 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ void	start_routine(t_philo *s_philo)
 		if (pthread_create(&thread[i].thread, NULL,
 				&ft_routine, &s_philo->s_info[i]) != 0)
 			return (erase_mutex(s_philo));
+	death(s_philo);
 	waiting(s_philo);
 	erase_mutex(s_philo);
 }

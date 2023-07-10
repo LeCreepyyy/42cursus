@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 11:09:06 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/07/05 11:16:55 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/07/10 14:56:41 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@
 
 typedef struct s_info {
 	int				rank;
+	int				l_eat;
+	int				time_eat;
 	pthread_t		thread;
 	struct s_philo	*s_data;
 }	t_info;
@@ -53,6 +55,7 @@ void	start_routine(t_philo *s_philo);
 void	take_fork(t_info *s_info);
 void	*ft_routine(void *arg);
 void	sleeping(t_info *s_info);
+void	death(t_philo *s_philo);
 
 //utils
 int		ft_strlen(char *str);
