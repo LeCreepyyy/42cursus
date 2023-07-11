@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 11:09:06 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/07/10 14:56:41 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/07/11 13:42:18 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct s_info {
 	int				l_eat;
 	int				time_eat;
 	pthread_t		thread;
+	pthread_mutex_t	m_eat;
 	struct s_philo	*s_data;
 }	t_info;
 

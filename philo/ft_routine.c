@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 20:45:09 by marvin            #+#    #+#             */
-/*   Updated: 2023/07/10 14:37:06 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/07/11 13:30:50 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	*ft_routine(void *arg)
 	t_info	*s_info;
 
 	s_info = (t_info *)arg;
+	pthread_mutex_init(&s_info->m_eat, NULL);
 	if (s_info->rank % 2 == 0)
 		ft_usleep(s_info->s_data->eat);
 	s_info->l_eat = 0;

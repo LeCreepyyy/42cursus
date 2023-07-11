@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 11:09:43 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/07/05 13:26:20 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/07/11 13:41:54 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	grep_info(t_philo *s_philo, char **argv)
 {
+	int	i;
+
 	s_philo->number = ft_atoi(argv[1]);
 	s_philo->death_time = ft_atoi(argv[2]);
 	s_philo->eat = ft_atoi(argv[3]);
@@ -24,6 +26,9 @@ void	grep_info(t_philo *s_philo, char **argv)
 	else
 		s_philo->limit = -1;
 	s_philo->beginning = timestamp();
+	i = -1;
+	while (&s_philo->s_info[++i])
+		s_philo->s_info[i].time_eat = timestamp();
 }
 
 int	main(int argc, char **argv)

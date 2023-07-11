@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 15:20:27 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/07/10 14:56:06 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/07/11 13:35:41 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,14 @@ void	death(t_philo *s_philo)
 		i = 0;
 		while (&s_philo->s_info[i] && s_philo->died == 0)
 		{
+			pthread_mutex_lock(&s_philo->s_info[i].m_eat);
 			if ((timestamp() - s_philo->s_info[i].time_eat)
 				> s_philo->death_time)
 			{
 				s_philo->died = 1;
 				mutex_print("is dead", s_philo->s_info[i].rank, s_philo, RED);
 			}
+			pthread_mutex_unlock(&s_philo->s_info[i].m_eat);
 			i++;
 		}
 	}
