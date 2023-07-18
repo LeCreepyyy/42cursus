@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 13:36:12 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/07/10 14:56:52 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/07/18 14:35:13 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ void	init_mutex(t_philo *s_philo)
 	while (++i < s_philo->number)
 		pthread_mutex_init(&(s_philo->m_fork[i]), NULL);
 	pthread_mutex_init(&s_philo->m_print, NULL);
+	pthread_mutex_init(&s_philo->m_death, NULL);
+	pthread_mutex_init(&s_philo->m_geat, NULL);
 }
 
 int	init_thread(t_philo *s_philo)
@@ -37,6 +39,7 @@ int	init_thread(t_philo *s_philo)
 	{
 		s_philo->s_info[i - 1].rank = i;
 		s_philo->s_info[i - 1].s_data = s_philo;
+		s_philo->s_info[i - 1].time_eat = timestamp();
 	}
 	return (EXIT_SUCCESS);
 }
@@ -62,7 +65,6 @@ void	waiting(t_philo *s_philo)
 void	start_routine(t_philo *s_philo)
 {
 	int		i;
-	t_info	*thread;
 
 	i = -1;
 	init_mutex(s_philo);
@@ -70,9 +72,8 @@ void	start_routine(t_philo *s_philo)
 		return ;
 	if (init_thread(s_philo))
 		return (erase_mutex(s_philo));
-	thread = s_philo->s_info;
 	while (++i < s_philo->number)
-		if (pthread_create(&thread[i].thread, NULL,
+		if (pthread_create(&s_philo->s_info[i].thread, NULL,
 				&ft_routine, &s_philo->s_info[i]) != 0)
 			return (erase_mutex(s_philo));
 	death(s_philo);

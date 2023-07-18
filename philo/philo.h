@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 11:09:06 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/07/11 13:42:18 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/07/18 14:34:48 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,12 @@ typedef struct s_philo {
 	int				died;
 	int				*fork;
 	int				beginning;
+	int				global_eat;
 	t_info			*s_info;
+	pthread_mutex_t	m_geat;
 	pthread_mutex_t	*m_fork;
 	pthread_mutex_t	m_print;
+	pthread_mutex_t	m_death;
 }	t_philo;
 
 //fonction
