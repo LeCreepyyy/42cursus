@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 20:45:09 by marvin            #+#    #+#             */
-/*   Updated: 2023/07/19 12:48:30 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/07/19 13:42:32 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,15 @@ void	ft_usleep(int time)
 		usleep(200);
 		current = timestamp() - begin;
 	}
+}
+
+void	ft_routine_part(t_info *s_info)
+{
+	pthread_mutex_unlock(&s_info->s_data->m_geat);
+	take_fork(s_info);
+	sleeping(s_info);
+	mutex_print("is thinking", s_info->rank, s_info->s_data, WHITE);
+	pthread_mutex_lock(&s_info->s_data->m_death);
 }
 
 void	*ft_routine(void *arg)
@@ -51,11 +60,7 @@ void	*ft_routine(void *arg)
 			pthread_mutex_unlock(&s_info->s_data->m_geat);
 			return (NULL);
 		}
-		pthread_mutex_unlock(&s_info->s_data->m_geat);
-		take_fork(s_info);
-		sleeping(s_info);
-		mutex_print("is thinking", s_info->rank, s_info->s_data, WHITE);
-		pthread_mutex_lock(&s_info->s_data->m_death);
+		ft_routine_part(s_info);
 	}
 	pthread_mutex_unlock(&s_info->s_data->m_death);
 	return (NULL);
