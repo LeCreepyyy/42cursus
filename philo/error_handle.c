@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 13:01:35 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/06/21 13:10:20 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/07/19 13:18:03 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	ft_free(t_philo *s_philo)
 		free(s_philo->s_info);
 	if (s_philo->m_fork)
 		free(s_philo->m_fork);
+	if (s_philo->fork)
+		free(s_philo->fork);
 }
 
 void	check_arg(int i)

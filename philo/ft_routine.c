@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 20:45:09 by marvin            #+#    #+#             */
-/*   Updated: 2023/07/18 14:39:44 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/07/19 12:48:30 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,13 @@ void	*ft_routine(void *arg)
 	while (s_info->s_data->died == 0)
 	{
 		pthread_mutex_unlock(&s_info->s_data->m_death);
-		pthread_mutex_lock(&s_info->s_data->m_geat);
 		if (s_info->s_data->limit > 0 && s_info->l_eat == s_info->s_data->limit)
+		{
+			pthread_mutex_lock(&s_info->s_data->m_geat);
 			s_info->s_data->global_eat++;
+			pthread_mutex_unlock(&s_info->s_data->m_geat);
+		}
+		pthread_mutex_lock(&s_info->s_data->m_geat);
 		if (s_info->s_data->global_eat == s_info->s_data->number)
 		{
 			pthread_mutex_unlock(&s_info->s_data->m_geat);

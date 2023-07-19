@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 11:09:43 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/07/18 14:31:00 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/07/19 13:20:54 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,6 @@ int	main(int argc, char **argv)
 	if (s_philo->number < 1)
 		return (exit_error(s_philo, argv, "Count of philo is to lower\n"));
 	start_routine(s_philo);
-	return (ft_free(s_philo), 0);
+	ft_free(s_philo);
+	return (0);
 }

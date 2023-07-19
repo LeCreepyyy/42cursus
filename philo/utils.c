@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 11:34:01 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/07/18 13:47:40 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/07/19 12:42:26 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,13 @@ int	timestamp(void)
 
 void	mutex_print(char *message, int n_philo, t_philo *s_philo, char *color)
 {
+	pthread_mutex_lock(&s_philo->m_death);
 	if (s_philo->died != 0)
+	{
+		pthread_mutex_unlock(&s_philo->m_death);
 		return ;
+	}
+	pthread_mutex_unlock(&s_philo->m_death);
 	pthread_mutex_lock(&s_philo->m_print);
 	if (color == NULL)
 		color = "\e[0m";

@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 15:20:27 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/07/19 10:25:39 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/07/19 12:49:58 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,25 +45,29 @@ void	death(t_philo *s_philo)
 	int	i;
 
 	pthread_mutex_lock(&s_philo->m_death);
+	pthread_mutex_lock(&s_philo->m_geat);
 	while (s_philo->died == 0
 		&& s_philo->global_eat != s_philo->number)
 	{
+		pthread_mutex_unlock(&s_philo->m_geat);
 		pthread_mutex_unlock(&s_philo->m_death);
-		i = 0;
-		while (i < s_philo->number && s_philo->died == 0)
+		i = -1;
+		while (++i < s_philo->number && s_philo->died == 0)
 		{
 			pthread_mutex_lock(&s_philo->s_info[i].m_eat);
 			if ((timestamp() - s_philo->s_info[i].time_eat)
-				> s_philo->death_time
-				&& s_philo->global_eat != s_philo->number)
+				> s_philo->death_time)
 			{
 				mutex_print("is dead", s_philo->s_info[i].rank, s_philo, WHITE);
+				pthread_mutex_lock(&s_philo->m_death);
 				s_philo->died = 1;
+				pthread_mutex_unlock(&s_philo->m_death);
 			}
 			pthread_mutex_unlock(&s_philo->s_info[i].m_eat);
-			i++;
 		}
 		pthread_mutex_lock(&s_philo->m_death);
+		pthread_mutex_lock(&s_philo->m_geat);
 	}
+	pthread_mutex_unlock(&s_philo->m_geat);
 	pthread_mutex_unlock(&s_philo->m_death);
 }
