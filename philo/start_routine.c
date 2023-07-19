@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 13:36:12 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/07/18 14:35:13 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/07/19 10:18:39 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,13 @@ void	erase_mutex(t_philo *s_philo)
 
 	i = -1;
 	while (++i != s_philo->number)
+	{
 		pthread_mutex_destroy(&(s_philo->m_fork[i]));
+		pthread_mutex_destroy(&(s_philo->s_info[i].m_eat));
+	}
+	pthread_mutex_destroy(&s_philo->m_geat);
+	pthread_mutex_destroy(&s_philo->m_print);
+	pthread_mutex_destroy(&s_philo->m_death);
 }
 
 void	waiting(t_philo *s_philo)
