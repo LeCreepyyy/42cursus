@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 20:45:09 by marvin            #+#    #+#             */
-/*   Updated: 2023/07/19 13:42:32 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/07/20 09:35:34 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,13 @@ void	ft_routine_part(t_info *s_info)
 	pthread_mutex_lock(&s_info->s_data->m_death);
 }
 
+void	lock_mgeat(t_philo *s_philo)
+{
+	pthread_mutex_lock(&s_philo->m_geat);
+	s_philo->global_eat++;
+	pthread_mutex_unlock(&s_philo->m_geat);
+}
+
 void	*ft_routine(void *arg)
 {
 	t_info	*s_info;
@@ -49,11 +56,7 @@ void	*ft_routine(void *arg)
 	{
 		pthread_mutex_unlock(&s_info->s_data->m_death);
 		if (s_info->s_data->limit > 0 && s_info->l_eat == s_info->s_data->limit)
-		{
-			pthread_mutex_lock(&s_info->s_data->m_geat);
-			s_info->s_data->global_eat++;
-			pthread_mutex_unlock(&s_info->s_data->m_geat);
-		}
+			lock_mgeat(s_info->s_data);
 		pthread_mutex_lock(&s_info->s_data->m_geat);
 		if (s_info->s_data->global_eat == s_info->s_data->number)
 		{
