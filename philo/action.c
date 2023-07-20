@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 15:20:27 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/07/19 13:29:38 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/07/20 14:10:04 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	take_fork(t_info *s_info)
 	pthread_mutex_lock(&s_info->s_data->m_fork[i]);
 	mutex_print("has taken a fork", s_info->rank, s_info->s_data, 0);
 	mutex_print("is eating", s_info->rank, s_info->s_data, WHITE);
-	ft_usleep(s_info->s_data->eat);
+	ft_usleep(s_info->s_data->eat, s_info->s_data);
 	pthread_mutex_lock(&s_info->m_eat);
 	s_info->time_eat = timestamp();
 	pthread_mutex_unlock(&s_info->m_eat);
@@ -37,7 +37,7 @@ void	take_fork(t_info *s_info)
 void	sleeping(t_info *s_info)
 {
 	mutex_print("is sleeping", s_info->rank, s_info->s_data, WHITE);
-	ft_usleep(s_info->s_data->sleep);
+	ft_usleep(s_info->s_data->sleep, s_info->s_data);
 }
 
 void	print_death(t_philo *s_philo, int i)

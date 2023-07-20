@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 11:09:43 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/07/20 09:42:31 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/07/20 14:27:28 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,28 @@ void	grep_info(t_philo *s_philo, char **argv)
 	i = -1;
 }
 
+int	verif_arg(char **argv, t_philo *s_philo)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (argv[++i])
+	{
+		j = -1;
+		if (ft_strlen(argv[i]) > ft_strlen("2147483647"))
+			return (1);
+		while (argv[i][++j])
+			if (argv[i][j] < '0' || argv[i][j] > '9')
+				return (1);
+	}
+	if (s_philo->death_time <= 0 || s_philo->eat <= 0
+		|| s_philo->sleep <= 0 || s_philo->limit <= -2
+		|| s_philo->number <= 0)
+		return (1);
+	return (0);
+}
+
 int	main(int argc, char **argv)
 {
 	t_philo	*s_philo;
@@ -41,8 +63,15 @@ int	main(int argc, char **argv)
 	if (!s_philo)
 		return (0);
 	grep_info(s_philo, argv);
-	if (s_philo->number < 1)
-		return (exit_error(s_philo, argv, "Count of philo is to lower\n"));
+	if (verif_arg(argv, s_philo) == 1 && printf("Arg invalid !\n"))
+		return (0);
+	if (s_philo->number == 1)
+	{
+		printf("0 1 has taken a fork\n");
+		usleep(s_philo->death_time);
+		printf("%d 1 is dead\n", s_philo->death_time + 1);
+		return (0);
+	}
 	start_routine(s_philo);
 	ft_free(s_philo);
 	return (0);

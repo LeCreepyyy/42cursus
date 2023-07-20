@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 11:09:06 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/07/18 14:34:48 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/07/20 14:13:30 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdlib.h>
 # include <pthread.h>
 # include <sys/time.h>
+# include <limits.h>
 
 # define GRAY	"\e[30m"
 # define RED	"\e[31m"
@@ -68,6 +69,7 @@ int		exit_error(t_philo *stc, char **argv, char *err);
 void	ft_free(t_philo *s_philo);
 int		timestamp(void);
 void	mutex_print(char *message, int n_philo, t_philo *s_philo, char *color);
-void	ft_usleep(int time);
+void	ft_usleep(int time, t_philo *s_philo);
+int		ft_strcmp(char *s1, char *s2);
 
 #endif

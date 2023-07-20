@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 11:34:01 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/07/19 12:42:26 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/07/20 13:54:44 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ int	ft_strlen(char *str)
 
 int	ft_atoi(const char *nptr)
 {
-	int		i;
-	int		mult;
-	int		nb;
+	int			i;
+	int			mult;
+	long		nb;
 
 	mult = 1;
 	nb = 0;
@@ -41,6 +41,8 @@ int	ft_atoi(const char *nptr)
 	i++;
 	while (nptr[i] >= '0' && nptr[i] <= '9')
 		nb = (nb * 10) + (nptr[i++] - '0');
+	if (nb > INT_MAX || nb < INT_MIN)
+		return (-2);
 	nb *= mult;
 	return (nb);
 }

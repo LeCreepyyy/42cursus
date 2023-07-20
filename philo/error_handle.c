@@ -6,7 +6,7 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 13:01:35 by vpoirot           #+#    #+#             */
-/*   Updated: 2023/07/19 13:18:03 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/07/20 14:24:14 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,6 @@ int	exit_error(t_philo *stc, char **argv, char *err)
 		}
 	}
 	if (stc)
-		free(stc);
+		ft_free(stc);
 	return (0);
 }

@@ -6,24 +6,28 @@
 /*   By: vpoirot <vpoirot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 20:45:09 by marvin            #+#    #+#             */
-/*   Updated: 2023/07/20 09:35:34 by vpoirot          ###   ########.fr       */
+/*   Updated: 2023/07/20 14:15:50 by vpoirot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	ft_usleep(int time)
+void	ft_usleep(int time, t_philo *s_philo)
 {
 	int	begin;
 	int	current;
 
 	current = 0;
 	begin = timestamp();
-	while (current < time)
+	pthread_mutex_lock(&s_philo->m_death);
+	while (current < time && s_philo->died == 0)
 	{
+		pthread_mutex_unlock(&s_philo->m_death);
 		usleep(200);
 		current = timestamp() - begin;
+		pthread_mutex_lock(&s_philo->m_death);
 	}
+	pthread_mutex_unlock(&s_philo->m_death);
 }
 
 void	ft_routine_part(t_info *s_info)
@@ -49,7 +53,7 @@ void	*ft_routine(void *arg)
 	s_info = (t_info *)arg;
 	pthread_mutex_init(&s_info->m_eat, NULL);
 	if (s_info->rank % 2 == 0)
-		ft_usleep(s_info->s_data->eat);
+		ft_usleep(s_info->s_data->eat, s_info->s_data);
 	s_info->l_eat = 0;
 	pthread_mutex_lock(&s_info->s_data->m_death);
 	while (s_info->s_data->died == 0)
